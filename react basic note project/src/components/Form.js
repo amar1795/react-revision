@@ -105,7 +105,7 @@ const handlelowercase =(e)=>
   <textarea class="form-control"   onChange={handleonchange} value={text} placeholder="Leave a comment here" id="floatingTextarea2" style={{height: "200px",...props.Mystyle}}></textarea>
   </div>
   <button className="btn btn-primary my-1 mx-3 " onClick={handleonclick}>
-    Convert to Uppercase
+    Convert to Uppercase  
   </button>
   <button className="btn btn-primary my-1 " onClick={handlelowercase}>
     Convert to Lowercase
