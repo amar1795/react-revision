@@ -21,6 +21,16 @@ function App() {
     backgroundColor:"white"
   });
   
+  const removeBodyClasses=()=>{
+
+    document.body.classList.remove('bg-dark');
+    document.body.classList.remove('bg-light');
+    document.body.classList.remove('bg-primary');
+    document.body.classList.remove('bg-success');
+    document.body.classList.remove('bg-warning');
+    document.body.classList.remove('bg-danger');
+    
+  }
 
 
   const [Mode,setMode]=useState(
@@ -29,7 +39,14 @@ function App() {
   const [Btntxt,setBtntxt]=useState("Dark");
   
   
+  const toggleColor=(cls)=>{
+    removeBodyClasses();
+    document.body.classList.add("bg-"+cls);
+  }  
+
   const toggleStyle=()=>{
+   
+    //above classes are being added in bootstrap classes and the below classes are also being added to  the classes
   
     if(Mode==="light")
     {
@@ -87,7 +104,7 @@ function App() {
     <div>
     <BrowserRouter>
    {/*everything should be inside browser router except the things which will change  */}
-    <Navbar title="React News App" Mode={Mode} toggleStyle={toggleStyle} Btntxt={Btntxt}/>
+    <Navbar title="React News App" Mode={Mode} toggleStyle={toggleStyle} Btntxt={Btntxt} toggleColor={toggleColor}/>
     <Alert alertBtn={alertBtn} />
     <div className="container my-3" > 
 

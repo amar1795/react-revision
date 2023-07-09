@@ -104,25 +104,25 @@ const handlelowercase =(e)=>
   
   <textarea class="form-control"   onChange={handleonchange} value={text} placeholder="Leave a comment here" id="floatingTextarea2" style={{height: "200px",...props.Mystyle}}></textarea>
   </div>
-  <button className="btn btn-primary my-1 mx-3 " onClick={handleonclick}>
+  <button disabled={text.length===0} className="btn btn-primary my-1 mx-3 " onClick={handleonclick}>
     Convert to Uppercase  
   </button>
-  <button className="btn btn-primary my-1 " onClick={handlelowercase}>
+  <button disabled={text.length===0} className="btn btn-primary my-1 " onClick={handlelowercase}>
     Convert to Lowercase
   </button>
-  <button className="btn btn-primary my-1 mx-3" onClick={handlecleartext}>
+  <button disabled={text.length===0} className="btn btn-primary my-1 mx-3" onClick={handlecleartext}>
     ClearText
   </button> 
-  <button className="btn btn-primary my-1 mx-3" onClick={handleCopy}>
+  <button disabled={text.length===0} className="btn btn-primary my-1 mx-3" onClick={handleCopy}>
       Copy  </button>
-      <button className="btn btn-primary my-1 mx-3" onClick={handleextraSpaces}>
-      remove Extra Spaces  </button>
+  <button disabled={text.length===0} className="btn btn-primary my-1 mx-3" onClick={handleextraSpaces}>
+  remove Extra Spaces  </button>
 
     <div className="container">
       <h1>your text summary</h1>
       <p>{text.split(" ").filter((element)=>{return element.length!=0}).length} Words and {text.replace(/\s/g, "").length} characters</p>
 
-      <p>{0.008*text.split("").length}Minutes needed on average to read the above sentence</p>
+      <p>{0.008*text.split("").filter((element)=>{return element.length!=0}).length}   Minutes needed on average to read the above sentence</p>
       <h2>Preview <span style={{color:"white",backgroundColor:"  #0080ff",borderRadius:"10px"}}>{btn}</span></h2>
       <p >{text}</p>
     </div>

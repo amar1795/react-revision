@@ -26,9 +26,14 @@ const Navbar = (props) => {
         
       </ul>
       <form className="d-flex">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-outline-success" type="submit">Search</button>
-        <button type='button' className={`btn btn-${props.Mode==="light"?"dark":"light"} my-1 mx-3 px-3`} onClick={props.toggleStyle} >
+        <div className='bg-primary rounded mx-2 my-2' onClick={()=>{props.toggleColor('primary')}} style={{height:"30px",width:"30px",cursor:"pointer"}}></div>
+
+        <div className='bg-danger rounded mx-2 my-2' onClick={()=>{props.toggleColor('danger')}} style={{height:"30px",width:"30px",cursor:"pointer"}}></div>
+        <div className='bg-success rounded mx-2 my-2' onClick={()=>{props.toggleColor('success')}} style={{height:"30px",width:"30px",cursor:"pointer"}}></div>
+        <div className='bg-warning rounded mx-2 my-2' onClick={()=>{props.toggleColor('warning')}} style={{height:"30px",width:"30px",cursor:"pointer"}}></div>
+
+
+        <button type='button' className={`btn btn-${props.Mode==="light"?"dark":"light"} my-1 mx-3 px-3`} onClick={()=>{props.toggleStyle(null)}} >
           {props.Btntxt}
           </button>
       </form>
