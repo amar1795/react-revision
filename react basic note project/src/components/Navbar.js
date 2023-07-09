@@ -1,6 +1,6 @@
 import React from 'react'
 
-
+// this is navbar
 const Navbar = (props) => {
   
   return (
