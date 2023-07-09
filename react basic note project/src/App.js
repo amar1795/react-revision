@@ -37,7 +37,7 @@ function App() {
       document.body.style.color="white"
       setBtntxt("Light")
       setMode("dark")
-      showAlert("Dark mode has been enabled","Success")
+      showAlert("Dark mode has been enabled","success")
       document.title="Text-App-Dark Mode "
   
       setMystyle({
@@ -49,7 +49,7 @@ function App() {
   
     else
     {
-      showAlert("Light mode has been enabled","Success")
+      showAlert("Light mode has been enabled","success")
 
       document.body.style.backgroundColor="white";
       document.body.style.color="black"
@@ -93,7 +93,7 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<Form email="enter your email here" Mystyle={Mystyle} showAlert={showAlert}/>} />
-        <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/contact" element={<Contact Mode={Mode} Mystyle={Mystyle} />} />
       </Routes>
     </div>
     </BrowserRouter>
