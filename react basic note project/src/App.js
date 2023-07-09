@@ -86,6 +86,7 @@ function App() {
   return (
     <div>
     <BrowserRouter>
+   {/*everything should be inside browser router except the things which will change  */}
     <Navbar title="React News App" Mode={Mode} toggleStyle={toggleStyle} Btntxt={Btntxt}/>
     <Alert alertBtn={alertBtn} />
     <div className="container my-3" > 

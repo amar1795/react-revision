@@ -120,7 +120,7 @@ const handlelowercase =(e)=>
 
     <div className="container">
       <h1>your text summary</h1>
-      <p>{text.split(" ").length} Words and {text.length} characters</p>
+      <p>{text.split(" ").filter((element)=>{return element.length!=0}).length} Words and {text.replace(/\s/g, "").length} characters</p>
 
       <p>{0.008*text.split("").length}Minutes needed on average to read the above sentence</p>
       <h2>Preview <span style={{color:"white",backgroundColor:"  #0080ff",borderRadius:"10px"}}>{btn}</span></h2>
