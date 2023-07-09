@@ -31,6 +31,7 @@ function App() {
       setBtntxt("Light")
       setMode("dark")
       showAlert("Dark mode has been enabled","Success")
+      document.title="Text-App-Dark Mode "
   
       setMystyle({
         color:"white",
@@ -51,6 +52,7 @@ function App() {
         color:"black",
         backgroundColor:"white"
       })
+      document.title="Text-App-Light Mode "
 
     }
   }
