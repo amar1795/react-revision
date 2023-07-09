@@ -6,6 +6,13 @@ import React ,{useState} from 'react'
 import Contact from './components/Contact';
 import Alert from './components/Alert';
 
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
+
 
 function App() {
 
@@ -77,15 +84,20 @@ function App() {
 
   
   return (
-    
     <div>
+    <BrowserRouter>
     <Navbar title="React News App" Mode={Mode} toggleStyle={toggleStyle} Btntxt={Btntxt}/>
     <Alert alertBtn={alertBtn} />
     <div className="container my-3" > 
-    <Form email="enter your email here" Mystyle={Mystyle} showAlert={showAlert}/>
+
+      <Routes>
+        <Route exact path="/" element={<Form email="enter your email here" Mystyle={Mystyle} showAlert={showAlert}/>} />
+        <Route exact path="/contact" element={<Contact />} />
+      </Routes>
     </div>
+    </BrowserRouter>
     </div>
-  );
+  );  
 }
 
 export default App;
