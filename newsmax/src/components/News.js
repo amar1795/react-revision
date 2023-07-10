@@ -266,6 +266,7 @@ export default class News extends Component {
             "publishedAt": "2023-07-09T04:45:17Z",
             "content": "A journalist for one of Mexico's top newspapers has been found dead in the western state of Nayarit, La Jornada said on Saturday.\r\n\"A body found in the village of Huachines... in the municipality of … [+1853 chars]"
         }
+      
     ]
 
     constructor(){
@@ -275,6 +276,19 @@ export default class News extends Component {
             loading:false
         }
     }
+
+
+    async componentDidMount(){
+
+        let url="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4136a686f9784b0cae639181c30d9814"
+        let data=await fetch(url);
+        let parseddata=await data.json();
+        this.setState({
+            articles:parseddata.articles
+        })
+
+    }
+
   render() {
     return (
       
@@ -287,8 +301,9 @@ export default class News extends Component {
         
             console.log(    "this is working")
             return  <div className='col-md-3 my-3' key={element.url}  >
-                {/* unable to add slice in description getting error needs to be corrected */}
-            <Newscomponent title={element.title.slice(0,45)} description={element.description} imageUrl={element.urlToImage} newsUrl={element.url}/>
+                {/* unable to add slice in description getting error needs to be corrected 
+                the error was because few value of description are being set to null*/}
+            <Newscomponent title={element.title?element.title.slice(0,45):" "} description={element.description ? element.description.slice(0, 80) : ''} imageUrl={element.urlToImage} newsUrl={element.url}/>
             </div>
             })}  
 
