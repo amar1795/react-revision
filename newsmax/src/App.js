@@ -1,12 +1,15 @@
 import './App.css';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <>
-    <div>hello world</div>
-    <h1>this is my react app</h1>
-    </>
-  );
+export default class App extends Component {
+  c="john";
+  render() {
+    return (
+      <div>
+        <h1>this is {this.c}</h1>
+      </div>
+    )
+  }
 }
 
-export default App;
+
