@@ -1,6 +1,8 @@
 
 ![projectdemo](https://github.com/amar1795/react-revision/assets/111219074/7f1f2125-30fd-401f-a4a9-9051562a59c6)
 
+# Information about this project
+Made this project by learning and implementing the concept of props, state and components , used bootstrap for it .Dark and night mode added with it similar background colours added which are changed dynamically.
 
 # Getting Started with Create React App
 
