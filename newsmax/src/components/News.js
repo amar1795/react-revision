@@ -144,7 +144,7 @@ export default class News extends Component {
                 {/* unable to add slice in description getting error needs to be corrected 
                 the error was because few value of description are being set to null*/}
                 
-            <Newscomponent title={element.title?element.title.slice(0,45):" "} description={element.description ? element.description.slice(0, 80) : ''} imageUrl={element.urlToImage} newsUrl={element.url}/>
+            <Newscomponent title={element.title?element.title.slice(0,45):" "} description={element.description ? element.description.slice(0, 80) : ''} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}/>
             </div>
             })}  
 
