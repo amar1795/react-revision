@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Newscomponent from './Newscomponent'
+import Loading from './Loading';
 
 
 
@@ -24,12 +25,14 @@ export default class News extends Component {
     ]
 
     constructor(){
+        // we can create state using constructor since this is a class based component
         super();
         this.state={
             articles:this.articles,
-            loading:false,
+            image:false,
             page:1,
-            
+          
+
             
         }
     }
@@ -39,12 +42,17 @@ export default class News extends Component {
 
         // this is being used to set the state
 
-        let url="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4136a686f9784b0cae639181c30d9814&page=1&pagesize=20"
+        let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4136a686f9784b0cae639181c30d9814&page=1&pagesize=${this.props.pagesize}`
+        this.setState({
+            image:true
+        })
         let data=await fetch(url);
         let parseddata=await data.json();
         this.setState({
             articles:parseddata.articles,
-            totalResults:parseddata.totalResults
+            totalResults:parseddata.totalResults,
+            image:false
+            
             // even though the value is not in state we can add it in setstate            
         })
 
@@ -52,14 +60,20 @@ export default class News extends Component {
 
                 handlePreviousClick=async()=>{
                 console.log("previous click")
-                let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4136a686f9784b0cae639181c30d9814&page-${this.state.page-1}&pagesize=20`
+                let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4136a686f9784b0cae639181c30d9814&page-${this.state.page-1}&pagesize=${this.props.pagesize}`
+                this.setState({
+                    image:true
+                })
                 let data=await fetch(url);
                 let parseddata=await data.json();
 
                 this.setState({
                     // setting the state
                 articles:parseddata.articles,
-                page:this.state.page -1  })
+                page:this.state.page -1,
+                image:false
+
+                 })
 
                     }
 
@@ -75,12 +89,18 @@ export default class News extends Component {
 
                 console.log("Next click")
                 
-                let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page+1}&pagesize=20`
+                let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page+1}&pagesize=${this.props.pagesize}`
+                this.setState({
+                    image:true
+                })
                 let data=await fetch(url);
                 let parseddata=await data.json();
                 this.setState({
                 articles:parseddata.articles,
-                page:this.state.page +1  })
+                page:this.state.page +1,
+                image:false
+
+                })
 
             }
         }
@@ -92,13 +112,21 @@ export default class News extends Component {
 
             <div className="container my-4">
             <div className='row'>
+            
 
-            {this.state.articles.map((element)=>{
-        
+            {/* populating the dom using map function */}
+            <div className="container d-flex justify-content-center ">
+                {/* if loading then show loading image */}
+            {this.state.image && <Loading/>}
+            </div>
+
+            {/* if not loading then show loading image */}
+            {!this.state.image && this.state.articles.map((element)=>{
             console.log(    "this is working")
             return  <div className='col-md-3 my-3' key={element.url}  >
                 {/* unable to add slice in description getting error needs to be corrected 
                 the error was because few value of description are being set to null*/}
+                
             <Newscomponent title={element.title?element.title.slice(0,45):" "} description={element.description ? element.description.slice(0, 80) : ''} imageUrl={element.urlToImage} newsUrl={element.url}/>
             </div>
             })}  
