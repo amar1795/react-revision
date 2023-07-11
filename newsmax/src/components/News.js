@@ -95,14 +95,10 @@ export default class News extends Component {
                     }
 
 
-            handleNextClick=async()=>{
+            handleNextClick=async()=>
+            {
 
-            if(this.state.page +1>Math.ceil(this.state.totalResults/20))
-            {
-                console.log("disabled code")
-            }
-            else
-            {
+          
 
                 console.log("Next click")
                 
@@ -119,8 +115,8 @@ export default class News extends Component {
 
                 })
 
-            }
-        }
+            
+             }
 
   render() {
     return (
@@ -154,7 +150,7 @@ export default class News extends Component {
 
             
             <button type="button" disabled={this.state.page < 2} onClick={this.handlePreviousClick} class="btn btn-dark mb-3">&larr; Previous</button>
-            <button type="button" onClick={this.handleNextClick} class="btn btn-dark mb-3">Next &rarr;</button>
+            <button disabled={this.state.page +1>Math.ceil(this.state.totalResults/20)} type="button" onClick={this.handleNextClick} class="btn btn-dark mb-3">Next &rarr;</button>
             </div>
 
             </div>
