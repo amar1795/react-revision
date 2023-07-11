@@ -15,7 +15,7 @@ export default class App extends Component {
         
         </div>
 
-        <News pagesize={20}/>
+        <News pagesize={20} category="science"/>
       </div>
     )
   }

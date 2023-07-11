@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Newscomponent from './Newscomponent'
 import Loading from './Loading';
+import PropTypes from 'prop-types';
+
 
 
 
@@ -24,6 +26,20 @@ export default class News extends Component {
       
     ]
 
+    static defaultProps={
+
+       category:"business",
+
+    }
+    
+    static propTypes={
+       
+
+
+    }
+
+
+
     constructor(){
         // we can create state using constructor since this is a class based component
         super();
@@ -42,7 +58,7 @@ export default class News extends Component {
 
         // this is being used to set the state
 
-        let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4136a686f9784b0cae639181c30d9814&page=1&pagesize=${this.props.pagesize}`
+        let url=`https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=1&pagesize=${this.props.pagesize}`
         this.setState({
             image:true
         })
@@ -60,7 +76,7 @@ export default class News extends Component {
 
                 handlePreviousClick=async()=>{
                 console.log("previous click")
-                let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4136a686f9784b0cae639181c30d9814&page-${this.state.page-1}&pagesize=${this.props.pagesize}`
+                let url=`https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page-${this.state.page-1}&pagesize=${this.props.pagesize}`
                 this.setState({
                     image:true
                 })
@@ -89,7 +105,7 @@ export default class News extends Component {
 
                 console.log("Next click")
                 
-                let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page+1}&pagesize=${this.props.pagesize}`
+                let url=`https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page+1}&pagesize=${this.props.pagesize}`
                 this.setState({
                     image:true
                 })
