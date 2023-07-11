@@ -34,6 +34,7 @@ export default class News extends Component {
     
     static propTypes={
        
+        pagesize:PropTypes.number,
 
 
     }
