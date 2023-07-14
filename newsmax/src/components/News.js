@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Newscomponent from './Newscomponent'
 import Loading from './Loading';
 import PropTypes from 'prop-types';
+import InfiniteScroll from "react-infinite-scroll-component";
+
 
 
 
@@ -49,9 +51,7 @@ export default class News extends Component {
             articles:this.articles,
             image:false,
             page:1,
-          
-
-            
+                      
         }
     }
 
@@ -103,13 +103,32 @@ export default class News extends Component {
             
              }
 
+             fetchMoreData=async ()=>{
+                let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page}&pagesize=${this.props.pagesize}`
+                this.setState({
+                    image:true
+                })
+                let data=await fetch(url);
+                let parseddata=await data.json();
+                this.setState({
+                articles:this.state.articles.concat(parseddata.articles),
+                totalResults:parseddata.totalResults,
+                image:false,
+               
+       
+
+        })
+
+             }
+
+             //we cannot change state inside a render method
   render() {
     return (
       
         <div>
 
             <div className="container my-4">
-            <div className='row'>
+           
             
 
             {/* populating the dom using map function */}
@@ -119,7 +138,15 @@ export default class News extends Component {
             </div>
 
             {/* if not loading then show loading image */}
-            {!this.state.image && this.state.articles.map((element)=>{
+
+            <InfiniteScroll
+          dataLength={this.state.articles.length}
+          next={this.fetchMoreData}
+          hasMore={true}
+          loader={<Loading/>}
+                            >
+         <div className='row'>
+            {this.state.articles.map((element)=>{
             console.log(    "this is working")
             return  <div className='col-md-3 my-3' key={element.url}  >
                 {/* was unable to add slice in description getting error needs to be corrected 
@@ -127,18 +154,15 @@ export default class News extends Component {
                 
             <Newscomponent title={element.title?element.title.slice(0,45):" "} description={element.description ? element.description.slice(0, 80) : ''} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}/>
             </div>
-            })}  
-
+            })} 
             </div>
-            </div>
-            <div className="container d-flex justify-content-between">
 
             
-            <button type="button" disabled={this.state.page < 2} onClick={this.handlePreviousClick} class="btn btn-dark mb-3">&larr; Previous</button>
-            <button disabled={this.state.page +1>Math.ceil(this.state.totalResults/20)} type="button" onClick={this.handleNextClick} class="btn btn-dark mb-3">Next &rarr;</button>
+            </InfiniteScroll> 
             </div>
-
-            </div>
+             </div>
+            
+            
         
      
     )
