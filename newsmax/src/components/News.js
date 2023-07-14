@@ -85,7 +85,7 @@ export default class News extends Component {
              fetchMoreData=async ()=>{
                 let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page}&pagesize=${this.props.pagesize}`
                 this.setState({
-                    image:true
+                    // image:true
                 })
                 let data=await fetch(url);
                 let parseddata=await data.json();
@@ -93,7 +93,7 @@ export default class News extends Component {
                     // concatenating the data for the infinite loading bar to work 
                 articles:this.state.articles.concat(parseddata.articles),
                 totalResults:parseddata.totalResults,
-                image:false,
+                // image:false,
                
        
 
@@ -113,7 +113,7 @@ export default class News extends Component {
 
             {/* populating the dom using map function */}
             {/* top loader only displaayed while reloading */}
-            {this.state.image && <Loading/>}
+            {/* {this.state.image && <Loading/>} */}
 
             {/* if not loading then show loading image */}
 
