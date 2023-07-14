@@ -6,10 +6,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 
 
-
-
-
-
 export default class News extends Component {
     articles=[
         {
@@ -57,6 +53,7 @@ export default class News extends Component {
     async updateNews(){
         this.props.setprogress(10)
         let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apikey}&page=${this.state.page}&pagesize=${this.props.pagesize}`
+        // infinite scrolling not working when api key hidden need to correct the code
        
         let data=await fetch(url);
         this.props.setprogress(30)
