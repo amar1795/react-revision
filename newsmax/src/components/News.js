@@ -264,15 +264,14 @@ export default class News extends Component {
 
     async updateNews(){
         this.props.setprogress(10)
-        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page}&pagesize=${this.props.pagesize}`
+        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apikey}&page=${this.state.page}&pagesize=${this.props.pagesize}`
        
         let data=await fetch(url);
         this.props.setprogress(30)
-
         let parseddata=await data.json();
         this.props.setprogress(50)
         this.setState({
-        // articles:parseddata.articles,
+        articles:parseddata.articles,
         totalResults:parseddata.totalResults,
         
 
@@ -314,11 +313,10 @@ export default class News extends Component {
 
             //  this function is called for infinite scroll data only
              fetchMoreData=async ()=>{
-                let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page}&pagesize=${this.props.pagesize}`
+                let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apikey}=${this.state.page}&pagesize=${this.props.pagesize}`
                 
                 let data=await fetch(url);
-                // let parseddata=await data.json();
-                let parseddata=this.state.articles;
+                let parseddata=await data.json();
                 
                 this.setState({
                     // concatenating the data for the infinite loading bar to work 
