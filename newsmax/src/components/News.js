@@ -275,7 +275,7 @@ function News(props) {
 
             <InfiniteScroll
           dataLength={articles.length}
-          next={fetchMoreData}
+        //   next={fetchMoreData}
           hasMore={true}
         //   this loading will be shown at the time of loading down
           loader={<Loading/>}
