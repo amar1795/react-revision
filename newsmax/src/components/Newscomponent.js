@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Newscomponent extends Component {
-  render() {
+function Newscomponent(props){
+  
     
     // using destructuring storing the values in class based props
-    let {title,description,imageUrl,newsUrl,date,source,author}=this.props
+    let {title,description,imageUrl,newsUrl,date,source,author}=props
     
     return (
         <div>
@@ -24,5 +24,7 @@ export default class Newscomponent extends Component {
   </div>
       </div>
     )
-  }
+  
 }
+
+export default Newscomponent

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import image from './loading.gif'
 
 
-export default class Loading extends Component {
-  render() {
+function Loading () {
+  
     return (  
       <div>
         <div className="container d-flex justify-content-center ">
@@ -11,8 +11,10 @@ export default class Loading extends Component {
         </div>
       </div>
     )
-  }
+  
 }
+
+export default Loading
 
 
 

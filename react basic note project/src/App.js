@@ -36,6 +36,7 @@ function App() {
   const [Mode,setMode]=useState(
     "light"
   );
+
   const [Btntxt,setBtntxt]=useState("Dark");
   
   
@@ -109,7 +110,7 @@ function App() {
     <div className="container my-3" > 
 
       <Routes>
-        <Route exact path="/" element={<Form email="enter your email here" Mystyle={Mystyle} showAlert={showAlert}/>} />
+        <Route exact path="/" element={<Form  Mystyle={Mystyle} showAlert={showAlert}/>} />
         <Route exact path="/contact" element={<Contact Mode={Mode} Mystyle={Mystyle} />} />
       </Routes>
     </div>
