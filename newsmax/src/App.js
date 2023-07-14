@@ -14,6 +14,7 @@ import LoadingBar from 'react-top-loading-bar'
 
 export default class App extends Component {
 
+  apikey=process.env.REACT_APP_KEY;
   // state={
   //   progress:10,
   // }
@@ -45,19 +46,19 @@ export default class App extends Component {
     <div className="container">
       <Routes>
       
-        <Route exact path="/" element={<News setprogress={this.setprogress} key="business" pagesize={20} category="business" />} />
+        <Route exact path="/" element={<News apikey={this.apikey} setprogress={this.setprogress} key="business" pagesize={20} category="business" />} />
 
-        <Route exact path="/business" element={<News setprogress={this.setprogress} key="business" pagesize={20} category="business"/>} />
+        <Route exact path="/business" element={<News apikey={this.apikey} setprogress={this.setprogress} key="business" pagesize={20} category="business"/>} />
 
-        <Route exact path="/science" element={<News setprogress={this.setprogress} key="science" pagesize={20} category="science"/>} />
+        <Route exact path="/science" element={<News apikey={this.apikey} setprogress={this.setprogress} key="science" pagesize={20} category="science"/>} />
 
-        <Route exact path="/general" element={<News setprogress={this.setprogress} key="general" pagesize={20} category="general"/>} />
+        <Route exact path="/general" element={<News apikey={this.apikey} setprogress={this.setprogress} key="general" pagesize={20} category="general"/>} />
 
-        <Route exact path="/health" element={<News setprogress={this.setprogress} key="health" pagesize={20} category="health"/>} />
+        <Route exact path="/health" element={<News apikey={this.apikey} setprogress={this.setprogress} key="health" pagesize={20} category="health"/>} />
 
-        <Route exact path="/sports" element={<News setprogress={this.setprogress} key="sports" pagesize={20} category="sports"/>} />
+        <Route exact path="/sports" element={<News apikey={this.apikey} setprogress={this.setprogress} key="sports" pagesize={20} category="sports"/>} />
 
-        <Route exact path="/technology" element={<News setprogress={this.setprogress} key="technology" pagesize={20} category="technology"/>} />
+        <Route exact path="/technology" element={<News apikey={this.apikey} setprogress={this.setprogress} key="technology" pagesize={20} category="technology"/>} />
 
         
         {/* <Route exactpath="users/*" element={<Users />} /> */}
