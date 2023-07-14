@@ -24,7 +24,7 @@ export default class App extends Component {
     <div className="container">
       <Routes>
       
-        <Route exact path="/" element={<News key="business" pagesize={20} category="business"/>} />
+        <Route exact path="/" element={<News key="business" pagesize={20} category="business" />} />
 
         <Route exact path="/business" element={<News key="business" pagesize={20} category="business"/>} />
 

@@ -29,6 +29,7 @@ export default class News extends Component {
     static defaultProps={
 
        category:"business",
+       country:"us"
 
     }
     
@@ -59,7 +60,7 @@ export default class News extends Component {
 
         // this is being used to set the state
 
-        let url=`https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=1&pagesize=${this.props.pagesize}`
+        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=1&pagesize=${this.props.pagesize}`
         this.setState({
             image:true
         })
@@ -77,7 +78,7 @@ export default class News extends Component {
 
                 handlePreviousClick=async()=>{
                 console.log("previous click")
-                let url=`https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page-${this.state.page-1}&pagesize=${this.props.pagesize}`
+                let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page-${this.state.page-1}&pagesize=${this.props.pagesize}`
                 this.setState({
                     image:true
                 })
@@ -102,7 +103,7 @@ export default class News extends Component {
 
                 console.log("Next click")
                 
-                let url=`https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page+1}&pagesize=${this.props.pagesize}`
+                let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page+1}&pagesize=${this.props.pagesize}`
                 this.setState({
                     image:true
                 })
@@ -137,7 +138,7 @@ export default class News extends Component {
             {!this.state.image && this.state.articles.map((element)=>{
             console.log(    "this is working")
             return  <div className='col-md-3 my-3' key={element.url}  >
-                {/* unable to add slice in description getting error needs to be corrected 
+                {/* was unable to add slice in description getting error needs to be corrected 
                 the error was because few value of description are being set to null*/}
                 
             <Newscomponent title={element.title?element.title.slice(0,45):" "} description={element.description ? element.description.slice(0, 80) : ''} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}/>
