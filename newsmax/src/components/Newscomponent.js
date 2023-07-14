@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 export default class Newscomponent extends Component {
   render() {
-
-        // using destructuring storing the values in class based props
+    
+    // using destructuring storing the values in class based props
     let {title,description,imageUrl,newsUrl,date,source,author}=this.props
     
     return (
@@ -14,7 +14,7 @@ export default class Newscomponent extends Component {
     <div class="card-body">
       
       <h5 class="card-title">{title}...</h5>
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{zIndex:"1",left: "85%"}}>
+      <span class="badge rounded-pill bg-danger" style={{position:"absolute",right:"0",top:"0"}}>
     {source}
     </span>
       <p class="card-text">{description}...</p>

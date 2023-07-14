@@ -14,8 +14,18 @@ import LoadingBar from 'react-top-loading-bar'
 
 export default class App extends Component {
 
-  state={
-    progress:10,
+  // state={
+  //   progress:10,
+  // }
+
+  constructor(){
+    // we can create state using constructor since this is a class based component
+    super();
+    this.state={
+        
+        progress:10
+                  
+    }
   }
   setprogress=(progress)=>{
     this.setState({progress:progress})
