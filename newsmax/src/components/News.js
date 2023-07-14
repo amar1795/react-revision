@@ -55,43 +55,37 @@ export default class News extends Component {
         }
     }
 
+    async updateNews(){
 
-    async componentDidMount(){
-
-        // this is being used to set the state
-
-        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=1&pagesize=${this.props.pagesize}`
+        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page}&pagesize=${this.props.pagesize}`
         this.setState({
             image:true
         })
         let data=await fetch(url);
         let parseddata=await data.json();
         this.setState({
-            articles:parseddata.articles,
-            totalResults:parseddata.totalResults,
-            image:false
-            
-            // even though the value is not in state we can add it in setstate            
-        })
+        articles:parseddata.articles,
+        totalResults:parseddata.totalResults,
+        image:false
 
+        })
     }
+
+                async componentDidMount(){
+
+                    // this is being used to set the state
+
+                    this.updateNews();
+
+
+                }
 
                 handlePreviousClick=async()=>{
                 console.log("previous click")
-                let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page-${this.state.page-1}&pagesize=${this.props.pagesize}`
-                this.setState({
-                    image:true
-                })
-                let data=await fetch(url);
-                let parseddata=await data.json();
-
-                this.setState({
-                    // setting the state
-                articles:parseddata.articles,
-                page:this.state.page -1,
-                image:false
-
-                 })
+              
+                await(this.setState({page:this.state.page-1}))  
+                // will wait for the page to be updated then the udpate news will be called
+                this.updateNews();
 
                     }
 
@@ -99,22 +93,12 @@ export default class News extends Component {
             handleNextClick=async()=>
             {
 
-          
-
                 console.log("Next click")
                 
-                let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4136a686f9784b0cae639181c30d9814&page=${this.state.page+1}&pagesize=${this.props.pagesize}`
-                this.setState({
-                    image:true
-                })
-                let data=await fetch(url);
-                let parseddata=await data.json();
-                this.setState({
-                articles:parseddata.articles,
-                page:this.state.page +1,
-                image:false
+                await(this.setState({page:this.state.page +1}));
+                // will wait for the page to be updated then the udpate news will be called
 
-                })
+                this.updateNews();
 
             
              }
