@@ -18,7 +18,11 @@ function App () {
 
 
   let apikey=process.env.REACT_APP_KEY;
+ 
 
+ 
+ 
+ 
     return (
       <div>
     <BrowserRouter >
@@ -50,7 +54,11 @@ function App () {
       </Routes>
       </div>
     </BrowserRouter>
-
+    
+        
+        
+        
+        
       </div>
     )
   
