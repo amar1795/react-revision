@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Navbar from './components/Navbar';
 import News from './components/News';
 import {
@@ -12,53 +12,42 @@ import LoadingBar from 'react-top-loading-bar'
 
 
 
-export default class App extends Component {
 
-  apikey=process.env.REACT_APP_KEY;
-  // state={
-  //   progress:10,
-  // }
+function App () {
+  const [progress,setprogress]=useState(10);
 
-  constructor(){
-    // we can create state using constructor since this is a class based component
-    super();
-    this.state={
-        
-        progress:10
-                  
-    }
-  }
-  setprogress=(progress)=>{
-    this.setState({progress:progress})
-  }
+
+  let apikey=process.env.REACT_APP_KEY;
+ 
+
  
  
-  render() {
+ 
     return (
       <div>
     <BrowserRouter >
     <Navbar/>
     <LoadingBar
         color='#f11946'
-        progress={this.state.progress}
+        progress={  progress}
         height={3}
       />
     <div className="container">
       <Routes>
       
-        <Route exact path="/" element={<News apikey={this.apikey} setprogress={this.setprogress} key="business" pagesize={20} category="business" />} />
+        <Route exact path="/" element={<News apikey={apikey} setprogress={setprogress} key="business" pagesize={20} category="business" />} />
 
-        <Route exact path="/business" element={<News apikey={this.apikey} setprogress={this.setprogress} key="business" pagesize={20} category="business"/>} />
+        <Route exact path="/business" element={<News apikey={apikey} setprogress={setprogress} key="business" pagesize={20} category="business"/>} />
 
-        <Route exact path="/science" element={<News apikey={this.apikey} setprogress={this.setprogress} key="science" pagesize={20} category="science"/>} />
+        <Route exact path="/science" element={<News apikey={apikey} setprogress={setprogress} key="science" pagesize={20} category="science"/>} />
 
-        <Route exact path="/general" element={<News apikey={this.apikey} setprogress={this.setprogress} key="general" pagesize={20} category="general"/>} />
+        <Route exact path="/general" element={<News apikey={apikey} setprogress={setprogress} key="general" pagesize={20} category="general"/>} />
 
-        <Route exact path="/health" element={<News apikey={this.apikey} setprogress={this.setprogress} key="health" pagesize={20} category="health"/>} />
+        <Route exact path="/health" element={<News apikey={apikey} setprogress={setprogress} key="health" pagesize={20} category="health"/>} />
 
-        <Route exact path="/sports" element={<News apikey={this.apikey} setprogress={this.setprogress} key="sports" pagesize={20} category="sports"/>} />
+        <Route exact path="/sports" element={<News apikey={apikey} setprogress={setprogress} key="sports" pagesize={20} category="sports"/>} />
 
-        <Route exact path="/technology" element={<News apikey={this.apikey} setprogress={this.setprogress} key="technology" pagesize={20} category="technology"/>} />
+        <Route exact path="/technology" element={<News apikey={apikey} setprogress={setprogress} key="technology" pagesize={20} category="technology"/>} />
 
         
         {/* <Route exactpath="users/*" element={<Users />} /> */}
@@ -72,7 +61,9 @@ export default class App extends Component {
         
       </div>
     )
-  }
+  
 }
 
+
+export default App
 
