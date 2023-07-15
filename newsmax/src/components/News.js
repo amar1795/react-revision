@@ -247,11 +247,13 @@ function News(props) {
 
             //  this function is called for infinite scroll data only
              const fetchMoreData=async ()=>{
-                let url=`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}=${page}&pagesize=${props.pagesize}`
+              
+                let url=`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}=${page+1}&pagesize=${props.pagesize}`
+                setpage(page+1)
                 
                 let data=await fetch(url);
                 let parseddata=await data.json();
-                
+                //articles.concat helps to add the data in the existing data
                 // setarticles(articles.concat(parseddata.articles));
                 settotalResults(parseddata.totalResults)
                
@@ -267,16 +269,12 @@ function News(props) {
 
             <div className="container my-4">
            
-            {/* populating the dom using map function */}
-            {/* top loader only displaayed while reloading */}
-            {/* {state.image && <Loading/>} */}
-
-            {/* if not loading then show loading image */}
+          
 
             <InfiniteScroll
           dataLength={articles.length}
         //   next={fetchMoreData}
-          hasMore={true}
+          hasMore={articles.length!=totalResults}
         //   this loading will be shown at the time of loading down
           loader={<Loading/>}
                             >

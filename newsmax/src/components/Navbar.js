@@ -7,7 +7,7 @@ import {
 function Navbar() {
   return (
     <div>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
   <div class="container-fluid">
     <Link class="navbar-brand" to="/">NewsMax</Link>
     
@@ -52,8 +52,10 @@ function Navbar() {
     
   </div>
 </nav>
-<div className="container d-flex  justify-content-center my-4">
+<div className="container" style={{marginTop:"100px"}}>
+<div className="container d-flex  justify-content-center " >
   <h1>News Max- The Fastest News you can get</h1>
+</div>
 </div>
     </div>
   )
