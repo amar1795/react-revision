@@ -1,8 +1,9 @@
 const connecttomongo=require('./db');
 const express =require("express");
-connecttomongo();
-
 const app = express()
+connecttomongo();
+app.use(express.json())
+
 const port = 3000
 
 //available routes
