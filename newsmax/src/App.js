@@ -14,7 +14,53 @@ import LoadingBar from 'react-top-loading-bar'
 
 
 function App () {
+  const [Mode,setMode]=useState(
+    "light"
+  );
+
+  const [Mystyle,setMystyle]=useState({
+    color:"black",
+    backgroundColor:"white"
+  });
+
+  const [Btntxt,setBtntxt]=useState("Dark");
+
   const [progress,setprogress]=useState(10);
+
+  const toggleStyle=()=>{
+   
+    //above classes are being added in bootstrap classes and the below classes are also being added to  the classes
+  
+    if(Mode==="light")
+    {
+      document.body.style.backgroundColor="black";
+      document.body.style.color="white"
+      setBtntxt("Light")
+      setMode("dark")
+      document.title="Text-App-Dark Mode "
+  
+      setMystyle({
+        color:"white",
+        backgroundColor:"black"
+      })
+  
+    }
+  
+    else
+    {
+
+      document.body.style.backgroundColor="white";
+      document.body.style.color="black"
+      setBtntxt("Dark")
+      setMode("light")
+      setMystyle({
+        color:"black",
+        backgroundColor:"white"
+      })
+      document.title="Text-App-Light Mode "
+
+    }
+  }
 
 
   let apikey=process.env.REACT_APP_KEY;
@@ -22,7 +68,7 @@ function App () {
     return (
       <div>
     <BrowserRouter >
-    <Navbar/>
+    <Navbar Mode={Mode} toggleStyle={toggleStyle} Btntxt={Btntxt} />
     <LoadingBar
         color='#f11946'
         progress={  progress}

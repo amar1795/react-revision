@@ -4,10 +4,10 @@ import {
 } from "react-router-dom";
 
 
-function Navbar() {
+function Navbar(props) {
   return (
     <div>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme={props.Mode}>
   <div class="container-fluid">
     <Link class="navbar-brand" to="/">NewsMax</Link>
     
@@ -45,8 +45,9 @@ function Navbar() {
         
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <button type='button' className={`btn btn-${props.Mode==="light"?"dark":"light"} my-1 mx-3 px-3`} onClick={()=>{props.toggleStyle(null)}} >
+          {props.Btntxt}
+          </button>
       </form>
     </div>
     
