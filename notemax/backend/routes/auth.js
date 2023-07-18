@@ -26,7 +26,6 @@ router.post('/createuser',[
  
     try{
         let user=await User.findOne({email:req.body.email})
-
         if(user){
             return res.status(400).json({error:"sorry a user exist with this email already"})
         }
@@ -47,7 +46,7 @@ router.post('/createuser',[
       }
 
       //using auth token for additional security
-    const authtoken = jwt.sign(data, JWT_SECRET);
+      const authtoken = jwt.sign(data, JWT_SECRET);
       res.json({authtoken})
 
       }
@@ -68,25 +67,29 @@ router.post('/login',[
   //if there are errors return bad request
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ error: "please try to login with correct credentials" });  
+    return res.status(400).json({ error: errors.array()  });  
   }
 
-//storing values using destrucuting
-try{
   const {email, password}=req.body;
-  const passwordCompare=await bcrypt.compare(password,user.password)
-
-  let user=User.findOne({email})
+  try{
+  //storing values using destrucuting
+  
+  let user=await User.findOne({email})
+  
   if(!user){
     return res.status(400).json({error:"please try to login with the correct credentials"})
   }
+
+  const passwordCompare=await bcrypt.compare(password,user.password)
+
+
   if(!passwordCompare){
     return res.status(400).json({error:"please try to login with the correct credentials"})
   }
 
-  const payload={
-    result:{
-      id:result.id
+  const data={
+    user:{
+      id:user.id
   }
 
   }
@@ -94,11 +97,13 @@ try{
       res.json({authtoken})
 }
 
-catch(error){
+  catch(error){
         console.error(error.message)
         res.status(500).json("some error occured")
 
       }
+
+
     })
 
 module.exports=router;
