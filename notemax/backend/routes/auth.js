@@ -5,13 +5,11 @@ const User=require('../models/User')
 const { body, validationResult } = require('express-validator');
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
-
-
+const fetchuser = require('../middleware/fetchuser');
 const JWT_SECRET='hello'
 
 
-//endopoint for creating user ,no AUTH required /api/auth/createuser
+//ROUTE1:endopoint for creating user ,no AUTH required /api/auth/createuser
 
 //using express validator below
 router.post('/createuser',[
@@ -33,19 +31,21 @@ router.post('/createuser',[
         const salt = bcrypt.genSaltSync(10);
         const secpass = bcrypt.hashSync(req.body.password, salt);
     
-        result=await User.create({
+        //fetchuser middleware is taking id from user created here
+        user=await User.create({
         name: req.body.name,
         email: req.body.email,
         password: secpass,
       })
 
       const data={
-        result:{
-            id:result.id
+        user:{
+            id:user.id
         }
       }
-
+      
       //using auth token for additional security
+      //adding id to jwt token
       const authtoken = jwt.sign(data, JWT_SECRET);
       res.json({authtoken})
 
@@ -58,7 +58,7 @@ router.post('/createuser',[
 })
 
 
-//endopoint for user login,no AUTH required /api/auth/login
+//ROUTE2:endopoint for user login,no AUTH required /api/auth/login
 
 router.post('/login',[
   body("email","enter a valid email").isEmail(),
@@ -70,7 +70,7 @@ router.post('/login',[
     return res.status(400).json({ error: errors.array()  });  
   }
 
-  const {email, password}=req.body;
+  const { password,email}=req.body;
   try{
   //storing values using destrucuting
   
@@ -105,5 +105,22 @@ router.post('/login',[
 
 
     })
+
+    //ROUTE3:endopoint for getting user ,no AUTH required /api/auth/getuser
+
+    router.post('/getuser',fetchuser,async (req,res)=>{
+
+      try{
+        userId=req.user.id;
+        const user=await User.findById(userId).select("-password")
+        res.send(user)
+      }
+      catch(error){
+        console.error(error.message)
+        res.status(500).json("some error occured")
+
+      }
+    })
+
 
 module.exports=router;
