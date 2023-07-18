@@ -11,7 +11,9 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET='hello'
 
 
-//endopoint for creating user no AUTH required /api/auth/createuser
+//endopoint for creating user ,no AUTH required /api/auth/createuser
+
+//using express validator below
 router.post('/createuser',[
     body('name').isLength({ min: 3 }).withMessage("enter a valid name"),
     body("email","enter a valid email").isEmail(),
@@ -21,18 +23,18 @@ router.post('/createuser',[
     if (!errors.isEmpty()) {
       return res.status(400).json({ error: errors.array() });  
     }
-
+ 
     try{
         let user=await User.findOne({email:req.body.email})
 
         if(user){
             return res.status(400).json({error:"sorry a user exist with this email already"})
         }
-
+        //using bcryptjs with salt to store pasasword in database 
         const salt = bcrypt.genSaltSync(10);
         const secpass = bcrypt.hashSync(req.body.password, salt);
     
-         result=await User.create({
+        result=await User.create({
         name: req.body.name,
         email: req.body.email,
         password: secpass,
@@ -44,6 +46,7 @@ router.post('/createuser',[
         }
       }
 
+      //using auth token for additional security
     const authtoken = jwt.sign(data, JWT_SECRET);
       res.json({authtoken})
 
@@ -55,5 +58,47 @@ router.post('/createuser',[
       }
 })
 
+
+//endopoint for user login,no AUTH required /api/auth/login
+
+router.post('/login',[
+  body("email","enter a valid email").isEmail(),
+  body('password',"Password cannot be blank").exists(),
+],async (req,res)=>{
+  //if there are errors return bad request
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ error: "please try to login with correct credentials" });  
+  }
+
+//storing values using destrucuting
+try{
+  const {email, password}=req.body;
+  const passwordCompare=await bcrypt.compare(password,user.password)
+
+  let user=User.findOne({email})
+  if(!user){
+    return res.status(400).json({error:"please try to login with the correct credentials"})
+  }
+  if(!passwordCompare){
+    return res.status(400).json({error:"please try to login with the correct credentials"})
+  }
+
+  const payload={
+    result:{
+      id:result.id
+  }
+
+  }
+  const authtoken = await jwt.sign(data, JWT_SECRET);
+      res.json({authtoken})
+}
+
+catch(error){
+        console.error(error.message)
+        res.status(500).json("some error occured")
+
+      }
+    })
 
 module.exports=router;
