@@ -38,6 +38,7 @@ router.post('/createuser',[
         password: secpass,
       })
 
+      //this is the user id which is being fethed from JWT token from fetchuser middleware
       const data={
         user:{
             id:user.id
