@@ -10,13 +10,17 @@ const Notesitem = (props) => {
     <div class="card-body ">
 
     <div className="container d-flex align-items-center">    
+    
     <h5 class="card-title">{note.title}</h5>
-    <i class="fa-regular fa-pen-to-square mx-3"></i>
-    <i class="fa-solid fa-trash mx-1"></i>
     </div>
+    
+
     <div className="container">
 
     <p class="card-text">{note.description}</p>
+    
+    <i class="fa-regular fa-pen-to-square  "></i>
+    <i class="fa-solid fa-trash mx-3"></i>
     </div>
     
     

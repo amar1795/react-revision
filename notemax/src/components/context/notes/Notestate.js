@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const NoteState=(props)=>{
 
-   const notesitem=
+   let notesitem=
     [
         {
           "_id": "64b796d56cba0454eadf4dcc",
@@ -79,9 +79,43 @@ const NoteState=(props)=>{
         }
       ]
    const [notes,setnotes]=useState(notesitem)
+
+   //add a note
+   const addnote=(title,description,tag)=>{
+
+    notesitem={
+      "_id": "64b796d56cba0454eadf4dcc",
+      "user": "64b77b38ff6866946f5f0696",
+      "title": title,
+      "description": description,
+      "tag": tag,
+      "date": "2023-07-19T07:55:01.574Z",
+      "__v": 0
+
+    }
+      //concat will add aditional value to it 
+      setnotes(notes.concat(notesitem));
+
+   }
+
+  //update a note
+   const updatenote=()=>{
+
+   }
+
+  //delete a note
+   const deletenote=()=>{
+
+   }
+
+
+
+
+
+
     return(
         //we can also export functions as context like update function
-        <Notecontext.Provider value={{notes}}>
+        <Notecontext.Provider value={{notes,addnote,updatenote,deletenote}}>
             {props.children}
         </Notecontext.Provider>
     )
