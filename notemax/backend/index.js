@@ -4,7 +4,7 @@ const app = express()
 connecttomongo();
 app.use(express.json())
 
-const port = 3000
+const port = 3001
 
 //available routes
 app.use('/api/auth', require('./routes/auth'))

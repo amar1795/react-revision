@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "nodemon": "nodemon backend/index.js",
-    "both" : "concurrently \"npm start\" \"cd backend && npm run serve \"" 
+    "both" : "concurrently \"npm start\" \"nodemon backend/index.js \"" 
     },
   "eslintConfig": {
     "extends": [

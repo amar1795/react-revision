@@ -1,7 +1,8 @@
 import React from 'react'
 import Notecontext from './context/notes/Notecontext';
-// import NoteState from './context/notes/Notestate';
+// importing notecontext
 import { useContext } from 'react';
+//using notext
 
 
 const Home = () => {
