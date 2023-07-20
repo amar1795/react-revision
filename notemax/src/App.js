@@ -1,5 +1,6 @@
 import './App.css';
 import About from './components/About';
+import Alert from './components/Alert';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import NoteState from './components/context/notes/Notestate';
@@ -19,6 +20,7 @@ function App() {
   <NoteState>
     <BrowserRouter>
    <Navbar/>
+   <Alert/>
 
     <div className="container">
       <Routes>
