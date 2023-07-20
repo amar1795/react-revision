@@ -78,8 +78,6 @@ const NoteState=(props)=>{
           "__v": 0
         }
       ]
-
-
    const [notes,setnotes]=useState(notesitem)
     return(
         //we can also export functions as context like update function
