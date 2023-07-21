@@ -106,7 +106,7 @@ const NoteState=(props)=>{
 
   //delete a note
    const deletenote=(id)=>{
-    const newnotes=notesitem.filter((note)=>{
+    const newnotes=notes.filter((note)=>{
       return note._id!==id;
     })
     setnotes(newnotes);
