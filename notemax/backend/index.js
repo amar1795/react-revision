@@ -3,6 +3,8 @@ const express =require("express");
 const app = express()
 connecttomongo();
 app.use(express.json())
+var cors = require('cors')
+app.use(cors())
 
 const port = 3001
 
