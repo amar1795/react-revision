@@ -94,6 +94,7 @@ const NoteState=(props)=>{
 
     }
       //concat will add aditional value to it 
+      // whereas push will create a new array altogether
       setnotes(notes.concat(notesitem));
 
    }
@@ -104,8 +105,13 @@ const NoteState=(props)=>{
    }
 
   //delete a note
-   const deletenote=()=>{
-
+   const deletenote=(id)=>{
+    const newnotes=notesitem.filter((note)=>{
+      return note._id!==id;
+    })
+    setnotes(newnotes);
+    console.log("deleting note with the id" +id)
+   
    }
 
 
