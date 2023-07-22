@@ -36,16 +36,20 @@ const NoteState=(props)=>{
     console.log(json);
     // setnotes(json)
 
-      for (let index = 0; index < notesitem.length; index++) {
-        const element = notesitem[index];
+    let newnotes=JSON.parse(JSON.stringify(notes))
+
+      for (let index = 0; index < newnotes.length; index++) {
+        const element = newnotes[index];
         if (element._id===id) {
-          element.title=title;
-          element.description=description;
-          element.tag=tag;
+          newnotes[index].title=title;
+          newnotes[index].description=description;
+          newnotes[index].tag=tag;
             
         }
-        
+        break;
       }
+
+      setnotes(newnotes)
 
    }
 

@@ -13,24 +13,26 @@ const Note = () => {
       getnotes();
     },[])
 
-    const[note,setnote]=useState({etitle:" ",edescription:" ",etag:" "})
+    const[note,setnote]=useState({id:"",etitle:" ",edescription:" ",etag:" "})
 
     const handleclick=(e)=>{
         e.preventDefault();
+        ref.current.click();
+          
         console.log("your udpated notes are", note)
-
     }
+
     // without onchange you cannot edit or type in the input 
     const onchange=(e)=>{
         setnote({...note,[e.target.name]:e.target.value});
     }
     const ref=useRef(null);
+    const refclose=useRef(null);
 
     const updatenote=(currentnote)=>{
       ref.current.click();
-      setnote({etitle:currentnote.title,edescription:currentnote.description,etag:currentnote.tag});
+      setnote({id:currentnote._id,etitle:currentnote.title,edescription:currentnote.description,etag:currentnote.tag});
     }
-
   return (
     <>
     <AddNote/>
@@ -67,8 +69,8 @@ const Note = () => {
 </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" onClick={handleclick} class="btn btn-primary">UpdateNote</button>
+        <button type="button" ref={refclose} class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button"  onClick={handleclick} class="btn btn-primary">UpdateNote</button>
       </div>
     </div>
   </div>
