@@ -4,11 +4,9 @@ import { useContext } from 'react';
 import Notesitem from './Notesitem';
 import AddNote from './AddNote';
 
-
 const Note = () => {
-
     const context=useContext(Notecontext);
-    const {notes,getnotes,addnote}=context;
+    const {notes,getnotes}=context;
     // use effect is called only once when the browser is refereshed
     // same as component did mount
     useEffect(()=>{
@@ -22,6 +20,7 @@ const Note = () => {
         console.log("your udpated notes are", note)
 
     }
+    // without onchange you cannot edit or type in the input 
     const onchange=(e)=>{
         setnote({...note,[e.target.name]:e.target.value});
     }
@@ -36,7 +35,7 @@ const Note = () => {
     <>
     <AddNote/>
 
-
+{/* ref is used as a reference to make any element active  without actually clicking on it */}
 <button type="button" ref={ref} class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
 </button>
@@ -54,6 +53,7 @@ const Note = () => {
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Title</label>
     <input type="text" class="form-control" id="etitle" name='etitle' aria-describedby="emailHelp" onChange={onchange} value={note.etitle}/>
+    {/*  value={note.etitle} this is written to keep the default value when the modal is opened*/}
   </div>
   <div class="mb-3">
     <label for="description" class="form-label">Description</label>
@@ -77,6 +77,7 @@ const Note = () => {
           
     <div className='row my-3'>
         {notes.map((note)=>{
+          // without note props the value will not polpulate
       return <Notesitem updatenote={updatenote} note={note}/>;
      })}
       

@@ -33,14 +33,11 @@ const AddNote = () => {
     <label for="tag" class="form-label" >Tag</label>
     <input type="text" class="form-control" id="tag" name='tag' onChange={onchange}/>
   </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
+  
   <button type="submit" class="btn btn-primary" onClick={handleclick}>Submit</button>
 </form>
 
-     <h1>Your Notes</h1>
+     <h1 style={{"marginTop":"25px"}}>Your Notes</h1>
     </div>
   )
 }
