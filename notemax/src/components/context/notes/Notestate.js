@@ -67,15 +67,22 @@ const NoteState=(props)=>{
 
    }
 
-  //delete a note
-   const deletenote=(id)=>{
+  //delete a note Api
+   const deletenote=async(id)=>{  
+    console.log("deleting note with the id" +id)
+    const response= await fetch(`${host}/api/notes/deletenote/${id}`,{
+      method:"DELETE",
+      headers:{
+        "Content-Type":"application/json",
+        "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRiNzdiMzhmZjY4NjY5NDZmNWYwNjk2In0sImlhdCI6MTY4OTc0NjI1MX0.nXXBP5VFGdWTnWx27AFtS3TckYm-DJemT23nIcSfTKU"
+      },
+    })
     const newnotes=notes.filter((note)=>{
       return note._id!==id;
     })
-    setnotes(newnotes);
-    console.log("deleting note with the id" +id)
-   
-   }
+    const json=await response.json();
+    console.log(json);
+    setnotes(newnotes);}
 
     return(
         //we can also export functions as context like update function
