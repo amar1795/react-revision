@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState,useRef} from 'react'
 import Notecontext from './context/notes/Notecontext';
 import { useContext } from 'react';
 import Notesitem from './Notesitem';
@@ -6,21 +6,78 @@ import AddNote from './AddNote';
 
 
 const Note = () => {
+
     const context=useContext(Notecontext);
-    const {notes,getnotes}=context;
+    const {notes,getnotes,addnote}=context;
     // use effect is called only once when the browser is refereshed
     // same as component did mount
     useEffect(()=>{
       getnotes();
     },[])
+
+    const[note,setnote]=useState({etitle:" ",edescription:" ",etag:" "})
+
+    const handleclick=(e)=>{
+        e.preventDefault();
+        console.log("your udpated notes are", note)
+
+    }
+    const onchange=(e)=>{
+        setnote({...note,[e.target.name]:e.target.value});
+    }
+    const ref=useRef(null);
+
+    const updatenote=(currentnote)=>{
+      ref.current.click();
+      setnote({etitle:currentnote.title,edescription:currentnote.description,etag:currentnote.tag});
+    }
+
   return (
     <>
+    <AddNote/>
+
+
+<button type="button" ref={ref} class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Title</label>
+    <input type="text" class="form-control" id="etitle" name='etitle' aria-describedby="emailHelp" onChange={onchange} value={note.etitle}/>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input type="text" class="form-control" id="edescription" name='edescription' aria-describedby="emailHelp" onChange={onchange} value={note.edescription   }/>
+  </div>
+  <div class="mb-3">
+    <label for="tag" class="form-label" >Tag</label>
+    <input type="text" class="form-control" id="etag" name='etag' value={note.etag} onChange={onchange}/>
+  </div>
+  
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" onClick={handleclick} class="btn btn-primary">UpdateNote</button>
+      </div>
+    </div>
+  </div>
+</div>
     {/* AddNote contains the adding form and title */}
-        <AddNote/>
-    
+          
     <div className='row my-3'>
         {notes.map((note)=>{
-      return <Notesitem note={note}/>;
+      return <Notesitem updatenote={updatenote} note={note}/>;
      })}
       
     </div>

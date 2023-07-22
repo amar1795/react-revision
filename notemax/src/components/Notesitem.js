@@ -5,7 +5,7 @@ import { useContext } from 'react';
 const Notesitem = (props) => {
   const context=useContext(Notecontext);
   const {deletenote}=context;
-    const{note}= props
+    const{note,updatenote}= props
     
   return (
     //col md-3 creates the column and it should be inside a row class to get that effect
@@ -23,8 +23,8 @@ const Notesitem = (props) => {
     <p class="card-text">{note.description}</p>
     
     {/* since  we are passing parameters in the functions hence a function inside onclick*/}
-    <i class="fa-regular fa-pen-to-square " ></i>
-    <i class="fa-solid fa-trash mx-3" onClick={()=>{deletenote(note._id)}}></i>
+    <i class="fa-regular fa-pen-to-square " onClick={()=>{updatenote(note)}}></i>
+    <i class="fa-solid fa-trash mx-3"  onClick={()=>{deletenote(note._id)}}></i>
     </div>
     
     

@@ -5,6 +5,8 @@ import { useContext,useState } from 'react';
 const AddNote = () => {
     const context=useContext(Notecontext);
     const {addnote}=context;
+
+    
     const[note,setnote]=useState({title:" ",description:" ",tag:" "})
 
     const handleclick=(e)=>{
