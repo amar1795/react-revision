@@ -6,7 +6,7 @@ import AddNote from './AddNote';
 
 const Note = () => {
     const context=useContext(Notecontext);
-    const {notes,getnotes}=context;
+    const {notes,getnotes,updatenote}=context;
     // use effect is called only once when the browser is refereshed
     // same as component did mount
     useEffect(()=>{
@@ -18,7 +18,7 @@ const Note = () => {
     const handleclick=(e)=>{
         e.preventDefault();
         ref.current.click();
-          
+        updatenote(note.id,note.etitle,note.edescription,note.etag)
         console.log("your udpated notes are", note)
     }
 
@@ -29,7 +29,7 @@ const Note = () => {
     const ref=useRef(null);
     const refclose=useRef(null);
 
-    const updatenote=(currentnote)=>{
+    const editnote=(currentnote)=>{
       ref.current.click();
       setnote({id:currentnote._id,etitle:currentnote.title,edescription:currentnote.description,etag:currentnote.tag});
     }
@@ -80,7 +80,7 @@ const Note = () => {
     <div className='row my-3'>
         {notes.map((note)=>{
           // without note props the value will not polpulate
-      return <Notesitem updatenote={updatenote} note={note}/>;
+      return <Notesitem editnote={editnote} note={note}/>;
      })}
       
     </div>
