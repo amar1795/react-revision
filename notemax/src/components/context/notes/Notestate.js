@@ -35,8 +35,6 @@ const NoteState=(props)=>{
     const json=await response.json();
     console.log(json);
     // setnotes(json)
-
-
     let newnotes=JSON.parse(JSON.stringify(notes))
 
       for (let index = 0; index < newnotes.length; index++) {
