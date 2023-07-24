@@ -17,9 +17,13 @@ const Note = () => {
 
     const handleclick=(e)=>{
         e.preventDefault();
-        ref.current.click();
+        // ref.current.click(); 
+        // above will also work fine
+        refclose.current.click();
+        
         updatenote(note.id,note.etitle,note.edescription,note.etag)
         console.log("your udpated notes are", note)
+       
     }
 
     // without onchange you cannot edit or type in the input 
@@ -54,12 +58,12 @@ const Note = () => {
       <form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Title</label>
-    <input type="text" class="form-control" id="etitle" name='etitle' aria-describedby="emailHelp" onChange={onchange} value={note.etitle}/>
+    <input type="text" class="form-control" id="etitle" name='etitle' aria-describedby="emailHelp" onChange={onchange} value={note.etitle} minLength={5} required/>
     {/*  value={note.etitle} this is written to keep the default value when the modal is opened*/}
   </div>
   <div class="mb-3">
     <label for="description" class="form-label">Description</label>
-    <input type="text" class="form-control" id="edescription" name='edescription' aria-describedby="emailHelp" onChange={onchange} value={note.edescription   }/>
+    <input type="text" class="form-control" id="edescription" name='edescription' aria-describedby="emailHelp" onChange={onchange} value={note.edescription } minLength={5} required/>
   </div>
   <div class="mb-3">
     <label for="tag" class="form-label" >Tag</label>
@@ -69,15 +73,18 @@ const Note = () => {
 </form>
       </div>
       <div class="modal-footer">
-        <button type="button" ref={refclose} class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button"  onClick={handleclick} class="btn btn-primary">UpdateNote</button>
+        <button type="button" ref={refclose}  class="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button>
+        <button type="button" disabled={note.etitle.length<5 || note.edescription.length<5} onClick={handleclick} class="btn btn-primary">UpdateNote</button>
       </div>
     </div>
   </div>
 </div>
     {/* AddNote contains the adding form and title */}
-          
+          <div className="container">
+            {notes.length===0 && "no notes to display"}
+          </div>
     <div className='row my-3'>
+        
         {notes.map((note)=>{
           // without note props the value will not polpulate
       return <Notesitem editnote={editnote} note={note}/>;
