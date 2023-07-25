@@ -18,7 +18,7 @@ const Navbar = () => {
     <div>
       <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
-    <Link class="navbar-brand" to="/">Navbar</Link>
+    <Link class="navbar-brand" to="#">Navbar</Link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,10 +32,8 @@ const Navbar = () => {
         </li>
         
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <Link class="btn btn-primary mx-2" to="/login" role="button">Login</Link>
+      <Link class="btn btn-primary" to="/signup" role="button">Signup</Link>
     </div>
   </div>
     </nav>
