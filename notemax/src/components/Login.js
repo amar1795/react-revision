@@ -1,30 +1,54 @@
-import React from 'react'
+import React, { useState ,} from 'react'
+import {useNavigate} from 'react-router-dom';
+
 
 const Login = () => {
 
+
+    let navigate = useNavigate();
+
+    const [credentials,setcredentials]=useState({email:"",password:""})
     const handlesubmit=async(e)=>{
         e.preventDefault();
-        const response= await fetch(`localhost:5000/api/auth/login`,{
+        const response= await fetch(`http://localhost:3001/api/auth/login`,{
             method:"POST",
             headers:{
               "Content-Type":"application/json",
-              "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRiNzdiMzhmZjY4NjY5NDZmNWYwNjk2In0sImlhdCI6MTY4OTc0NjI1MX0.nXXBP5VFGdWTnWx27AFtS3TckYm-DJemT23nIcSfTKU"
+             
             },
-            // body:JSON.stringify({email,passowrd})
+            body:JSON.stringify({email:credentials.email,password:credentials.password})
           })
           const json=await response.json();
-    }
+          console.log(json)
+
+          if(json.success){
+            //save the auth token and redirect
+            localStorage.setItem("token",json.authtoken);
+            navigate("/home");
+
+          }
+
+          else{
+            alert("invalid credentials")
+          }
+  
+        }
+        const onchange=(e)=>{
+            setcredentials({...credentials,[e.target.name]:e.target.value});
+                    }
+
+    
   return (
     <div>
      <form onSubmit={handlesubmit}>
   <div class="mb-3">
     <label for="email" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="email" name='email' aria-describedby="emailHelp"/>
+    <input type="email" class="form-control" id="email" name='email'  onChange={onchange} value={credentials.email} aria-describedby="emailHelp"/>
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" name='password'/>
+    <input type="password" class="form-control" id="password" name='password' value={credentials.password} onChange={onchange} />
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

@@ -7,8 +7,6 @@ var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
 const JWT_SECRET='hello'
-
-
 //ROUTE1:endopoint for creating user ,no AUTH required /api/auth/createuser
 
 //using express validator below
@@ -59,12 +57,14 @@ router.post('/createuser',[
 })
 
 
-//ROUTE2:endopoint for user login,no AUTH required /api/auth/login
+//ROUTE2:endpoint for user login,no AUTH required /api/auth/login
 
 router.post('/login',[
   body("email","enter a valid email").isEmail(),
   body('password',"Password cannot be blank").exists(),
 ],async (req,res)=>{
+  let  success=false;
+
   //if there are errors return bad request
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -78,14 +78,15 @@ router.post('/login',[
   let user=await User.findOne({email})
   
   if(!user){
-    return res.status(400).json({error:"please try to login with the correct credentials"})
+    success=false;
+
+    return res.status(400).json({success,error:"please try to login with the correct credentials"})
   }
 
   const passwordCompare=await bcrypt.compare(password,user.password)
-
-
   if(!passwordCompare){
-    return res.status(400).json({error:"please try to login with the correct credentials"})
+    success=false;
+    return res.status(400).json({success,error:"please try to login with the correct credentials"})
   }
 
   const data={
@@ -95,7 +96,8 @@ router.post('/login',[
 
   }
   const authtoken = await jwt.sign(data, JWT_SECRET);
-      res.json({authtoken})
+  success=true;
+      res.json({success,authtoken})
 }
 
   catch(error){
