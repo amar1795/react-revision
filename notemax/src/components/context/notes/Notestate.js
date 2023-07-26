@@ -85,7 +85,10 @@ const NoteState=(props)=>{
     })
     const json=await response.json();
     console.log(json);
-    setnotes(newnotes);}
+    setnotes(newnotes);
+    props.showAlert("You have deleted the note Successfully","success")
+
+  }
 
     return(
         //we can also export functions as context like update function

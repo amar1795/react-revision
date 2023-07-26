@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import Notesitem from './Notesitem';
 import AddNote from './AddNote';
 
-const Note = () => {
+const Note = (props) => {
     const context=useContext(Notecontext);
     const {notes,getnotes,updatenote}=context;
     // use effect is called only once when the browser is refereshed
@@ -23,6 +23,9 @@ const Note = () => {
         
         updatenote(note.id,note.etitle,note.edescription,note.etag)
         console.log("your udpated notes are", note)
+        props.showAlert("You have updated the note Successfully","success")
+
+        
        
     }
 
@@ -39,7 +42,7 @@ const Note = () => {
     }
   return (
     <>
-    <AddNote/>
+    <AddNote showAlert={props.showAlert}/>
 
 {/* ref is used as a reference to make any element active  without actually clicking on it */}
 <button type="button" ref={ref} class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -84,10 +87,12 @@ const Note = () => {
             {notes.length===0 && "no notes to display"}
           </div>
     <div className='row my-3'>
+      
         
         {notes.map((note)=>{
+          // const {showAlert}=props;
           // without note props the value will not polpulate
-      return <Notesitem editnote={editnote} note={note}/>;
+       return <Notesitem editnote={editnote}  note={note}/>;
      })}
       
     </div>
