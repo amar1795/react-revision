@@ -1,13 +1,23 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+
 
 
 import {
     Link,
   } from "react-router-dom";
   
-const Navbar = () => {
+const Navbar = (props) => {
+  let navigate = useNavigate();
 
+
+  const handlelogout=async()=>{
+    props.showAlert("You have logged out Successfully","success")
+    await localStorage.removeItem("token");
+    // window.location.href = "/login";
+    navigate("/login")
+  }
   let location = useLocation();
 
   React.useEffect(() => {
@@ -25,15 +35,21 @@ const Navbar = () => {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <Link class={`nav-link ${location.pathname==="/home"?"active":" "}`} aria-current="page" to="/home">Home</Link>
+          <Link class={`nav-link ${location.pathname==="/"?"active":" "}`} aria-current="page" to="/">Home</Link>
         </li>
         <li class="nav-item">
           <Link class={`nav-link ${location.pathname==="/about"?"active":" "}`} to="/about">About</Link>
         </li>
         
       </ul>
-      <Link class="btn btn-primary mx-2" to="/login" role="button">Login</Link>
+
+      {location.pathname==="/about"? <Link class="btn btn-primary mx-3" to="/login" role="button">Login</Link>:" "}
+
+    
+      {!localStorage.getItem('token')?<div>
       <Link class="btn btn-primary" to="/signup" role="button">Signup</Link>
+      </div>
+       :<Link class="btn btn-primary" onClick={handlelogout}  role="button">Logout</Link>}
     </div>
   </div>
     </nav>

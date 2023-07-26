@@ -6,9 +6,10 @@ import AddNote from './AddNote';
 import {useNavigate} from 'react-router-dom';
 
 
-const Note = (props) => {
-  let navigate = useNavigate();
 
+const Note = (props) => {
+
+  let navigate = useNavigate();
     const context=useContext(Notecontext);
     const {notes,getnotes,updatenote}=context;
     // use effect is called only once when the browser is refereshed
@@ -16,14 +17,14 @@ const Note = (props) => {
     useEffect(()=>{
       if (localStorage.getItem("token")) {
 
-        getnotes();
+        getnotes();  
         
       }
-
+      
       else
       {
         navigate("/login");
-
+        
       }
     },[])
 
@@ -38,9 +39,7 @@ const Note = (props) => {
         updatenote(note.id,note.etitle,note.edescription,note.etag)
         console.log("your udpated notes are", note)
         props.showAlert("You have updated the note Successfully","success")
-
-        
-       
+    
     }
 
     // without onchange you cannot edit or type in the input 

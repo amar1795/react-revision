@@ -37,13 +37,13 @@ function App() {
     <>
   <NoteState showAlert={showAlert}>
     <BrowserRouter>
-   <Navbar/>
+   <Navbar showAlert={showAlert}/>
    <Alert alertBtn={alertBtn}/>
 
     <div className="container">
       <Routes>
        
-        <Route exact path="/home" element={<Home showAlert={showAlert}/>} />
+        <Route exact path="/" element={<Home showAlert={showAlert}/>} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/login" element={<Login showAlert={showAlert}/>} />
         <Route exact path="/signup" element={<Signup showAlert={showAlert}/>} />
