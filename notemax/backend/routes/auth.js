@@ -13,17 +13,22 @@ const JWT_SECRET='hello'
 router.post('/createuser',[
     body('name').isLength({ min: 3 }).withMessage("enter a valid name"),
     body("email","enter a valid email").isEmail(),
-    body('password',"enter a valid password").isLength({ min: 5 }),
+    body('password',"enter a valid password"),
+
+    //.isLength({ min: 5 }) is not working in fronted when  using  in password need to correct this 
+    
   ],async (req,res)=>{
+    let  success=false;
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ error: errors.array() });  
+      return res.status(400).json({success, error: errors.array() });  
     }
  
     try{
         let user=await User.findOne({email:req.body.email})
         if(user){
-            return res.status(400).json({error:"sorry a user exist with this email already"})
+            return res.status(400).json({success,error:"sorry a user exist with this email already"})
         }
         //using bcryptjs with salt to store pasasword in database 
         const salt = bcrypt.genSaltSync(10);
@@ -46,7 +51,8 @@ router.post('/createuser',[
       //using auth token for additional security
       //adding id to jwt token
       const authtoken = jwt.sign(data, JWT_SECRET);
-      res.json({authtoken})
+      success=true;
+      res.json({success,authtoken})
 
       }
       catch(error){
