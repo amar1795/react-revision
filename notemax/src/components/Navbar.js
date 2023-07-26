@@ -43,10 +43,11 @@ const Navbar = (props) => {
         
       </ul>
 
-      {location.pathname==="/about"? <Link class="btn btn-primary mx-3" to="/login" role="button">Login</Link>:" "}
+    
 
     
       {!localStorage.getItem('token')?<div>
+      
       <Link class="btn btn-primary" to="/signup" role="button">Signup</Link>
       </div>
        :<Link class="btn btn-primary" onClick={handlelogout}  role="button">Logout</Link>}

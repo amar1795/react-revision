@@ -22,7 +22,8 @@ const Signup = (props) => {
 
         if(json.success){
           //save the auth token and redirect
-          localStorage.setItem("token",json.authtoken);
+          // localStorage.setItem("token",json.authtoken);
+          // no need to store the signup authtoken in local storage as creating a bug after signing up logout button is visible although user has not logged in ,happens only when the user signs in for the firsts time 
           props.showAlert("You have Signed up Successfully","success")
           navigate("/login");
 
@@ -32,13 +33,13 @@ const Signup = (props) => {
         else{
           props.showAlert("invalid credentials","danger")
         }
-
       }
       const onchange=(e)=>{
           setcredentials({...credentials,[e.target.name]:e.target.value});
                   }
   return (
     <div>
+      {/* s */}
      
      <form onSubmit={handlesubmit}>
       <h1 style={{textAlign:"center"}}>Please sign in to use this App</h1>

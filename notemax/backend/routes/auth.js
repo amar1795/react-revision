@@ -15,7 +15,7 @@ router.post('/createuser',[
     body("email","enter a valid email").isEmail(),
     body('password',"enter a valid password"),
 
-    //.isLength({ min: 5 }) is not working in fronted when  using  in password need to correct this 
+    //.isLength({ min: 5 }) is not working in fronted when  using  in password need to correct this
     
   ],async (req,res)=>{
     let  success=false;
