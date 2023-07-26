@@ -15,7 +15,7 @@ const Signup = (props) => {
             "Content-Type":"application/json",
            
           },
-          body:JSON.stringify({name,  email,password})
+          body:JSON.stringify({name,email,password})
         })
         const json=await response.json();
         console.log(json)
@@ -23,8 +23,9 @@ const Signup = (props) => {
         if(json.success){
           //save the auth token and redirect
           localStorage.setItem("token",json.authtoken);
-          navigate("/home");
           props.showAlert("You have Signed up Successfully","success")
+          navigate("/login");
+
 
         }
 
@@ -50,9 +51,10 @@ const Signup = (props) => {
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   
+  {/* dues to the typo issue with the name ="passsword" was unable to login ,hence we should keep a backend verification for storing passowrd */}
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" onChange={onchange} required minLength={5} name='passsword'/>
+    <input type="password" class="form-control" id="password" onChange={onchange} required minLength={5} name='password'/>
   </div>
   <div class="mb-3">
     <label for="cpassword" class="form-label">Confirm Password</label>

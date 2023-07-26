@@ -3,14 +3,28 @@ import Notecontext from './context/notes/Notecontext';
 import { useContext } from 'react';
 import Notesitem from './Notesitem';
 import AddNote from './AddNote';
+import {useNavigate} from 'react-router-dom';
+
 
 const Note = (props) => {
+  let navigate = useNavigate();
+
     const context=useContext(Notecontext);
     const {notes,getnotes,updatenote}=context;
     // use effect is called only once when the browser is refereshed
     // same as component did mount
     useEffect(()=>{
-      getnotes();
+      if (localStorage.getItem("token")) {
+
+        getnotes();
+        
+      }
+
+      else
+      {
+        navigate("/login");
+
+      }
     },[])
 
     const[note,setnote]=useState({id:"",etitle:" ",edescription:" ",etag:" "})
