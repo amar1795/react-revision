@@ -42,10 +42,7 @@ const Navbar = (props) => {
         </li>
         
       </ul>
-
-    
-
-    
+  
       {!localStorage.getItem('token')?<div>
       
       <Link class="btn btn-primary" to="/signup" role="button">Signup</Link>

@@ -7,6 +7,8 @@ const Signup = (props) => {
   const [credentials,setcredentials]=useState({name:"",email:"",password:"",cpassword:""})
 
   const {name, email,password}=credentials;
+
+  // api call for creating user
   const handlesubmit=async(e)=>{
       e.preventDefault();
       const response= await fetch(`http://localhost:3001/api/auth/createuser`,{
@@ -22,14 +24,12 @@ const Signup = (props) => {
 
         if(json.success){
           //save the auth token and redirect
+          
           // localStorage.setItem("token",json.authtoken);
           // no need to store the signup authtoken in local storage as creating a bug after signing up logout button is visible although user has not logged in ,happens only when the user signs in for the firsts time 
           props.showAlert("You have Signed up Successfully","success")
           navigate("/login");
-
-
         }
-
         else{
           props.showAlert("invalid credentials","danger")
         }
