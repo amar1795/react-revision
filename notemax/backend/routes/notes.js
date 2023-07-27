@@ -10,7 +10,7 @@ const { body, validationResult } = require('express-validator');
 router.get('/fetchallnotes',fetchuser,async(req,res)=>{
 
     try {
-        //req.user is from fetcher user middleware
+        //req.user is from fetch user middleware, this will fetch the notes of a specific user
         const notes=await Notes.find({user:req.user.id})
         res.json(notes);
         

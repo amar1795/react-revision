@@ -36,7 +36,9 @@ const Note = (props) => {
         // above will also work fine
         refclose.current.click();
         
+        //updatenote is a api call from notestate.js
         updatenote(note.id,note.etitle,note.edescription,note.etag)
+
         console.log("your udpated notes are", note)
         props.showAlert("You have updated the note Successfully","success")
     
