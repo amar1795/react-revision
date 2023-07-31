@@ -6,7 +6,7 @@ const { body, validationResult } = require('express-validator');
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
-const JWT_SECRET='hello'
+const JWT_SECRET='hello';
 //ROUTE1:endopoint for creating user ,no AUTH required /api/auth/createuser
 
 //using express validator below
@@ -19,18 +19,17 @@ router.post('/createuser',[
     
   ],async (req,res)=>{
     let  success=false;
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({success, error: errors.array() });  
-    }
+    } 
  
     try{
         let user=await User.findOne({email:req.body.email})
         if(user){
             return res.status(400).json({success,error:"sorry a user exist with this email already"})
         }
-        //using bcryptjs with salt to store pasasword in database 
+        //using bcryptjs with salt and hash to store pasasword in database 
         const salt = bcrypt.genSaltSync(10);
         const secpass = bcrypt.hashSync(req.body.password, salt);
     
@@ -90,11 +89,14 @@ router.post('/login',[
   }
 
   const passwordCompare=await bcrypt.compare(password,user.password)
+
   if(!passwordCompare){
     success=false;
     return res.status(400).json({success,error:"please try to login with the correct credentials"})
   }
 
+
+  //why are we creating authtoken for the second time ?? it works without this well
   const data={
     user:{
       id:user.id
@@ -129,7 +131,7 @@ router.post('/login',[
         res.status(500).json("some error occured")
 
       }
-    })
+    }) 
 
 
 module.exports=router;

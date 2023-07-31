@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-
 const NotesSchema = new Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId
@@ -11,7 +10,7 @@ const NotesSchema = new Schema({
     },
     description:{
         type:String,
-        default:"true"
+        required:"true"
     },
     tag:{
         type:String,
