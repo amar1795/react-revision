@@ -11,7 +11,6 @@ import {
 const Navbar = (props) => {
   let navigate = useNavigate();
 
-
   const handlelogout=async()=>{
     props.showAlert("You have logged out Successfully","success")
     await localStorage.removeItem("token");
