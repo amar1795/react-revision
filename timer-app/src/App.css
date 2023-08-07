@@ -1,3 +1,8 @@
+:root{
+  --red:#f54e4e;
+  --green:#4aec8c;
+}
+
 body{
   background-color: #30384b;
   color: #fff;
@@ -30,7 +35,7 @@ button{
 
 button.with-text{
   width: auto;
-  color: rgba(255, 252, 252, 0.908);
+  background-color: rgba(255, 252, 252, 0.1);
   border: 2px solid white;
   border-radius: 10px;
   padding: 10px 20px;
@@ -54,4 +59,11 @@ svg{
 display: flex;
 justify-content: center;
 align-items: center;
+}
+
+label{
+  display: block;
+  margin-top: 20px ;
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
