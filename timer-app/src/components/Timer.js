@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CircularProgressbar,buildStyles  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import Playbutton from './Playbutton';
@@ -12,7 +12,7 @@ const Timer = () => {
     // const {showSettings, setshowSettings}=context;
   const red="#f54e4e";
   const green="#4aec8c"
-  const { showSettings, setshowSettings } = useContext(Settingscontext); // Correct the variable name
+  const { showSettings, setshowSettings,ispaused,setispaused } = useContext(Settingscontext); // Correct the variable name
  // Function to handle the click event
  const handleSettingsClick = () => {
   console.log("Settings button clicked!"); // Add this console.log statement
@@ -29,13 +29,16 @@ const Timer = () => {
 
   })} />
     
+   <div style={{marginLeft:"55px"}}>
    <div style={{marginTop:"20px",marginLeft:"55px"}}>
-   <Playbutton/>
-    <Pausebutton/>
+    {ispaused?<Playbutton onClick={()=>setispaused(false)}/>:<Pausebutton onClick={()=>setispaused(true)}/>}
+   </div>
+  
+    
    </div>
 
-<div>
-  <Settings onClick={()=>setshowSettings(true)}/>
+<div style={{marginLeft:"45px"}}>
+  <Settings  onClick={()=>setshowSettings(true)}/>
   
 </div>
     </div>

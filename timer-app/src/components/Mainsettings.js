@@ -19,6 +19,7 @@ const Mainsettings = () => {
   thumbClassName={'thumb'}
   trackClassName={'track'}
   value={workMinutes}
+  // props already added in slider since using onchange and any such props in future
   onChange={newvalue=>setWorkMinutes(newvalue)}
   min={1}
   max={120}
