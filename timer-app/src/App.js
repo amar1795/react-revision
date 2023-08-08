@@ -1,26 +1,19 @@
 import Timer from './components/Timer';
 import './App.css';
 import Mainsettings from './components/Mainsettings';
-import { useState } from 'react';
+// import { useState } from 'react';
 import Settingscontext from './Settingscontext';
-
+import { useContext } from 'react';
 
 function App() {
-  const [showSettings,setshowSettings]=useState(true);
-  const [workMinutes,setworkMinutes]=useState();
-  const [breakMinutes,setbreakMinutes]=useState();
-  
+  const context=useContext(Settingscontext);
+    const {showSettings}=context;
+  // const { showSettings } = useContext(Settingscontext); // Correct the variable name
   return (
-    <main>
-      <Settingscontext.Provider value={{
-        workMinutes,
-        breakMinutes,
-        setworkMinutes,
-        setbreakMinutes
-      }}/>
+    <main> 
       {/* to show settings page when settings is clicked */}
       {showSettings ?<Mainsettings/>:<Timer/>}
-     <Settingscontext.Provider/>
+     
     </main>
   );
 }

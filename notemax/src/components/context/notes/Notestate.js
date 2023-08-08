@@ -3,7 +3,6 @@ import { useState } from "react";
 const host="http://localhost:3001"
 
 const NoteState=(props)=>{
-
    let notesitem= []
    const [notes,setnotes]=useState(notesitem)
 

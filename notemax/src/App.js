@@ -8,8 +8,6 @@ import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import NoteState from './components/context/notes/Notestate';
 
-
-
 import {
   BrowserRouter,  
   Routes,
