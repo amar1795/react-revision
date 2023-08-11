@@ -14,7 +14,6 @@ const Navbar = () => {
             <Link to="/">
                 Cryptoverse
             </Link>
-
         </Typography.Title>
         </div>
       
