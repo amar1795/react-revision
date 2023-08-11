@@ -2,33 +2,41 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Routes,Route,Link,} from "react-router-dom";
 import { Layout,Typography,Space } from 'antd';
-import { Navbar } from './components';
+import { Navbar,Homepage,Exchanges,CryptoDetails,Cryptocurrencies,News } from './components';
 
 function App() {
   return (
     <BrowserRouter>
+        <div className="app">
+          <div className="navbar">
+          <Navbar/>
+          </div>        
+        <div className="main">
+        <Routes>
+        <Route path="/" element={<Homepage />} />
+        </Routes>
+        <Routes>
+        <Route path="/exchanges" element={<Exchanges />} />
+        </Routes>
+        <Routes>
+        <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
+        </Routes>
+        <Routes>
+        <Route path="/crypto/:coinId" element={<CryptoDetails />} />
+        </Routes>
+        <Routes>
+        <Route path="/news" element={<News />} />
+        </Routes>
 
-<div className="app">
-  
 
-     <div className="navbar">
-      <Routes>
-    <Route path="/" element={<Navbar />} />
-      </Routes>
-      </div>    
- <div className="main">
- <Routes>
-    <Route path="/" element={<Navbar />} />
-      </Routes>
-  </div>
-  <div className="footer">
- <Routes>
-    <Route path="/" element={<Navbar />} />
-      </Routes>
-  </div>
+        
+        </div>
+        <div className="footer">
+        
+        </div>
 
-    
-   </div>
+
+        </div>
       
     
 
