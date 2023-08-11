@@ -18,6 +18,7 @@ const AddNote = (props) => {
     }
     const onchange=(e)=>{
         setnote({...note,[e.target.name]:e.target.value});
+
     }
 
   return (
@@ -26,7 +27,9 @@ const AddNote = (props) => {
      <form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Title</label>
-    <input type="text" class="form-control" id="title" name='title' aria-describedby="emailHelp" onChange={onchange} minLength={5} required value={note.title}/>
+    <input type="text" class="form-control" id="title" name='title' 
+    // if not using value then by default a value is generated ,and value={note.title} is added after the default value is created and updated in setnote.if want to take any action after  the input has been added then in the case value is useful eg: value={(note.title.toUpperCase())} if not using value the uppercase wont work and the default value  will be shown 
+    aria-describedby="emailHelp" onChange={onchange} minLength={5} required value={(note.title)}/>
   </div>
   <div class="mb-3">
     <label for="description" class="form-label">Description</label>

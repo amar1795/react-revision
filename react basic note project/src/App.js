@@ -46,9 +46,7 @@ function App() {
   }  
 
   const toggleStyle=()=>{
-   
     //above classes are being added in bootstrap classes and the below classes are also being added to  the classes
-  
     if(Mode==="light")
     {
       document.body.style.backgroundColor="black";
@@ -62,9 +60,7 @@ function App() {
         color:"white",
         backgroundColor:"black"
       })
-  
     }
-  
     else
     {
       showAlert("Light mode has been enabled","success")
@@ -78,12 +74,11 @@ function App() {
         backgroundColor:"white"
       })
       document.title="Text-App-Light Mode "
-
     }
   }
 
-
-  const [alertBtn,setalertBtn]=useState(null);
+  
+ const [alertBtn,setalertBtn]=useState(null);
 
   const showAlert=(message,type)=>{
 
@@ -97,14 +92,11 @@ function App() {
     }, 1500);
 
   }
-
-
-
-  
+ 
   return (
     <div>
     <BrowserRouter>
-   {/*everything should be inside browser router except the things which will change  */}
+   {/*everything should be inside routes except the things which will change  */}
     <Navbar title="React News App" Mode={Mode} toggleStyle={toggleStyle} Btntxt={Btntxt} toggleColor={toggleColor}/>
     <Alert alertBtn={alertBtn} />
     <div className="container my-3" > 

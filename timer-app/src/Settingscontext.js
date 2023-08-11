@@ -5,8 +5,8 @@ const SettingsContext = createContext({
   });
 export const SettingsProvider = ({ children }) => {
     const [showSettings,setshowSettings]=useState(false);
-    const [workMinutes, setWorkMinutes] = useState(45);
-    const [breakMinutes, setBreakMinutes] = useState(15);
+    const [workMinutes, setWorkMinutes] = useState(1);
+    const [breakMinutes, setBreakMinutes] = useState(1);
     const [ispaused,setispaused]=useState(true);
 
   

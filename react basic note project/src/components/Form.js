@@ -1,17 +1,17 @@
 import React ,{useState} from 'react'
+
+
+
 const Form = (props) => {
   const [text,setText]=useState("enter your text here");
 const [btn,setbtn]=useState("");
 
-
-
-
   const handleonchange =(e)=>{
 
     setText(e.target.value)
+   
 
   }
-
 
 const handleCopy=()=>{
   
@@ -19,8 +19,6 @@ const handleCopy=()=>{
   x.select();
   navigator.clipboard.writeText(x.value);
   console.log(text);
-  
-
 }
 
 // test commit
@@ -37,6 +35,7 @@ const handleextraSpaces=()=>{
   let newtext=text.split(/[ ]+/);
   setText(newtext.join(" "));
   console.log(text);
+  
 
 }
 
