@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import millify from 'millify'
 import { Card,Row,Col,Input } from 'antd'
 import { useGetCryptosQuery } from '../services/cryptoApi';
@@ -6,16 +6,37 @@ import {Link} from "react-router-dom";
 
 
 const Cryptocurrencies = ({simplified}) => {
-
   const count=simplified?10:100;
 
   const {data:cryptosList,isFetching}= useGetCryptosQuery(count);
-  const [Cryptos,setCryptos]=useState(cryptosList?.data?.coins)
+  const [Cryptos,setCryptos]=useState([])
+  const [searchTerm,setSearchTerm]=useState("")
+
+// use effect acts as component did mount and runs always for once when the react renders component for the 1st time 
+
+
+  useEffect(()=>{
+
+    const filteredData=cryptosList?.data?.coins.filter((coin)=>coin.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    setCryptos(filteredData)
+  },[cryptosList,searchTerm]);
+
+
+  // the dependencies "cryptosList,searchTerm" acts as comppnenent did update and whenever it updates the use effect is loaded again 
+
+
   console.log(Cryptos)
   if(isFetching) return "Loading..."
+
   return (
     <>
 
+    {!simplified && 
+      <div className="search-crypto">
+        <Input placeholder='Search CryptoCurrency' onChange={(e)=>setSearchTerm(e.target.value)}></Input>
+      </div>
+    }
+  
     <Row gutter={[32,32]} className='crypto-card-container'>
       {Cryptos?.map((currency)=>(
         // not using curly braces in map function means we don't have to write return and it would be return automatically 
