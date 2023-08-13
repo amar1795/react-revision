@@ -22,14 +22,14 @@ const CryptoDetails = () => {
   const {data,isFetching}= useGetCryptoDetailsQuery(coinId);
   const cryptoDetails=data?.data?.coin;
 
-  console.log(data?.data?.coin?.name)
+  console.log(cryptoDetails)
 
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
   const stats = [
     { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
     { title: 'Rank', value: cryptoDetails?.rank, icon: <NumberOutlined /> },
-    { title: '24h Volume', value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`, icon: <ThunderboltOutlined /> },
+    { title: '24h Volume', value: `$ ${cryptoDetails?.["24hVolume"] && millify(cryptoDetails?.["24hVolume"])}`, icon: <ThunderboltOutlined /> },
     { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <DollarCircleOutlined /> },
     { title: 'All-time-high(daily avg.)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
   ];
@@ -64,10 +64,82 @@ const CryptoDetails = () => {
           placeholder="Select Time Period"
           >
             {time.map((date)=><Option key={date}>{date}</Option>)}
-
+        {/*Line chart...  */}
         </Select>
-    
-    
+        <Col className='stats-container'>
+          <Col className='coin-value-statistics'>
+            <Col className='coin-value=statistics-heading'>
+              <Title level={3} className='coin-details-heading'>
+                {cryptoDetails.name} Value Statistics
+              </Title>
+              <p>
+                An overview showing the stats of {cryptoDetails.name}
+              </p>
+            
+            </Col>
+
+            {stats.map(({icon,title,value})=>(
+              <Col className='coin-stats'>
+                <Col className='coin-stats-name'>
+
+                  <Text>{icon}</Text>
+                  <Text>{title}</Text>
+                </Col>
+                <Text className='stats'>{value}</Text>
+              </Col>
+            ))} 
+          </Col>  
+
+          <Col className='other-stats-info'>
+            <Col className='coin-value=statistics-heading'>
+              <Title level={3} className='coin-details-heading'>
+                {cryptoDetails.name} Value Statistics
+              </Title>
+              <p>
+                An overview showing the stats of all cryptocoins  
+              </p>
+            
+            </Col>
+
+            {genericStats.map(({icon,title,value})=>(
+              <Col className='coin-stats'>
+                <Col className='coin-stats-name'>
+
+                  <Text>{icon}</Text>
+                  <Text>{title}</Text>
+                </Col>
+                <Text className='stats'>{value}</Text>
+              </Col>
+            ))} 
+          </Col>    
+        </Col> 
+        <Col className='coin-desc-link'>
+            <Row className='coin-desc'>
+              <Title level={3} className='coins-details-heading'>
+                What is {cryptoDetails.name} 
+                <br />
+                <br />
+                
+                {HTMLReactParser(cryptoDetails?.description)}
+              </Title>
+            </Row>
+            <Col className='coin-links'>
+              <Title level={3} className='coin-details-heading'>
+                {cryptoDetails.name} Links
+              </Title>
+              {cryptoDetails.links.map((link)=>(
+                <Row className='coin-link' key={link.name}>
+                  <Title level={5} className='link-name'>
+                    {link.type}
+                  </Title>
+                  <a href={link.url} target='_blank' rel='noreferrer'>
+                    {link.name}
+                  </a>
+                </Row>
+              ))}
+            </Col>
+             
+          </Col>
     </Col>
   )
 }
