@@ -25,7 +25,7 @@ const Cryptocurrencies = ({simplified}) => {
   // the dependencies "cryptosList,searchTerm" acts as comppnenent did update and whenever it updates the use effect is loaded again 
 
 
-  console.log(Cryptos)
+  // console.log(Cryptos)
   // rtk query has thie benifit of showing loader instead of using load
   if(isFetching) return "Loading..."
 
@@ -42,8 +42,8 @@ const Cryptocurrencies = ({simplified}) => {
       {Cryptos?.map((currency)=>(
         // not using curly braces in map function means we don't have to write return and it would be return automatically 
         // whereas if we use curly braces then in that case we  will have to reutrn in the end 
-        <Col xs={24} sm={12} lg={6} className='crypto-card' key={currency.id}>
-          <Link to={`/crypto/${currency.id}`}> 
+        <Col xs={24} sm={12} lg={6} className='crypto-card' key={currency.uuid }>
+          <Link to={`/crypto/${currency.uuid }`}> 
             <Card 
                 title={`${currency.rank}.${currency.name}`}
                 extra={<img className='crypto-image' src={currency.iconUrl}/>}

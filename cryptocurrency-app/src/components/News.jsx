@@ -15,7 +15,7 @@ const News = ({simplified}) => {
   const [newsCategory,setnewsCategory]=useState('Cryptocurrency')
   const {data:cryptoNews,isFetching} =useGetCryptoNewsQuery({newsCategory,count})
   const {data:cryptosList}= useGetCryptosQuery(100);
-  console.log(cryptoNews)
+  // console.log(cryptoNews)
   if(isFetching) return "Loading..."
 
   return (
@@ -28,7 +28,7 @@ const News = ({simplified}) => {
             placeholder="select a crypto"
             optionFilterProp='children'
             onChange={(value)=>setnewsCategory(value)}
-            filterOption={(input,option)=>option.children.toLowerCase().indexOf(input.toLowerCase()>=0)}
+            filterOption={(input,option)=>option.children.toLowerCase().indexOf(input.toLowerCase())>=0}
             >
               <option value="Cryptocurrency">Cryptocurrency</option>
               {/* iterating through the available options of crypto that will be shown in the options */}

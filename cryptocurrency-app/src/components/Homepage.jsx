@@ -17,7 +17,7 @@ const Homepage = () => {
   // using console.log gives me an error an the app crashes unable to read undefined data when using globalstats.exchanges ???? how it can give an error console.log
   // understood: using chaining operators data?.data does not gives runtime error as above if the data is undefined it will show undefined and using .operators in that case console.log(data.data); will result in error 
 
-  console.log(data);
+  // console.log(data);
   const globalStats=data?.data?.stats;
 
   if(isFetching) return 'Loading...'
