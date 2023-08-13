@@ -4,7 +4,9 @@ import { useParams } from 'react-router-dom';
 import millify from 'millify';
 import { Col,Row,Typography,Select } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
-import { useGetCryptoDetailsQuery } from '../services/cryptoApi';
+import { useGetCryptoDetailsQuery,useGetCryptoHistoryQuery } from '../services/cryptoApi';
+import Linechart from './Linechart';
+
 
 const { Title,Text } = Typography;
 const Option= Select;
@@ -20,6 +22,9 @@ const CryptoDetails = () => {
   const {coinId} =useParams();
   const [timePeriod,settimPeriod]=useState('7d');
   const {data,isFetching}= useGetCryptoDetailsQuery(coinId);
+  const {data:coinHistory}= useGetCryptoHistoryQuery({coinId,timePeriod});
+  // the params should be the same as it is in the cryptoAPI ie coinId , timeperiod
+
   const cryptoDetails=data?.data?.coin;
 
   console.log(cryptoDetails)
@@ -64,8 +69,9 @@ const CryptoDetails = () => {
           placeholder="Select Time Period"
           >
             {time.map((date)=><Option key={date}>{date}</Option>)}
-        {/*Line chart...  */}
         </Select>
+            {/* Line chart */}
+            <Linechart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
         <Col className='stats-container'>
           <Col className='coin-value-statistics'>
             <Col className='coin-value=statistics-heading'>
@@ -119,7 +125,7 @@ const CryptoDetails = () => {
                 What is {cryptoDetails.name} 
                 <br />
                 <br />
-                
+
                 {HTMLReactParser(cryptoDetails?.description)}
               </Title>
             </Row>
