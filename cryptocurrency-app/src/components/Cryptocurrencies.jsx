@@ -26,6 +26,7 @@ const Cryptocurrencies = ({simplified}) => {
 
 
   console.log(Cryptos)
+  // rtk query has thie benifit of showing loader instead of using load
   if(isFetching) return "Loading..."
 
   return (

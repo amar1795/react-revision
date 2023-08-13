@@ -11,7 +11,9 @@ import News from './News';
 
 const {Title} =Typography
 const Homepage = () => {
-  const {data,isFetching}= useGetCryptosQuery(10);
+  // it does not matter what value we put in inside  useGetCryptosQuery(10) any value can be inside it 
+  // mainly it is being controlled from cryptocurrencies.jsx
+  const {data,isFetching}= useGetCryptosQuery(1);
   // using console.log gives me an error an the app crashes unable to read undefined data when using globalstats.exchanges ???? how it can give an error console.log
   // understood: using chaining operators data?.data does not gives runtime error as above if the data is undefined it will show undefined and using .operators in that case console.log(data.data); will result in error 
 
@@ -35,6 +37,7 @@ const Homepage = () => {
         <Title level={2} className='home-title'>Top 10 currencies in the world</Title>
         <Title level={3} className='show-more'><Link to="/Cryptocurrencies">Show More </Link></Title>
     </div>
+    {/* simplified is passed as props */}
    <Cryptocurrencies simplified />
 
     <div className="home-heading-container">
@@ -42,7 +45,7 @@ const Homepage = () => {
           <Title level={2} className='home-title'>Latest Crypto News</Title>
           <Title level={3} className='show-more'><Link to="/News">Show More </Link></Title>
     </div>
-   <News/>     
+   <News simplified />     
    </>
   )
 }

@@ -115,10 +115,7 @@ function News(props) {
             </InfiniteScroll> 
             </div>
              </div>
-            
-            
-        
-     
+
         )
   
 }
