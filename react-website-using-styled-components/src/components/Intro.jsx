@@ -2,6 +2,7 @@ import React from "react";
 import { styled } from "styled-components";
 
 import woman from '../images/pngegg.png'
+import Animatedshapes from "./Animatedshapes";
 
 
 const Container = styled.div`
@@ -103,6 +104,7 @@ const Intro = () => {
         </Info>
       </Left>
       <Right><Image src={woman} ></Image></Right>
+      <Animatedshapes/>
     </Container>
   );
 };

@@ -29,9 +29,6 @@ justify-content: space-between;
 const Menu=styled.ul`
 display: flex;
 align-items: center;
-
-
-  
 `
 const MenuItem=styled.li`
 margin-right: 20px;
