@@ -1,0 +1,19 @@
+
+
+@font-face{
+  font-family: "glacial";
+  font-weight: bold;
+  src: url('../public/fonts/GlacialIndifference-Bold.otf');
+}
+
+@font-face{
+  font-family: "glacial";
+  src: url('../public/fonts/GlacialIndifference-Regular.otf');
+}
+
+  *{
+    margin: 0;
+    font-family: "Glacial";
+  }
+
+  
