@@ -19,15 +19,14 @@ const CryptoDetails = () => {
   },[]);
 
   // it fetches the id from the params when we search 
+  const [timePeriod,settimePeriod]=useState('7d');
   const {coinId} =useParams();
-  const [timePeriod,settimPeriod]=useState('7d');
   const {data,isFetching}= useGetCryptoDetailsQuery(coinId);
-  const {data:coinHistory}= useGetCryptoHistoryQuery({coinId,timePeriod});
   // the params should be the same as it is in the cryptoAPI ie coinId , timeperiod
 
   const cryptoDetails=data?.data?.coin;
 
-  console.log(cryptoDetails)
+  // console.log(coinHistory)
 
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
@@ -67,11 +66,13 @@ const CryptoDetails = () => {
         <Select  defaultValue="7d"
           className='select-timeperiod'
           placeholder="Select Time Period"
+          onChange={(value) => settimePeriod(value)}
           >
             {time.map((date)=><Option key={date}>{date}</Option>)}
         </Select>
             {/* Line chart */}
-            <Linechart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
+              
+            <Linechart timePeriod={timePeriod} coinId={coinId} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
         <Col className='stats-container'>
           <Col className='coin-value-statistics'>
             <Col className='coin-value=statistics-heading'>

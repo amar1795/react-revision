@@ -1,24 +1,80 @@
-import React from 'react'
 
+import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { Col,Row,Typography } from 'antd';
+import Chart from 'chart.js/auto';
+import {useGetCryptoHistoryQuery } from '../services/cryptoApi';
 
-const {Title} =  Typography;
+// without using the above import Chart from 'chart.js/auto'; it gives error //category is not registered scale
 
-const Linechart = ({coinHistory,currentPrice,coinName}) => {
-  
+import { CategoryScale } from 'chart.js';
+
+import { Col, Row, Typography } from 'antd';
+
+
+const { Title } = Typography;
+
+const LineChart = ({timePeriod, currentPrice, coinName,coinId }) => {
+  const {data:coinHistory,isFetching}= useGetCryptoHistoryQuery({coinId,timePeriod});
+
+
+  Chart.register(CategoryScale);
+
+  // console.log(coinHistory?.data?.history[0].price)
+
+  const coinPrice = [];
+  const coinTimestamp = [];
+
+  for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
+    coinPrice.push(coinHistory?.data?.history[i].price);
+  }
+
+  for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
+    coinTimestamp.push(new Date(coinHistory?.data?.history[i].timestamp).toLocaleDateString());
+  }
+
+  const data = {
+    labels: coinTimestamp,
+    datasets: [
+      {
+        label: 'Price In USD',
+        data: coinPrice,
+        fill: false,
+        backgroundColor: '#0071bd',
+        borderColor: '#0071bd',
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      yAxes: [{
+        type: 'category',
+        ticks: {
+          beginAtZero: true,
+        },
+        gridLines: {
+          color: '#ccc',
+        },
+      }],
+    },
+  };
+
+  if (isFetching) {
+    return <div>Loading...</div>; // or a loading spinner
+  }
+
   return (
     <>
-    <Row className='chart-header'>
-        <Title level={2} className="chart-title">{coinName} Price Chart</Title>
-        <Col className='price-container'>
-        <Title level={5} className="price-change">{coinHistory?.data?.change} %</Title>
-        <Title level={5} className="current-price">Current {coinName} Price :${currentPrice}</Title>
+      <Row className="chart-header">
+        <Title level={2} className="chart-title">{coinName} Price Chart </Title>
+        <Col className="price-container">
+          <Title level={5} className="price-change">Change: {coinHistory?.data?.change}%</Title>
+          <Title level={5} className="current-price">Current {coinName} Price: $ {currentPrice}</Title>
         </Col>
-
-    </Row>
+      </Row>
+      <Line data={data} options={options} />
     </>
-  )
-}
+  );
+};
 
-export default Linechart
+export default LineChart;
