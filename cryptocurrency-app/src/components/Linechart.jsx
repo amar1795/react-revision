@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import {useGetCryptoHistoryQuery } from '../services/cryptoApi';
@@ -14,23 +14,33 @@ import { Col, Row, Typography } from 'antd';
 const { Title } = Typography;
 
 const LineChart = ({timePeriod, currentPrice, coinName,coinId }) => {
+  
   const {data:coinHistory,isFetching}= useGetCryptoHistoryQuery({coinId,timePeriod});
+
+
+
 
 
   Chart.register(CategoryScale);
 
-  // console.log(coinHistory?.data?.history[0].price)
+  // console.log((coinHistory?.data?.history[0].timestamp).toLocaleDateString());
+
+  // chart issue needs to be corrected as the data on charts are being fetched latere than the chart component is being rendered hence the updated data is not being shown
 
   const coinPrice = [];
   const coinTimestamp = [];
 
+  // coin price
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
     coinPrice.push(coinHistory?.data?.history[i].price);
   }
 
+
+// coin time stamp
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
-    coinTimestamp.push(new Date(coinHistory?.data?.history[i].timestamp).toLocaleDateString());
-  }
+    const timestamp = coinHistory?.data?.history[i].timestamp;
+    const date = new Date(timestamp);
+    coinTimestamp.push(date.toLocaleDateString());  }
 
   const data = {
     labels: coinTimestamp,

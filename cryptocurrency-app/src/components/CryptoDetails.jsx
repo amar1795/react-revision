@@ -63,6 +63,7 @@ const CryptoDetails = () => {
             View Value Statistics ,Market cap and supply
            </p> 
         </Col>
+        {/* selectbar for chart */}
         <Select  defaultValue="7d"
           className='select-timeperiod'
           placeholder="Select Time Period"
