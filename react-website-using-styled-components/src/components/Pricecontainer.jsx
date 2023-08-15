@@ -9,6 +9,13 @@ display: flex;
 justify-content: center;
 align-items: center;
 
+/* display: grid;
+position: absolute;
+top: 0;
+left:25%;
+grid-template-columns: repeat(4,1fr);
+align-items: center; */
+
 
 `
 

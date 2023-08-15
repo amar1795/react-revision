@@ -5,6 +5,8 @@ import Intro from './components/Intro';
 import Feature from './components/Feature';
 import Services from './components/Services';
 import Pricecontainer from './components/Pricecontainer';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 const Container=styled.div`
 height: 100vh;
@@ -42,11 +44,13 @@ overflow: hidden;
 `
 const Priceanimation=styled.div`
 clip-path: polygon(0% 0%, 0% 100%, 10% 100%, 10% 9%, 92% 8%, 92% 92%, 0 92%, 2% 100%, 100% 100%, 100% 0);
+background-color: blueviolet;
+${Shape}
+overflow: hidden;
+`
 
-
-
-
-
+const Contactstyle=styled.div`
+clip-path: inset(0 0 0 55%);
 background-color: blueviolet;
 ${Shape}
 overflow: hidden;
@@ -72,12 +76,16 @@ function App() {
     <FeatureServices/>
    </Container>
 
-<Container>
+   <Container>
    <Pricecontainer/>
     <Priceanimation/>
    </Container>
 
-
+   <Container>
+    <Contact/>
+    <Contactstyle/>
+    <Footer/>
+   </Container>
    </>
   );
 }

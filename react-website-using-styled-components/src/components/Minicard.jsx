@@ -6,7 +6,7 @@ import search from '../images/search.png'
 const Container=styled.div`
 /* height: 200px; */
 width: 200px;
-padding: 20px;
+padding: 0 20px;
 margin: 0px 20px;
 border-radius: 10px;
 -webkit-box-shadow: 11px 11px 41px -2px rgba(56,49,56,1);
