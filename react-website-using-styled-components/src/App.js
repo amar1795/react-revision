@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Intro from './components/Intro';
 import Feature from './components/Feature';
+import Services from './components/Services';
 
 const Container=styled.div`
 height: 100vh;
@@ -11,6 +12,7 @@ position: relative;
 /* background-color: black ; */
 `
 
+// common css
 const Shape = css`
 width: 100%;
 height: 100%;
@@ -26,10 +28,19 @@ overflow: hidden;
 
 `
 const FeatureSec=styled.div`
-clip-path: polygon(0% 0%, 31% 0, 47% 50%, 30% 100%, 0% 100%);background-color: blueviolet;
+clip-path: polygon(0% 0%, 31% 0, 47% 50%, 30% 100%, 0% 100%);
+background-color: blueviolet;
 ${Shape}
 overflow: hidden;
 `
+const FeatureServices=styled.div`
+clip-path: polygon(13% 0, 40% 0, 26% 100%, 0% 100%);
+background-color: blueviolet;
+${Shape}
+overflow: hidden;
+`
+
+
 
 function App() {
   return (<>
@@ -43,6 +54,13 @@ function App() {
     <Feature/>
     <FeatureSec/>
    </Container>
+
+  <Container>
+   <Services/>
+    <FeatureServices/>
+   </Container>
+
+
    </>
   );
 }

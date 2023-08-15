@@ -25,13 +25,13 @@ height: 100px;
 border-radius: 50%;
 background-color: #5eba03;
 position: absolute;
-top:200px;
+top:100px;
 left:-100px;
 z-index: -1;
 animation: circle 2s linear alternate infinite;
 @keyframes circle{
   to{
-    transform: translate(100vw,-100vh);
+    transform: translate(100vw,-30vh);
   }
 }
 `
@@ -51,17 +51,21 @@ animation: Rectangle 2s linear alternate infinite;
   }
 }
 `
+const Container= styled.div`
+    height:100vh;
+  /* color: #120606; */
+`
 
 
 
 const Animatedshapes = () => {
   return (
-    <div>
+    <Container>
       <Square/>
       <Circle/>
       <Rectangle/>
       
-    </div>
+    </Container>
   )
 }
 

@@ -5,6 +5,7 @@ import img from '../images/app_phone.png'
 
 
 import { styled } from 'styled-components'
+import Animatedshapes from './Animatedshapes'
 const Container= styled.div`
     height:100vh;
     display: flex;
@@ -17,7 +18,8 @@ const Left=styled.div`
 const Image=styled.img`
 
 margin-top: 10px;
-    width: 80%;
+    height: 90%;
+    /* overflow: hidden; */
 `
 const Right=styled.div`
 display: flex;
@@ -66,9 +68,7 @@ const Feature = () => {
   return (
     <Container>
         <Left>
-            <Image src={img} >
-
-            </Image>
+            <Image src={img} />
 
         </Left>
         <Right>
@@ -89,6 +89,7 @@ const Feature = () => {
                 Learn More
             </Button>
         </Right>
+        <Animatedshapes/>
       
     </Container>
   )

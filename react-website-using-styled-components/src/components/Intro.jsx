@@ -77,7 +77,6 @@ const Right = styled.div`
 const Image = styled.img`
   /* background: no-repeat center center/cover; */
   height: 100%;
-  
   overflow: hidden;
 
 `;

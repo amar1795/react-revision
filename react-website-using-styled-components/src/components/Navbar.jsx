@@ -63,10 +63,7 @@ const Navbar = () => {
       <MenuItem>Services</MenuItem>
       <MenuItem>Pricing</MenuItem>
       <MenuItem>Contacts</MenuItem>
-
-
-      
-      </Menu></Left>
+   </Menu></Left>
     <Button>Join Today</Button>
     </Wrapper>
     </Container>
