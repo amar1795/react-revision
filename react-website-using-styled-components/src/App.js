@@ -59,6 +59,7 @@ overflow: hidden;
 
 
 function App() {
+  const smallscreen=window.screen.width <=480 ?true :false
   return (<>
    <Container>
   <Navbar/>
@@ -73,12 +74,14 @@ function App() {
 
   <Container>
    <Services/>
-    <FeatureServices/>
+    {!smallscreen && <FeatureServices/>}
    </Container>
 
    <Container>
    <Pricecontainer/>
-    <Priceanimation/>
+   {!smallscreen && <Priceanimation/>}
+
+    
    </Container>
 
    <Container>

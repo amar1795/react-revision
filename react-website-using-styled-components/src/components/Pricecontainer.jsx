@@ -8,6 +8,11 @@ height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
+@media only screen and (max-width:480px)
+  {
+   flex-direction: column;
+
+  }
 
 /* display: grid;
 position: absolute;

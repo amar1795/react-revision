@@ -9,11 +9,21 @@ import Animatedshapes from './Animatedshapes'
 const Container= styled.div`
     height:100vh;
     display: flex;
+    @media only screen and (max-width:480px)
+  {
+flex-direction: column;
+padding: 20px;
+  }
   
 `
 const Left=styled.div`
 /* background-color: beige; */
     width: 50%;
+    @media only screen and (max-width:480px)
+  {
+   display: none;
+
+  }
 `
 const Image=styled.img`
 
@@ -28,6 +38,11 @@ justify-content: center;
 /* background-color: #0482c6; */
 
     width: 50%;
+    @media only screen and (max-width:480px)
+  {
+   width: 100%;
+
+  }
 `
 const Title=styled.span`
 font-size: 70px;
@@ -56,13 +71,15 @@ width: 150px;
 border-radius: 20px;
 border: none;
 background-color:blueviolet;
+@media only screen and (max-width:480px)
+  {
+   position: absolute;
+   right: 25px;
+   bottom: 45px;
+
+  }
+
 `
-
-
-
-
-
-
 
 const Feature = () => {
   return (

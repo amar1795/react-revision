@@ -10,6 +10,7 @@ const Wrapper= styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+   
     
 `
 
@@ -29,6 +30,11 @@ justify-content: space-between;
 const Menu=styled.ul`
 display: flex;
 align-items: center;
+@media only screen and (max-width:480px)
+  {
+   display: none;
+
+  }
 `
 const MenuItem=styled.li`
 margin-right: 20px;
@@ -37,6 +43,8 @@ list-style: none;
 font-weight: bold;
 color: grey ;
 cursor: pointer;
+
+
   
 `
 const Button=styled.button`
