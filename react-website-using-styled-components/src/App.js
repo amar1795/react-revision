@@ -86,7 +86,9 @@ function App() {
 
    <Container>
     <Contact/>
-    <Contactstyle/>
+    {!smallscreen &&  <Contactstyle/>}
+
+   
     <Footer/>
    </Container>
    </>

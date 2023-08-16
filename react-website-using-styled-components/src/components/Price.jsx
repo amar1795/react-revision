@@ -18,12 +18,9 @@ box-shadow: 11px 11px 41px -2px rgba(56,49,56,1);
 
 @media only screen and (max-width:480px)
   {
-
     margin-right: 0px;
     margin: 10px 0px;
     padding: 0px;
-
-
 
   }
 `

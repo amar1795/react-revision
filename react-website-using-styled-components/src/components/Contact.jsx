@@ -7,11 +7,17 @@ import send from '../images/send.png'
 
 const Container=styled.div`
     height:90%;  
+    
 `
 const Wrapper=styled.div`
 height: 100vh;
 display: flex;
 align-items: center;
+@media only screen and (max-width:480px)
+  {
+    height: 50vh;
+   flex-direction: column;
+  }
 `
 const Formcontainer=styled.div`
 width: 50%;
@@ -24,23 +30,37 @@ padding: 20px;
 const Title=styled.h1`
 padding: 20px;
 font-size: 60px;
+@media only screen and (max-width:480px)
+  {
+    font-size: 30px;
+    width: 100%;
+    padding: 0px;
+  }
 `
 
 const Input=styled.input`
     padding: 20px;
     font-size: 20px;
     margin: 20px;
-   
+    @media only screen and (max-width:480px)
+  {
+   padding: 5px;
+   margin: 5px;
+   font-size: 15px;
+  }     
 `
 const Textarea=styled.textarea`
    /* padding: 20px; */
    height: 200px;
    font-size: 20px;
    color: grey;
+   @media only screen and (max-width:480px)
+  {
+        font-size: 15px;
+        height: 80px;    
+  }
 
 `
-
-
 const Leftform=styled.div`
 width: 50%;
 display: flex;
@@ -49,6 +69,12 @@ display: flex;
 flex-direction: column;
 margin-right: 20px;
 height: 100%;
+@media only screen and (max-width:480px)
+  {
+    width: 120%;
+    margin-left: 20px;
+
+  }
     
 `
 const Form=styled.form`
@@ -56,6 +82,12 @@ display: flex;
 align-items: center;
 height: 100%;
 /* justify-content: center; */
+@media only screen and (max-width:480px)
+  {
+    height: 50%;
+
+    flex-direction: column;
+  }
     
 `
 
@@ -64,6 +96,10 @@ display: flex;
 flex-direction: column;
 width: 50%;
 height: 100%;
+@media only screen and (max-width:480px)
+  {
+   width: 116%;
+  }
     
 `
 const Button=styled.button`
@@ -76,20 +112,45 @@ background-color: blueviolet;
 border: none;
 color: white;
 cursor: pointer;
+@media only screen and (max-width:480px)
+  {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 10px;
+    width: 50%;
+    margin-left: 70px;
+  }
 `
 
 const AdressItem=styled.div`
 padding: 20px;
+@media only screen and (max-width:480px)
+  {
+    width: 120%;
+    padding: 10px;
+  }
 `
 const Icon=styled.img`
    height: 40px;
    padding-right: 20px;
+   @media only screen and (max-width:480px)
+  {
+    height: 25px;
+    padding-right: 10px;
+
+  }
    
 `
 const Text=styled.span`
 font-size: 20px;
 padding: 10px;
 font-weight: bold;
+@media only screen and (max-width:480px)
+  {
+    font-size: 15px;
+    width: 100%;
+   
+  }
 
 `
 
@@ -99,9 +160,8 @@ const Adrrescontainer=styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    
 `
-
-
 
 
 
