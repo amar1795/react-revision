@@ -6,7 +6,7 @@ import send from '../images/send.png'
 
 
 const Container=styled.div`
-    height:100vh;  
+    height:90%;  
 `
 const Wrapper=styled.div`
 height: 100vh;
