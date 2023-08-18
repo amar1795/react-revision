@@ -29,6 +29,9 @@ form input[type="text"] {
   padding: 5px 8px;
   border: 0;
   font-size: 1rem;
+  color: white;
+  margin-left: 10px;
+  outline: none;
 }
 
 form button {
@@ -43,7 +46,17 @@ div.check{
   padding: 10px;
   font-size: 20px;
   display: flex;
+  background-color: #aaa;
 }
+
+div.check svg{
+color: rgb(20, 20, 20);
+
+/* background-color: white; */
+margin: 5px;
+}
+
+
 
 
 div.check input[type="checkbox"] {
@@ -55,6 +68,7 @@ div.check input[type="checkbox"] {
 div.check p {
   padding-left: 10px;
   align-items: center;
+  color: black;
 
 }
 
