@@ -59,6 +59,19 @@ const Buttondiv=styled.div`
 const Downarrow=styled.img`
 height: 47px;
 animation: animatedown infinite 1.5s;
+@keyframes animatedown {
+  0%,20%,50%,80%,100% {
+    transform: translateY(0); 
+  }
+
+  40%{
+    transform: translateY(5px); 
+  }
+  60%{
+      transform: translateY(5px); 
+    } 
+
+}
     
 `
 

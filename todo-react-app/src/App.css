@@ -1,0 +1,60 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body{
+  background-color: #17181f;
+  color: #aaa;
+}
+
+form {
+display: flex;
+border: 4px solid #aaa;
+padding: 10px;
+border-radius: 15px;
+
+}
+
+main{
+  margin: 100px auto;
+  width: 35%;
+}
+
+form input[type="text"] {
+  background-color: #17181f;
+  width: 100%;
+  padding: 5px 8px;
+  border: 0;
+  font-size: 1rem;
+}
+
+form button {
+ width: 30px;
+
+}
+
+div.check{
+  border: 4px solid #aaa;
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 20px;
+  display: flex;
+}
+
+
+div.check input[type="checkbox"] {
+  width: 20px;
+  
+}
+
+
+div.check p {
+  padding-left: 10px;
+  align-items: center;
+
+}
+
