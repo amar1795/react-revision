@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled ,css} from 'styled-components'
 import img from  "../images/logo.svg"
+import { useSelector } from 'react-redux';
+import { selectcars } from '../features/counter/counterSlice';
+
 
 const Container=styled.div`
 height: 60px;
 position: fixed;
 padding: 20px;
 width: 100%; 
+
 z-index: 1;
  /*either width can be set to 100% or  */
 display: flex;
@@ -17,6 +21,7 @@ align-items: center;
 const RightMenu=styled.ul`
 display: flex;
 align-items: center;
+
 
 `
 const MiddleMenu=styled.ul`
@@ -43,6 +48,7 @@ const Menuicon=styled.div`
 padding-left: 10px;
 cursor: pointer;
 
+
 `
 const BurgerNav=styled.div`
 
@@ -53,7 +59,10 @@ background-color: white;
 height: 100vh;
 width: 320px;
 padding: 0px 40px;
-z-index: 16;
+/* z-index: 16; */
+transform: ${props=>props.show ? 'TranslateY(0)' :'TranslateX(100%)'};
+transition: transform 0.2s ease-in;
+/* can also put transition as transition : 0.2s , so any changes in the nav will be with the animation in the transition */
 li{
     list-style: none;
     padding: 10px 0px;
@@ -91,30 +100,37 @@ i {
 
 
 const Navbar = () => {
+        const cars=useSelector(selectcars)
+    const [burgerstatus,setburgerstatus]=useState(false);
   return (
     <Container>
         <a>
             <img src={img} alt="" />
         </a>
         <MiddleMenu>
-            <MenuItem>Model S</MenuItem>
-            <MenuItem>Model 3</MenuItem>
-            <MenuItem>Model X</MenuItem>
-            <MenuItem>Model Y</MenuItem>   
+            {cars && cars.map((car,index)=>(
+            <MenuItem  key={index}>{car}</MenuItem>
+            ))}
+               
         </MiddleMenu>
         <RightMenu>
            
         <MenuItem>SHOP </MenuItem>
         <MenuItem>TESLA ACCOUNT</MenuItem>
-        <Menuicon><i class="fa-solid fa-bars fa-xl"></i></Menuicon>
+        <Menuicon><i class="fa-solid fa-bars fa-xl" onClick={()=>setburgerstatus(!burgerstatus)}></i></Menuicon>
+        {/* if do not use a function inside a onclick funtion when passing parameter inside a function then will get the error Too many re-renders. React limits the number of renders to prevent an infinite loop. */}
         </RightMenu>
 
-        <BurgerNav>
+        <BurgerNav show={burgerstatus}>
             <Closewrapper>
                 <Closebutton>
-                <i style={{cursor:"pointer"}} class="fa-solid fa-xmark fa-2xl"></i>
+                <i style={{cursor:"pointer"}} class="fa-solid fa-xmark fa-2xl" onClick={()=>setburgerstatus(!burgerstatus)}></i>
                 </Closebutton>
             </Closewrapper>
+            {cars && cars.map((car,index)=>(
+             <li><a href="#" key={index}>{car}</a></li>
+            ))}
+               
             <li><a href="#">Existing Inventory</a></li>
             <li><a href="#">Used Inventory</a></li>
             <li><a href="#">Trade-in</a></li>
@@ -123,6 +139,8 @@ const Navbar = () => {
             <li><a href="#">Cybertruck</a></li>
             <li><a href="#">Cybertruck</a></li>
             <li><a href="#">Cybertruck</a></li>
+
+            
             
         </BurgerNav>
 
