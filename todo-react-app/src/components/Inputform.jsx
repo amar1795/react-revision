@@ -11,7 +11,7 @@ const Inputform = ({add}) => {
         }
         else
         {
-          alert ("please enter the value first")
+          alert ("please enter some task first ")
         }
         
         

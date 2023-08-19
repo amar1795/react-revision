@@ -5,8 +5,11 @@ import Inputform from './components/Inputform';
 import Task from './components/Task';
 
 function App() {
-  const [task,settask]=useState(JSON.parse(localStorage.getItem('notetask')))
+  const initialTask = JSON.parse(localStorage.getItem('notetask')) || [];
+
+  const [task,settask]=useState(initialTask);
   
+  // adding data
   function addtask(name) {
    
     settask(prev=>{
@@ -16,18 +19,25 @@ function App() {
     
   }
 
-  useEffect(()=>{
-    
+  useEffect(()=>{ 
+   
+    // whenever there is a change in task then the localstorage is updated
     localStorage.setItem('notetask',JSON.stringify(task))
   },[task])
 
-  useEffect(()=>{
-    const notevalue=JSON.parse(localStorage.getItem('notetask'))
-    settask(notevalue);
-  },[])
+
+  // **************************************************************************************
+  // no need of this use effect as initally we are handling the case of null and getting the data as initalTask
+  // useEffect(() => {
+  //   // Check if the 'notetask' key is not present in localStorage
+  //   if (localStorage.getItem('notetask') === null) {
+  //     localStorage.setItem('notetask', JSON.stringify([])); // Set an empty array
+  //   } 
+  // }, []);
 
   const takscomplete=task.filter(e=>e.done).length;
 
+  // adding checkbox
   function addTask(taskindex,newdone) {
     // updating the old value in localstorage
     
@@ -37,6 +47,7 @@ function App() {
       return newtask;
     })   
   }
+  // deleting data
   function deleteTask(taskindex) {
       // updating the old value in localstorage
       settask(prev=>{
@@ -48,6 +59,7 @@ function App() {
       })   
     }
 
+    // updating data
 function updatedtext(index,newtextvalue) {
       // the parameter should be in the same sequence in which they are being called , names can be different 
       settask(prev=>{
