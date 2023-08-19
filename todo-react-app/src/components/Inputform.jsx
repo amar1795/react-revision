@@ -6,6 +6,7 @@ const Inputform = ({add}) => {
     function handlesubmit(e) {
         e.preventDefault();
         add(formvalue);
+        
         setformvalue(" ")
         
     }

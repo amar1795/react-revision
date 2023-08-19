@@ -9,6 +9,7 @@ const Task = ({name,done,onToggle,ondelete,updatedtextvalue}) => {
 
       {!editMode &&  <div className='name' onClick={()=>{seteditMode(true)}}>
        <span>{name}</span>
+       
        </div>}
 
        {editMode && (

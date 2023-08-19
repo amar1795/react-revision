@@ -123,4 +123,10 @@ fill: red;
 
 }
 
+span{
+ /* if we remove span and click on its space we will not be able to since it foes not have height and width hence made it inline block or block */
+  display: inline-block;
+
+}
+
 

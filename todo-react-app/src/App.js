@@ -5,7 +5,7 @@ import Inputform from './components/Inputform';
 import Task from './components/Task';
 
 function App() {
-  const [task,settask]=useState([])
+  const [task,settask]=useState(JSON.parse(localStorage.getItem('notetask')))
   
   function addtask(name) {
     settask(prev=>{
@@ -16,7 +16,7 @@ function App() {
   }
 
   useEffect(()=>{
-    if(task.length ===0) return;
+    
     localStorage.setItem('notetask',JSON.stringify(task))
   },[task])
 
@@ -39,7 +39,9 @@ function App() {
       // updating the old value in localstorage
       settask(prev=>{
        return prev.filter((taskobject,index)=>{
+        
         return index !== taskindex;
+       
        })
       })   
     }
