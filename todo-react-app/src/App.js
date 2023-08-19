@@ -25,24 +25,57 @@ function App() {
     settask(notevalue);
   },[])
 
-  function updatetask(taskindex,newdone) {
+  const takscomplete=task.filter(e=>e.done).length;
+
+  function addTask(taskindex,newdone) {
     // updating the old value in localstorage
     settask(prev=>{
       const newtask=[...prev];
       newtask[taskindex].done= newdone;
       return newtask;
-    })
+    })   
+  }
+  function deleteTask(taskindex) {
+      // updating the old value in localstorage
+      settask(prev=>{
+       return prev.filter((taskobject,index)=>{
+        return index != taskindex;
+       })
+      })   
+    }
+
+
+
+  function Message() {
+
+    const percentage=(takscomplete/(task.length) *100);
+
+    if(percentage === 0)
+    {
+      return " try to do at least one "
+    }
+    if(percentage === 100)
+    {
+      return " Congractulations you have completed all the task "
+    }
+    return " keep going"
     
   }
   
 
   return (
     <main >
+      
+      <h1> {takscomplete}/{(task.length)} Tasks Complete</h1>
+      <h2>{Message()}</h2>
+      
       <Inputform add={addtask}/>
       {/* here the add prop value is coming from input form , here the prop value is goin in oppposite direction */}
       
       {task.map((task,index)=>(
-       <Task {...task} onToggle={done=>updatetask(index,done)}/>
+       <Task {...task} 
+       ondelete={()=>{deleteTask(index)}}
+       onToggle={done=>addTask(index,done)}/>
       ))}
         
     </main>
