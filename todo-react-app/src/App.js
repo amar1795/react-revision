@@ -39,17 +39,24 @@ function App() {
       // updating the old value in localstorage
       settask(prev=>{
        return prev.filter((taskobject,index)=>{
-        return index != taskindex;
+        return index !== taskindex;
        })
       })   
+    }
+
+function updatedtext(index,newtextvalue) {
+      // the parameter should be in the same sequence in which they are being called , names can be different 
+      settask(prev=>{
+        const newtask=[...prev];
+        newtask[index].name= newtextvalue;
+        return newtask;
+      })  
     }
 
 
 
   function Message() {
-
     const percentage=(takscomplete/(task.length) *100);
-
     if(percentage === 0)
     {
       return " try to do at least one "
@@ -58,8 +65,7 @@ function App() {
     {
       return " Congractulations you have completed all the task "
     }
-    return " keep going"
-    
+    return " keep going"   
   }
   
 
@@ -74,6 +80,7 @@ function App() {
       
       {task.map((task,index)=>(
        <Task {...task} 
+       updatedtextvalue={(newtextvalue)=>{updatedtext(index,newtextvalue)}}
        ondelete={()=>{deleteTask(index)}}
        onToggle={done=>addTask(index,done)}/>
       ))}

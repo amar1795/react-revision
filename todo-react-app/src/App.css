@@ -47,7 +47,6 @@ form input[type="text"] {
 
 form button {
  width: 30px;
-
 }
 
 div.check svg{
@@ -85,7 +84,7 @@ div.task span{
 position: relative;
 
 }
-div.task .name{
+div.task .name,div.task form{
 
   flex-grow: 1;
 
