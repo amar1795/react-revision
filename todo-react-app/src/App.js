@@ -26,6 +26,7 @@ function App() {
   },[])
 
   function updatetask(taskindex,newdone) {
+    // updating the old value in localstorage
     settask(prev=>{
       const newtask=[...prev];
       newtask[taskindex].done= newdone;

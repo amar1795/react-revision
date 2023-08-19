@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Checkbox = ({checked = false, onClick}) => {
+const Checkbox = ({checked , onClick}) => {
 
   return (
     <div div onClick={onClick}>
