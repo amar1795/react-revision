@@ -8,6 +8,7 @@ function App() {
   const [task,settask]=useState(JSON.parse(localStorage.getItem('notetask')))
   
   function addtask(name) {
+   
     settask(prev=>{
       // here ..prev is a spread operator and takes all the previous values of the array and create a new array with the name and done:false
       return [...prev,{name:name,done:false}]
@@ -29,6 +30,7 @@ function App() {
 
   function addTask(taskindex,newdone) {
     // updating the old value in localstorage
+    
     settask(prev=>{
       const newtask=[...prev];
       newtask[taskindex].done= newdone;

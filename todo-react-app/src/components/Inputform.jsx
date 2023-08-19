@@ -5,9 +5,16 @@ const Inputform = ({add}) => {
      
     function handlesubmit(e) {
         e.preventDefault();
-        add(formvalue);
+        if (formvalue.trim().length !== 0 ){
+          add(formvalue);
+          setformvalue("")
+        }
+        else
+        {
+          alert ("please enter the value first")
+        }
         
-        setformvalue(" ")
+        
         
     }
 
