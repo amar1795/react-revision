@@ -34,6 +34,8 @@ const Left = styled.div`
 const Title = styled.h1`
 font-size: 60px;
 width: 60%;
+position: relative;
+right: 0px;
 @media only screen and (max-width:480px)
   {
     width: 90%;
@@ -120,7 +122,6 @@ const Image = styled.img`
   /* background: no-repeat center center/cover; */
   height: 100%;
   overflow: hidden;
-
   
 
 `;

@@ -5,22 +5,39 @@ import backgroundimg from "../images/manthinking.svg"
 const Container =styled.div`
 position: relative;
 height: 120vh;
-width: 80%;
-margin: auto;
+/* width: 80%; */
+/* margin: auto; */
 top: 40px;
+
+
 /* background-color: #579933; */
 `
 const Section1 =styled.div`
-height: 100%;
-/* background-color: red; */
-margin: 0;
-padding: 0;
+    max-width: 1128px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 0 auto;
+    /* margin: auto; */
+
 `
 const Left =styled.div`
-/* background-color: beige; */
+background-color: red;
 width: 50%;
 height: 100%;
+
 `
+
+const Right =styled.div`
+background-color: green;
+width: 50%;
+/* background: green; */
+height: 100%;
+`
+
+
+
 const H1 =styled.h1`
 font-size: 56px;
 font-weight: 100;
@@ -100,9 +117,10 @@ color:  #327fcc ;
 
 `
 const Mainsectionimg =styled.img`
-position: absolute;
+height: 600px;
+/* position: relative;
 top: 0;
-right: -13%;
+right: -13%; */
 `
 
 const Input =styled.input`
@@ -131,29 +149,32 @@ const Mainsection = () => {
     <Container>
      <Section1>
         <Left>
-        <H1>Welcome to your professional community</H1>
-        <Form action="">
-        <label >Email address</label>
-            <Input type="text" />
-        <label>Password</label>    
-            <Input type="password" />
-        
+          <H1>Welcome to your professional community</H1>
+          <Form action="">
+          <label >Email address</label>
+              <Input type="text" />
+          <label>Password</label>    
+              <Input type="password" />
+          
 
-        <A href="#">forgot Password ?</A>
-        <Signin>Sign in</Signin>
-   
-        <Ordiv>
-        <Hr></Hr> or <Hr></Hr>
-        </Ordiv>
-        
-        <Googlebtn>Continue With Google</Googlebtn>
-        <Joinnowbtn>New to Linkedin ? Join now </Joinnowbtn>
-        </Form>
+          <A href="#">forgot Password ?</A>
+          <Signin>Sign in</Signin>
+    
+          <Ordiv>
+          <Hr></Hr> or <Hr></Hr>
+          </Ordiv>
+          
+          <Googlebtn>Continue With Google</Googlebtn>
+          <Joinnowbtn>New to Linkedin ? Join now </Joinnowbtn>
+          </Form>
         </Left>
-        
-        <Mainsectionimg src={backgroundimg}>
 
-        </Mainsectionimg>
+        <Right>
+      
+          <Mainsectionimg src={backgroundimg}>
+
+          </Mainsectionimg>
+        </Right>
     </Section1>
     </Container>
   )
