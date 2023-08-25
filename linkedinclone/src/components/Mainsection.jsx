@@ -5,12 +5,10 @@ import backgroundimg from "../images/manthinking.svg"
 const Container =styled.div`
 position: relative;
 height: 120vh;
-/* width: 80%; */
-/* margin: auto; */
+/* width: 80vw; */
 top: 40px;
+overflow: hidden;
 
-
-/* background-color: #579933; */
 `
 const Section1 =styled.div`
     max-width: 1128px;
@@ -18,20 +16,25 @@ const Section1 =styled.div`
     display: flex;
     width: 100%;
     align-items: center;
-    margin: 0 auto;
-    /* margin: auto; */
+    /* margin: 0 auto; */
+    margin: auto;
 
 `
 const Left =styled.div`
-background-color: red;
-width: 50%;
+/* background-color: red; */
+width: 100%;
 height: 100%;
+display: flex;
+flex-direction: column;
+/* align-items: flex-start; */
 
 `
 
 const Right =styled.div`
-background-color: green;
+/* background-color: green; */
 width: 50%;
+display: flex;
+align-items: flex-end;
 /* background: green; */
 height: 100%;
 `
@@ -136,6 +139,7 @@ border-radius: 10px;
 &:hover{
     outline: 2px solid blue;
     outline-offset: -15px;
+    
 }
 
 `
