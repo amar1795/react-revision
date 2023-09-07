@@ -159,9 +159,7 @@ img{
         {
         margin: auto;
 
-        }
-
-    
+        }  
 `
 
 
