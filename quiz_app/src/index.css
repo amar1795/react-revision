@@ -51,6 +51,9 @@
 .top{
   height: 50%;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timer{
@@ -63,7 +66,7 @@
   border: 2px solid white;
   position: absolute;
   bottom: 5px;
-  left: 5px;
+  
   font-size: 30px;
   font-weight: 700;
 }
@@ -147,6 +150,7 @@ background: mediumblue;
 
 .answer.wrong{
   animation: wrong 3s ease forwards;
+  /* with forwards it will stay the same with the end output  */
 
 }
 

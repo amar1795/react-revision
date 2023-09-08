@@ -13,9 +13,7 @@ const Inputform = ({add}) => {
         {
           alert ("please enter some task first ")
         }
-        
-        
-        
+
     }
 
   return (
