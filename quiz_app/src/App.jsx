@@ -1,3 +1,4 @@
+import Trivia from "./components/Trivia";
 import "./index.css";
 import { useState } from "react";
 
@@ -29,7 +30,7 @@ function App() {
       <div className="top">
         <div className="timer">30</div>
       </div>
-      <div className="bottom">Bottom</div>
+      <div className="bottom"><Trivia/></div>
      </div>
      <div className="pyramid">
       <ul className="moneyList">
