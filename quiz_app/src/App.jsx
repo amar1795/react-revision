@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1);
-  const [timeout,setTimeout]= useState(false);
+  const [timeOut,setTimeOut]= useState(false);
   const data = [
     {
       id: 1,
@@ -101,7 +101,7 @@ function App() {
       </div>
       <div className="bottom"><Trivia data={data} 
       questionNumber={questionNumber}
-      setTimeout={setTimeout} 
+      setTimeOut={setTimeOut} 
       setQuestionNumber={setQuestionNumber}/></div>
      </div>
      <div className="pyramid">
