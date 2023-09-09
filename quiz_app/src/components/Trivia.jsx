@@ -47,8 +47,13 @@ const Trivia = ({data,setStop,questionNumber,setQuestionNumber}) => {
                 }
                 else 
                 {
+
+                    delay(2000,()=>{
+                        setStop(true)
+                        
+                    })
+                    
                     wrongAnswer()
-                    setStop(true)
                 }            
                 }               
             })
