@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import useSound from "use-sound";
+import play from "../sounds/intro.mp3"
+import right from "../sounds/rightanswer.mp3"
+import wrong from "../sounds/wrong.mp3"
 
 const Trivia = ({data,setStop,questionNumber,setQuestionNumber}) => {
 
@@ -6,6 +10,15 @@ const Trivia = ({data,setStop,questionNumber,setQuestionNumber}) => {
     const [selectedAnswer,setSelectedAnswer]= useState(null);
     const [className,setClassName]= useState("answer");
     
+    const [introSound]=useSound(play)
+    const [correctAnswer]=useSound(right)
+    const [wrongAnswer]=useSound(wrong)
+    
+    useEffect (()=>{
+        introSound();
+        console.log("sound is playing")
+    },[])
+
         const delay =(duration,callback)=>{
             setTimeout(() => {
                 callback();
@@ -22,14 +35,19 @@ const Trivia = ({data,setStop,questionNumber,setQuestionNumber}) => {
                 
                 setClassName(a.correct ? "answer correct" :"answer wrong")
             })
-            delay(4000,()=>{{
+            delay(2500,()=>{{
                 if(a.correct){
+                    correctAnswer()
 
-                    setQuestionNumber((prev)=> prev + 1)
-                    setSelectedAnswer(null)
+                    delay(2000,()=>{
+                        setQuestionNumber((prev)=> prev + 1)
+                        setSelectedAnswer(null)
+
+                    })
                 }
                 else
                 {
+                    wrongAnswer()
                     setStop(true)
                 }            
                 }               

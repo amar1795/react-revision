@@ -1,27 +1,33 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
 
-const Timer = ({setTimeOut,questionNumber}) => {
-    const [timer,setTimer]= useState(3);
+
+
+const Timer = ({setStop,questionNumber}) => {
+    const [timer,setTimer]= useState(30);
+   
+
+
     useEffect (()=>{
-        if(timer===0) return setTimeOut(true);
+        if(timer===0) return setStop(true);
         const interval=setInterval(() => {
             setTimer((prev)=>prev-1);
+            
 
         }, 1000);
 
         // this is a cleanup functioan and this will run always for the first time when the usestate runs
         return()=>clearInterval(interval);
 
-    },[setTimeOut,timer])
+    },[setStop,timer])
 
     useEffect (()=>{
-        setTimer(3);
+        setTimer(30);
     },[questionNumber])
 
 
   return (
-    Timer
+    <div>{timer}</div>
   )
 }
 

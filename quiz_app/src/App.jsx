@@ -120,7 +120,7 @@ const [earned,setEarned]= useState("$ 0");
       <div className="top">
         <div className="timer">
           <Timer
-        setTimeOut={setTimeOut}
+        setStop={setStop}
         questionNumber={questionNumber}
         />
         </div>
