@@ -45,7 +45,7 @@ const Trivia = ({data,setStop,questionNumber,setQuestionNumber}) => {
 
                     })
                 }
-                else
+                else 
                 {
                     wrongAnswer()
                     setStop(true)

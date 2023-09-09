@@ -1,3 +1,4 @@
+import Start from "./components/Start";
 import Timer from "./components/Timer";
 import Trivia from "./components/Trivia";
 import "./index.css";
@@ -7,6 +8,8 @@ function App() {
   const [questionNumber, setQuestionNumber] = useState(1);
   const [timeOut,setTimeOut]= useState(false);
   const [stop,setStop]= useState(false);
+  const [userName,setUsername]= useState(null);
+  
 const [earned,setEarned]= useState("$ 0");
 
 
@@ -113,7 +116,10 @@ const [earned,setEarned]= useState("$ 0");
 
   return (
     <div className="App">
-     <div className="main">
+      {userName ? (
+        <>
+
+    <div className="main">
       {stop ? (<h1 className="endText">You Earned :{earned}</h1>):
       (
      <>
@@ -145,6 +151,11 @@ const [earned,setEarned]= useState("$ 0");
       ))}
       </ul>
      </div>
+
+        </>
+      ): <Start setUsername={setUsername} />}
+     
+  
        
     </div>
   );
