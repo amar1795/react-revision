@@ -166,3 +166,12 @@ background: mediumblue;
     background: crimson;
   }
 }
+
+.endText{
+  position: absolute;
+ 
+  bottom: 50%;
+  left: 30%;
+  right: 0;
+  margin: auto;
+}
