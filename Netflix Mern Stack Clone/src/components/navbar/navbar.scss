@@ -1,0 +1,15 @@
+.navbar{
+    color: white;
+    font-size: 14px;
+    
+    .container{
+        padding: 0px 45px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 50px;
+        img {
+            height: 25px;
+        }
+    }
+}

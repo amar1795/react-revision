@@ -1,9 +1,10 @@
-import './App.css';
+import './App.scss';
+import Home from './home/Home';
 
 function App() {
   return (
     <div className="App">
-      this is my react app
+      <Home/>
     </div>
   );
 }
