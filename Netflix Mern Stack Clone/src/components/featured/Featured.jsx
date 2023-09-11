@@ -10,9 +10,9 @@ const Featured = ({type}) => {
                 <span>
                     {type==="movie" ?"movies":"series"}
                 </span>
-                <select name="genre" id="genre">
-                    <option>Genre</option>
-                    <option value="adventure">Adventure</option>
+            <select name="genre" id="genre">
+            <option>Genre</option>
+            <option value="adventure">Adventure</option>
             <option value="comedy">Comedy</option>
             <option value="crime">Crime</option>
             <option value="fantasy">Fantasy</option>
@@ -25,7 +25,7 @@ const Featured = ({type}) => {
             <option value="animation">Animation</option>
             <option value="drama">Drama</option>
             <option value="documentary">Documentary</option>
-                </select>
+            </select>
             </div>
 
 
