@@ -10,12 +10,36 @@
         }
 
         .wrapper{
+            position: relative;
+            .sliderArrow{
+                width: 50px;
+                height: 100%;
+                background-color: rgb(22, 22, 22,0.5);
+                color: white;
+                position: absolute;
+                z-index: 99;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                cursor: pointer;
+                &.Left{
+                    left: 0;
+                }
+
+                &.Right{
+                    right: 0;
+                }
+            }
             .container{
                 margin-left: 50px;
                 display: flex;
                 width: max-content;
                 // wihtout width max content it will shrink the original width and set inside the container
-                // with width max contnet it will retain its original width and height 
+                // with width max contnet it will retain its original width and height
+                margin-top: 10px;
+                transform: translate(0px); 
             }
         }
+
+
 }
