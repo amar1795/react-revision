@@ -1,0 +1,21 @@
+.list{
+    width: 100%;
+    margin-top: 10px;
+
+        .listTitle{
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            margin-left: 50px;
+        }
+
+        .wrapper{
+            .container{
+                margin-left: 50px;
+                display: flex;
+                width: max-content;
+                // wihtout width max content it will shrink the original width and set inside the container
+                // with width max contnet it will retain its original width and height 
+            }
+        }
+}
