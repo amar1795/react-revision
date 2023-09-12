@@ -37,7 +37,8 @@
                 // wihtout width max content it will shrink the original width and set inside the container
                 // with width max contnet it will retain its original width and height
                 margin-top: 10px;
-                transform: translate(0px); 
+                transform: translate(0px);
+                transition: all 1s ease; 
             }
         }
 

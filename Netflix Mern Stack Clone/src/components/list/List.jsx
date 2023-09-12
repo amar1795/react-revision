@@ -6,15 +6,21 @@ const List = () => {
     const listRef=useRef()
 
     const handleClick=(direction)=>{
-         let distance=listRef.current.getBoundingClientRect().x-50;
+         let distance=listRef.current.getBoundingClientRect().x-58;
 
         if(direction ==="left")
         {
-            listRef.current.style.transform=`translateX(${230+distance}px)`
+            listRef.current.style.transform=`translateX(${230+ distance}px)`
+        }
+
+        if(direction ==="right")
+        {
+            listRef.current.style.transform=`translateX(${-230 +distance}px)`
         }
         
+        console.log(distance)
     }
-  return (
+    return (
     <div className='list'>
         <span className='listTitle'>Continue to watch</span>
         <div className="wrapper">
