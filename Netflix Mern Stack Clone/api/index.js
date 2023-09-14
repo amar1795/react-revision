@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URL,{
     useUnifiedTopology:true,
 }).then(()=> console.log("DB Connection is Successfull")).catch((error)=>console.log(error))
 
-
+// in the body express does not accept json as default hence we are adding it as json
 app.use(express.json())
 
 
