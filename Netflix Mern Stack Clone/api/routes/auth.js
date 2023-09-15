@@ -1,6 +1,7 @@
 const router=require("express").Router();
 const User=require("../models/Users");
 const CryptoJS = require("crypto-js");
+const jwt=require("jsonwebtoken");
 
 
 // register
@@ -40,7 +41,13 @@ router.post("/login",async (req,res)=>{
         
     // using destructuring to destructure passowrd in password and all the other information in info using spread operator
         const {password ,...info}=user._doc;
-        res.status(200).json(info);
+        
+        const accessToken =jwt.sign({
+            id:user._id,isAdmin:user.isAdmin
+        },process.env.SECRET_KEY,{
+            expiresIn:"5d"
+        })
+        res.status(200).json({...info,accessToken});
 
     } catch (error) {
         res.status(500).json(error)
