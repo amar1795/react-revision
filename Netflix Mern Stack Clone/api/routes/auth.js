@@ -42,6 +42,7 @@ router.post("/login",async (req,res)=>{
     // using destructuring to destructure passowrd in password and all the other information in info using spread operator
         const {password ,...info}=user._doc;
         
+        // access token for additional security
         const accessToken =jwt.sign({
             id:user._id,isAdmin:user.isAdmin
         },process.env.SECRET_KEY,{
