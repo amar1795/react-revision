@@ -90,6 +90,7 @@ router.get("/stats",async (req,res)=>{
     const today=new Date();
     const latYear=today.setFullYear(today.setFullYear()-1);
     
+    // this will bne used in the client side
     const monthsArray=[
         "january",
         "February",
@@ -110,6 +111,7 @@ router.get("/stats",async (req,res)=>{
             const data=await User.aggregate(
                 [
                     {
+                        // the below are the mongodb functions
                 $project:{
                     month:{
                         $month:"$createdAt"
