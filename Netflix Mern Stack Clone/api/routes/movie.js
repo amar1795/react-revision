@@ -3,7 +3,7 @@ const Movie=require("../models/Movies");
 const verifyToken=require("../verifyToken")
 const jwt=require("jsonwebtoken");
 
-
+// all the crud application or register or login functionalities are being performed by the code and the algorithms implementetd by mongodb 
 // create
 
 router.post("/",verifyToken,async (req,res)=>{
@@ -52,14 +52,43 @@ router.put("/",verifyToken,async (req,res)=>{
 // delete
 
 router.delete("/delete/:id",verifyToken,async (req,res)=>{
-    
+    if(req.user.isAdmin)
+    {
      try {
      const movie=await Movie.findByIdAndDelete(req.params.id);
      res.status(200).json("movie hasa been deleted");        
      } catch (error) {
          res.status(500).json(error)
      }
-     }   
+     }  
+     
+  
+    else
+    {
+        res.status(401).json("you are not allowed")
+    }
+}   
+     )
+
+
+    //  all movies
+     router.get("/all/",verifyToken,async (req,res)=>{
+
+    if(req.user.isAdmin)
+    {
+     try {
+     const movie=await Movie.find();
+     res.status(200).json(movie);        
+     } catch (error) {
+         res.status(500).json(error)
+     }
+     }  
+
+    else
+    {
+        res.status(401).json("you are not allowed")
+    }
+}   
      )
 
 // random
@@ -78,9 +107,9 @@ router.delete("/delete/:id",verifyToken,async (req,res)=>{
      
      else{
         movie=await Movie.aggregate([
+            // this will give the random movie
             {$match:{isSeries:false}},
-         // this will give the random movie
-
+            // this will return only 1 of the movies
             {$sample:{size:1}}
         ])
 
@@ -94,7 +123,7 @@ router.delete("/delete/:id",verifyToken,async (req,res)=>{
      )
 
 
-     
+   
 
 
 module.exports=router;

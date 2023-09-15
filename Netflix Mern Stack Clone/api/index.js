@@ -5,6 +5,7 @@ const dotenv=require("dotenv")
 const authroute=require("./routes/auth")
 const userroute=require("./routes/users")
 const movieroute=require("./routes/movie")
+const listroute=require("./routes/lists")
 
 
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(express.json())
 app.use("/api/auth",authroute)
 app.use("/api/users",userroute)
 app.use("/api/movie",movieroute)
+app.use("/api/list",listroute)
 
 
 
