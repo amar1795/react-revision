@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const user=false;
+  const user=true;
   return (
     <div className="App">
        <BrowserRouter>
@@ -21,11 +21,19 @@ function App() {
         {/* react router 6 doesnot supprt or need exact */}
         {/* redirect is crashing in this version need to check, althouh it is working without redirect */}
         <Route path="/" element={user? <Home /> : <Register/>} />
+
+        { user && (
+        <>      
         <Route path="/movies" element={<Home  type="movies"/>} />
         <Route path="/series" element={<Home  type="series"/>} />
-        <Route path="/Register" element={<Register/>} />
         <Route path="/Watch" element={<Watch/>} />
-        <Route path="/Login" element={ <Login/>} />        
+        <Route path="/Login" element={ <Login/>} /> 
+        <Route path="/Register" element={<Register/>} />
+        </>      
+        )
+      
+
+        }
       </Routes>
     </BrowserRouter>
     </div>

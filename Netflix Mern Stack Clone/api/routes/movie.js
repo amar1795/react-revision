@@ -49,6 +49,26 @@ router.put("/",verifyToken,async (req,res)=>{
     
 })
 
+// findmovie
+router.get("/:id",verifyToken,async (req,res)=>{
+    if(req.user.id===req.params.id || req.user.isAdmin)
+    {
+  
+     try {
+     const movie=await Movie.findById(req.params.id);
+     res.status(200).json(movie);
+         
+     } catch (error) {
+         res.status(500).json(error)
+     }
+     }
+     else{
+         res.status(401).json("you are not allowed")
+     }
+     
+ })
+
+
 // delete
 
 router.delete("/delete/:id",verifyToken,async (req,res)=>{
