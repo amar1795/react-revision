@@ -53,39 +53,35 @@ router.get("/",verifyToken,async (req,res)=>{
         if(genreQuery)
         {
             list=await List.aggregate([
-                {
-                    $sample:{size:10}
-                },
-                {
-                    $match:{type:typeQuery,genre:genreQuery}
-                }
-            ])
+                
+                    {$sample:{size:10}},
+                    {$match:{type:typeQuery,genre:genreQuery}}
+                
+            ]);
         }
         else
-
-        {[
-            // will randomly fetch the 10 list
-            {
-                $sample:{size:10}
-            },
-            {
-                $match:{type:typeQuery}
-            }
-        ]
+        {      // will randomly fetch the 10 list
+            list=await List.aggregate([
+                
+                    {$sample:{size:10}},
+                    {$match:{type:typeQuery}}
+                
+            ])
         }
-        
-        
     }
     else
     {
         list=await List.aggregate([{$sample :{size:10}}])
     }
     res.status(200).json(list)
-     } catch (error) {
+
+     } 
+     catch (error) 
+     {
          res.status(500).json(error)
      }
      
-            })
+   })
 
 
             
