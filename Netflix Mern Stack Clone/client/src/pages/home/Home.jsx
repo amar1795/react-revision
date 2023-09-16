@@ -23,6 +23,7 @@ const Home = ({type}) => {
             token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDQwZTdiYjlkMWE4NWFkN2NlNjU1NiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NDc2NDc4NywiZXhwIjoxNjk1MTk2Nzg3fQ.Z5BBENklkMvEOiUJQ-CpBTXBcBg12sXVWjD6lMgqaFU"
 
           }
+        
         })
         
         // console.log(res.data)

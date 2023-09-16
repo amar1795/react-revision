@@ -27,7 +27,7 @@ router.post("/",verifyToken,async (req,res)=>{
 
 // update
 
-router.put("/",verifyToken,async (req,res)=>{
+router.put("/update/",verifyToken,async (req,res)=>{
    if(req.user.isAdmin)
    {
  
@@ -50,7 +50,7 @@ router.put("/",verifyToken,async (req,res)=>{
 })
 
 // findmovie
-router.get("/:id",verifyToken,async (req,res)=>{
+router.get("/find/:id",verifyToken,async (req,res)=>{
     if(req.user.id===req.params.id || req.user.isAdmin)
     {
   
@@ -92,7 +92,7 @@ router.delete("/delete/:id",verifyToken,async (req,res)=>{
 
 
     //  all movies
-     router.get("/all/",verifyToken,async (req,res)=>{
+     router.get("/",verifyToken,async (req,res)=>{
 
     if(req.user.isAdmin)
     {

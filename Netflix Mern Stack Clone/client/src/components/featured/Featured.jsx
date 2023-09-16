@@ -1,9 +1,35 @@
+import { useEffect, useState } from "react"
 import "./featured.scss"
 import { PlayArrow,InfoOutlined } from "@mui/icons-material"
+import axios from "axios";
 
 
 const Featured = ({type}) => {
+
+    const[content,setContent]=useState({});
+
+    useEffect(()=>{
+        const getRandomContent=async()=>{
+            try {
+                const res=await axios.get(`/movie/random?type=${type}`,{
+                    headers:{
+                        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDQwZTdiYjlkMWE4NWFkN2NlNjU1NiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NDc2NDc4NywiZXhwIjoxNjk1MTk2Nzg3fQ.Z5BBENklkMvEOiUJQ-CpBTXBcBg12sXVWjD6lMgqaFU"
+            
+                      }
+                })
+                console.log(res.data)
+                setContent(res.data[0]);
+            } catch (error) {
+                console.log(error)
+                
+            }
+        }
+        getRandomContent();
+
+    },[type])
   return (
+
+
     <div className='featured'>
         {type && (
             <div className="category">
@@ -30,14 +56,19 @@ const Featured = ({type}) => {
 
 
         )}
-        <img src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" />
+        <img src={content.img} alt="" />
       <div className="info">
-        <img src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1" alt="" />
+        <img src={content.imgSm} alt="" />
 
      
-        <span className='desc'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum non nihil voluptatum aut corrupti maiores atque tempore sit tempora. Expedita odit maxime delectus esse culpa. Ipsum, soluta? Dignissimos laboriosam sunt error delectus facilis cupiditate?
+        <span className='title'>
+            {content.title}
         </span>
+        <span className='desc'>
+            {content.desc}
+        </span>
+
+
         <div className="buttons">
             <button className="play">
                 <span>play</span>

@@ -15,7 +15,7 @@ const ListItem = ({index,item}) => {
     const getmovie=async()=>{
     try {
 
-    const res=await axios .get("/movie/"+item,{
+    const res=await axios.get("/movie/find/"+item,{
       headers:{
         token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDQwZTdiYjlkMWE4NWFkN2NlNjU1NiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NDc2NDc4NywiZXhwIjoxNjk1MTk2Nzg3fQ.Z5BBENklkMvEOiUJQ-CpBTXBcBg12sXVWjD6lMgqaFU"
 
@@ -24,7 +24,7 @@ const ListItem = ({index,item}) => {
     
     
     setMovie(res.data)
-    console.log(res.data)
+    // console.log(res.data)
   } catch (error) {
     console.log(error)
     
