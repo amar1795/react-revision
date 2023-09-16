@@ -1,7 +1,6 @@
 const router=require("express").Router();
 const List=require("../models/List");
 const verifyToken=require("../verifyToken")
-const jwt=require("jsonwebtoken");
 
 // all the crud application or register or login functionalities are being performed by the code and the algorithms implementetd by mongodb 
 
