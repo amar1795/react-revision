@@ -65,10 +65,12 @@ const NoteState=(props)=>{
     const json=await response.json();
     console.log(json);
       setnotes(notes.concat(json));
-
-
    }
 
+
+
+
+   
   //delete a note Api
    const deletenote=async(id)=>{  
     console.log("deleting note with the id" +id)

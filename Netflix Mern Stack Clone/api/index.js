@@ -19,6 +19,7 @@ mongoose.connect(process.env.MONGO_URL,{
 app.use(express.json())
 
 
+
 app.use("/api/auth",authroute)
 app.use("/api/users",userroute)
 app.use("/api/movie",movieroute)
