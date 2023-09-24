@@ -6,15 +6,13 @@ import AppReducer from "./AppReducer";
 const initialState={
     transactions:[
         {id:1,text:"flower",amount:-20},
-        {id:1,text:"flower",amount:-20},
-        {id:1,text:"flower",amount:-20},
-        {id:1,text:"flower",amount:-20},
-        {id:1,text:"flower",amount:-20},
-
+        {id:2,text:"apple",amount:-520},
+        {id:3,text:"bannana",amount:-20},
+        {id:4,text:"car",amount:1020},
+        {id:5,text:"house",amount:-20},
 
     ]
 }
-
 
 // create context
 export const GlobalContext=createContext(initialState);
