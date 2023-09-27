@@ -49,9 +49,9 @@ router.delete("/:id",verifyToken,async (req,res)=>{
         res.status(403).json("you can only delete your account ")
     }
 })
+
+
 // get
-
-
 // we don't need to verify the jwt token to search for the users
 router.get("/find/:id",async (req,res)=>{   
     try {
