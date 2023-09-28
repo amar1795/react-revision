@@ -50,7 +50,7 @@ app.post("/api/refresh", (req, res) => {
 
 const generateAccessToken = (user) => {
   return jwt.sign({ id: user.id, isAdmin: user.isAdmin }, "mySecretKey", {
-    expiresIn: "5s",
+    expiresIn: "5m",
   });
 };
 
@@ -60,17 +60,17 @@ const generateRefreshToken = (user) => {
 
 app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
-  const user = users.find((u) => {
+  const usertest = users.find((u) => {
     return u.username === username && u.password === password;
   });
-  if (user) {
+  if (usertest) {
     //Generate an access token
-    const accessToken = generateAccessToken(user);
-    const refreshToken = generateRefreshToken(user);
+    const accessToken = generateAccessToken(usertest);
+    const refreshToken = generateRefreshToken(usertest);
     refreshTokens.push(refreshToken);
     res.json({
-      username: user.username,
-      isAdmin: user.isAdmin,
+      username: usertest.username,
+      isAdmin: usertest.isAdmin,
       accessToken,
       refreshToken,
     });
