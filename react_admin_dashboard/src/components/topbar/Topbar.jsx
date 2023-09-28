@@ -17,11 +17,10 @@ const Topbar = () => {
             <div className="topRight">
                 <div className="topBarIconContainer">
                     <NotificationsNone/>
+                    <span className="topIconBadge">2</span>
                 
                 </div>
-                <div className="topIconBag">
-
-                </div>
+                
             </div>
         </div>
       
