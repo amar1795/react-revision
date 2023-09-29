@@ -1,7 +1,13 @@
 import React from 'react'
 import "./widgetlg.css"
-import { Button } from '@material-ui/core'
+
+
+
 const Widgetlg = () => {
+  // button component creatd here instead of creating it inisde components folder as a seperate component
+  const Button = ({ type }) => {
+    return <button className={"widgetLgButton " + type}>{type}</button>;
+  };
   return (
     <div className='widgetlg'>
       <h3 className="widgetLgTitle">Latest transactions</h3>

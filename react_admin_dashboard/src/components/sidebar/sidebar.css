@@ -4,6 +4,7 @@
     height: calc(100vh - 50px);  
     position: sticky;
     top: 50px;
+    overflow-y: auto;
 }
 
 .sidebarWrapper{
