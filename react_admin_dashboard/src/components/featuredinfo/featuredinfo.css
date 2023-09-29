@@ -1,9 +1,10 @@
 .featured{
-    display: flex;
+        display: flex;
         width: 100%;
-
  /* justify-content: space-between; */
-}
+        }
+
+
 
 .featuredItem{
     flex: 1;
