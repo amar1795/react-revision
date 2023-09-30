@@ -7,6 +7,9 @@ import Services from './components/Services';
 import Pricecontainer from './components/Pricecontainer';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { useEffect, useState } from 'react';
+
+
 
 const Container=styled.div`
 height: 100vh;
@@ -33,12 +36,15 @@ overflow: hidden;
 const FeatureSec=styled.div`
 clip-path: polygon(0% 0%, 31% 0, 47% 50%, 30% 100%, 0% 100%);
 background-color: blueviolet;
+
 ${Shape}
 overflow: hidden;
 `
 const FeatureServices=styled.div`
 clip-path: polygon(13% 0, 40% 0, 26% 100%, 0% 100%);
 background-color: blueviolet;
+/* background-color: red; */
+
 ${Shape}
 overflow: hidden;
 `
@@ -59,8 +65,27 @@ overflow: hidden;
 
 
 function App() {
-  const smallscreen=window.screen.width <=480 ?true :false
-  return (<>
+  
+  // Initialize the screen width state
+  const [smallscreen, setSmallscreen] = useState(window.innerWidth <= 480);
+
+  // Add a resize event listener to track screen width changes
+  useEffect(() => {
+    const handleResize = () => {
+      setSmallscreen(window.innerWidth <= 480);
+    };
+
+    // Attach the event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return (
+  <>
    <Container>
   <Navbar/>
   <Intro/>  

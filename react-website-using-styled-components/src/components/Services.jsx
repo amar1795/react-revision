@@ -36,6 +36,8 @@ const Video = styled.video`
   left: 30px;
   margin: auto;
   border-radius: 20px;
+ 
+
   @media only screen and (max-width:480px)
   {
     width: 100%;
