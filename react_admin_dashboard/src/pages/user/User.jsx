@@ -97,12 +97,14 @@ const User = () => {
                     <div className="userUpdateRight">
 
                         <div className="userUpdateUpload">
-                            <img src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" />
+                            <img src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" className='userUpdateImg' />
                             {/* if we don't use html for file file upload will not work */}
-                            <label htmlFor='file'><Publish/></label>  
+                            <label htmlFor='file'><Publish className='userUpdateIcon'/></label>  
                             <input type="file" id='file' style={{display:"none"}} /> 
                         </div>
-
+                        <button className="userUpdateButton">
+                            UserUpdate
+                        </button>
                     
                     </div>
 
