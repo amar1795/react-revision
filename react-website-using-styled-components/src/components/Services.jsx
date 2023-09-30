@@ -6,6 +6,16 @@ import Minicard from './Minicard'
 const Container=styled.div`
 height: 100vh;
 display: flex;    
+/* background-color: ${(props) => (props.open ? "black" : "transparent")}; Conditional background color */
+
+&.blackBackground {
+  background-color:  rgba(0,0,0,0.5);
+  
+}
+
+&.transparentBackground {
+  background-color: transparent;
+}
 @media only screen and (max-width:480px)
   {
    flex-direction: column;
@@ -35,7 +45,8 @@ const Video = styled.video`
   bottom: 0;
   left: 30px;
   margin: auto;
-  border-radius: 20px;
+  border-radius: 20px;  
+  
  
 
   @media only screen and (max-width:480px)
@@ -80,9 +91,7 @@ padding: 20px;
 @media only screen and (max-width:480px)
   {
    font-size: 20px;
-
-  }
-    
+  }   
 `
 
 const Cardcontainer=styled.p`
@@ -111,7 +120,7 @@ top: 0;
 left: 0;
 background-color: rgba(0,0,0,0.5);
 `
-const Closebutton=styled.button`
+const Closebutton=styled.button`    
 position: absolute;
 right: 5px;
 top: 140px;
@@ -124,10 +133,16 @@ border: none;
 const Services = () => {
     const [open,setopen]=useState(false)
     const smallscreen=window.screen.width <=480 ?true :false
+    console.log(smallscreen)
+
+    const toggleBackgroundClass = () => {
+    return open ? 'blackBackground' : 'transparentBackground';
+  };
 
     /* above usestate will be used in styled components */
   return (
-    <Container>
+    /* when we click on the button the entire page will re render and upon the first rerender this toggleBackgroundClass will be called  */
+    <Container className={toggleBackgroundClass()}>
         <Left>
             <Image open={open} src={women} />
             <Video open={open} autoPlay loop controls    src='https://player.vimeo.com/external/449759244.sd.mp4?s=d5f3da46ddc17aa69a7de84f1e420610ebd2a391&profile_id=139&oauth2_token_id=57447761'

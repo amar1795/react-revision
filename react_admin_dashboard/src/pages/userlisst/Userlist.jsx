@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./userlist.css"
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from '@material-ui/icons';
@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom';
 import { userRows } from '../../Dummydata';
 
 const Userlist = () => {
+  const [data,setData]=useState(userRows);
+
+  const handleDelete =(id)=>{
+    setData(data.filter((item)=> item.id !== id ))}
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 200 },
@@ -41,7 +45,7 @@ const columns = [
           Edit
         </button>
         </Link>
-        <DeleteOutline className='userListdelete'/>
+        <DeleteOutline className='userListdelete' onClick={()=>{handleDelete(params.row.id)}} />
         </>
       )
     }
@@ -52,7 +56,7 @@ const columns = [
   return (
     <div className='user'>
       <DataGrid
-        rows={userRows}
+        rows={data}
         columns={columns}
         initialState={{
           pagination: {

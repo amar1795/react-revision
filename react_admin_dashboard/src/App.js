@@ -9,6 +9,7 @@ import {
   Link,
 } from "react-router-dom";
 import Userlist from "./pages/userlisst/Userlist";
+import User from "./pages/user/User";
 
 
 
@@ -22,6 +23,8 @@ function App() {
           <Routes>
         <Route path="/"  element={<Home/>} />
         <Route path="/users"  element={<Userlist/>} />
+        <Route path="/user/:userId"  element={<User/>} />
+        
           </Routes>
       </div>
      
