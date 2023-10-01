@@ -26,6 +26,7 @@
 }
 
 .sidebarListItem{
+   
     padding: 5px;
     cursor: pointer;
     list-style: none;
@@ -50,3 +51,6 @@
     text-decoration: none;
     color: inherit;
 }
+
+/* ********************************************************************************************** */
+/* even though the link is applied here if using the same class in topbar it gets applied overe there even though i have just used only the classname and not specified the link class in css */

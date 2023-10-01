@@ -1,6 +1,7 @@
 import React from 'react'
 import "./topbar.css"
 import {Language, NotificationsNone, Settings} from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 
 
 const Topbar = () => {
@@ -8,9 +9,11 @@ const Topbar = () => {
     <div className="topbar">
         <div className="topBarWrapper">
             <div className="topLeft">
-                <div className="logo">
+              <Link to="/" className='link'>
+              <div className="logo">
                     Admin Dashboard
                 </div>
+              </Link>
 
             </div>
 

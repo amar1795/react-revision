@@ -11,11 +11,14 @@ const SIdebar = () => {
         <div className="sidebarWrapper">
             <div className="sidebarMenu">     
                 <h3 className="sidebarTitle">Dashboard </h3>
-                <ul className="sidebarList">     
+                <ul className="sidebarList"> 
+                <Link to="/" className='link'>    
                     <li className="sidebarListItem">
-                        <LineStyle className='sidebarIcon'/>
+                       
+                       <LineStyle className='sidebarIcon'/>
                         home
                     </li>
+                       </Link>
                     <li className="sidebarListItem">
                         <Timeline className='sidebarIcon'/>
                         Analytics
