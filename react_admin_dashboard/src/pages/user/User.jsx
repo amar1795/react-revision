@@ -1,6 +1,7 @@
 import React from 'react'
 import "./user.css"
 import { CalendarToday, LocationSearching, MailOutline, PermIdentity, PhoneAndroid, Publish } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 
 
 const User = () => {
@@ -11,7 +12,9 @@ const User = () => {
                 Edit User
             </h1>
 
+            <Link to="/newUser">
             <button className='userAddButton'>Create</button>
+            </Link>
         </div>
         <div className="usercontainer">
             <div className="userShow">

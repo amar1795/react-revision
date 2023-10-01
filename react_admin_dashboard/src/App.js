@@ -10,6 +10,8 @@ import {
 } from "react-router-dom";
 import Userlist from "./pages/userlisst/Userlist";
 import User from "./pages/user/User";
+import Newuser from "./pages/newuser/Newuser";
+import Productlist from "./pages/productList/Productlist";
 
 
 
@@ -24,6 +26,13 @@ function App() {
         <Route path="/"  element={<Home/>} />
         <Route path="/users"  element={<Userlist/>} />
         <Route path="/user/:userId"  element={<User/>} />
+        <Route path="/newuser"  element={<Newuser/>} />
+        <Route path="/products"  element={<Productlist/>} />
+        <Route path="/product/:productId"  element={<Newuser/>} />
+        <Route path="/newProduct"  element={<Newuser/>} />
+
+
+
         
           </Routes>
       </div>
