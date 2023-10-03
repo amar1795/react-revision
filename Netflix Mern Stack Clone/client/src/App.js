@@ -9,7 +9,7 @@ import {
   Routes,
   Route,
   Link,
-  redirect,
+  Navigate,
 } from "react-router-dom";
 
 function App() {
@@ -20,15 +20,17 @@ function App() {
       <Routes>
         {/* react router 6 doesnot supprt or need exact */}
         {/* redirect is crashing in this version need to check, althouh it is working without redirect */}
-        <Route path="/" element={user? <Home /> : <Register/>} />
+        <Route path="/" element={
+              user ? <Home /> : <Navigate to="/login" replace />
+            } />
+        <Route path="/Register" element={<Register/>} />
+        <Route path="/Login" element={ <Login/>} /> 
 
         { user && (
         <>      
         <Route path="/movies" element={<Home  type="movies"/>} />
         <Route path="/series" element={<Home  type="series"/>} />
         <Route path="/watch" element={<Watch/>} />
-        <Route path="/Login" element={ <Login/>} /> 
-        <Route path="/Register" element={<Register/>} />
         </>      
         )
       

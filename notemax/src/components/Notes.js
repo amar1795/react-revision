@@ -6,7 +6,6 @@ import AddNote from './AddNote';
 import {useNavigate} from 'react-router-dom';
 
 
-
 const Note = (props) => {
 
   let navigate = useNavigate();

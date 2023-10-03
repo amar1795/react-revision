@@ -17,7 +17,7 @@ const ListItem = ({index,item}) => {
 
     const res=await axios.get("/movie/find/"+item,{
       headers:{
-        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDQwZTdiYjlkMWE4NWFkN2NlNjU1NiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NDc2NDc4NywiZXhwIjoxNjk1MTk2Nzg3fQ.Z5BBENklkMvEOiUJQ-CpBTXBcBg12sXVWjD6lMgqaFU"
+        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDQwZTdiYjlkMWE4NWFkN2NlNjU1NiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NjI3ODAwNCwiZXhwIjoxNjk2NzEwMDA0fQ.f_XymCUS9p3CZ6HMWu0vgRXlrGHWMM7XlJy1oEWW_aw"
 
       },
     });
