@@ -3,7 +3,7 @@ export const loginStart=()=>({
 
 });
 
-export const loginSuccess=()=>({
+export const loginSuccess=(user)=>({
     type:"LOGIN_SUCCESS",
    payload:user,
 });

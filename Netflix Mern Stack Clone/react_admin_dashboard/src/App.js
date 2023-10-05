@@ -7,6 +7,7 @@ import {
   Routes,
   Route,
   Link,
+  Navigate,
 
 } from "react-router-dom";
 import Userlist from "./pages/userlisst/Userlist";
@@ -15,21 +16,29 @@ import Newuser from "./pages/newuser/Newuser";
 import Productlist from "./pages/productList/Productlist";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/home/newproduct/Newproduct";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Login from "./pages/login/Login";
+import { AuthContext } from "./context/authcontext/AuthContext";
 
 
   function App() {
   
-    const [auth,setAuth]=useState(false)
+    const [user,setAuth]=useState(false)
+
 
     return (
     
       <div className="App">
-        
+   
           <BrowserRouter>
+          <Routes>
+            {/* login condition when the user succesfully logs in he will be redireced to home page if not  then he will still be in login page */}
+            <Route path="/login"
+              element={user ? <Navigate to="/" replace={true} /> : <Login/>}
+           />
+          </Routes>
 
-       {auth && (
+       {user && (
         <>
           <Topbar />
         <div className="container">
@@ -49,11 +58,10 @@ import Login from "./pages/login/Login";
         </>
             )}
           
-          { !auth && <Routes>
-            <Route path="/login" element={<Login />} />
-          </Routes>
-
-          }
+          
+        
+         
+  
       </BrowserRouter>
       
       </div>
