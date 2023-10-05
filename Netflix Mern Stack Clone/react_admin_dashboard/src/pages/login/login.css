@@ -29,5 +29,7 @@
     cursor: pointer;
     font-weight: 600;
     border: none;
+    background-color: teal;
+    color: white;
 }
 
