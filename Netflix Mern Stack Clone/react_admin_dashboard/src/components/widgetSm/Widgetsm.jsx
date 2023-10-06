@@ -10,10 +10,10 @@ const Widgetsm = () => {
 
     const getNewUsers = async ()=>{
       try {
-        const res = await axios.get("/users?new=true",
+        const res = await axios.get("http://localhost:8000/api/users?new=true",
         {headers:{
           token:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDQwZTdiYjlkMWE4NWFkN2NlNjU1NiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NjI3ODAwNCwiZXhwIjoxNjk2NzEwMDA0fQ.f_XymCUS9p3CZ6HMWu0vgRXlrGHWMM7XlJy1oEWW_aw"
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MjA0YzJhZmUxMDliYTRiM2VmZDg1NCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NjYxNzAyOCwiZXhwIjoxNjk3MDQ5MDI4fQ.fH-Nn6Sf0eOvIb2seLTGOH4uU6KW_J37LgS8R89ikjY"
         },
         })
         

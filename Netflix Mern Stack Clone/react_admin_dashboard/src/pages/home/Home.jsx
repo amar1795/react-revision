@@ -32,7 +32,7 @@ const Home = () => {
   useEffect(()=>{
     const getStats=async()=>{
       try {
-        const res=await axios.get("/users/stats",{
+        const res=await axios.get("http://localhost:8000/api/users/stats",{
           headers:{
             token:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MjA0YzJhZmUxMDliYTRiM2VmZDg1NCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTY2MTU0ODcsImV4cCI6MTY5NzA0NzQ4N30.RXQ1oaVH1bxAY63TfIF3meCjFF3R3-kNIYCgXLcF7qo"
