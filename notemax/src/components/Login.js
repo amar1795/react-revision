@@ -11,8 +11,7 @@ const Login = (props) => {
         const response= await fetch(`http://localhost:3001/api/auth/login`,{
             method:"POST",
             headers:{
-              "Content-Type":"application/json",
-             
+              "Content-Type":"application/json",            
             },
             body:JSON.stringify({email:credentials.email,password:credentials.password})
           })
@@ -35,7 +34,7 @@ const Login = (props) => {
         const onchange=(e)=>{
             setcredentials({...credentials,[e.target.name]:e.target.value});
             console.log(credentials)
-                    }
+      }
 
     
   return (

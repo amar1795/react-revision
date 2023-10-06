@@ -15,6 +15,7 @@ const Navbar = (props) => {
     // window.location.href = "/login";
     navigate("/login")
   }
+  
   let location = useLocation();
 
   React.useEffect(() => {

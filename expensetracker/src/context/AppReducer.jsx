@@ -8,6 +8,7 @@ export default (state,action)=>{
         case "ADD_TRANSACTION":
             return{
                 ...state,
+                // here the new data is added to the begininng of the new stored array
                 transactions:[action.payload,...state.transactions]
             }
 

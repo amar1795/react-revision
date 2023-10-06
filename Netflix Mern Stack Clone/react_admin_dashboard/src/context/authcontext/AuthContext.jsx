@@ -1,6 +1,5 @@
 import { createContext, useEffect, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
-
 // initial state
 const INITIAL_STATE={
     user: JSON.parse(localStorage.getItem("user")) || null,
@@ -27,6 +26,8 @@ const INITIAL_STATE={
             user:state.user,
             isFetching:state.isFetching,
             error:state.error,
+            dispatch
+            // didn't put dispatch in this value hence got hte error the whole time, waster a day re revising the redux concepts
         }}>
             {children}
 

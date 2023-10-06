@@ -1,3 +1,4 @@
+
 const AuthReducer=(state,action)=>{
     switch (action.type) {
         case "LOGIN_START":
@@ -19,8 +20,6 @@ const AuthReducer=(state,action)=>{
             error:true,
         }
         
-            
-    
         default:
            return {...state}
     }
