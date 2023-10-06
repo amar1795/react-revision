@@ -1,40 +1,41 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./productlist.css"
 import { productRows } from '../../Dummydata'
 import { DataGrid } from '@mui/x-data-grid'
 import { DeleteOutline } from '@material-ui/icons';
 import { Link } from 'react-router-dom'
+import { MovieContext } from '../../context/moviecontext/MovieContext';
+import { getMovies } from '../../context/moviecontext/apicalls';
 
 const Productlist = () => {
 
     const[data,setData]=useState(productRows);
+    const {movies,dispatch}=useContext(MovieContext)
+
+
+        useEffect(()=>{
+          getMovies(dispatch)
+        },[dispatch])
     
     const handleDelete =(id)=>{
         setData(data.filter((item)=> item.id !== id ))}
     
     const columns = [
-        { field: 'id', headerName: 'ID', width: 200 },
-        { field: 'product', headerName: 'product', width: 200,renderCell:(params)=>{
+        { field: '_id', headerName: 'ID', width: 200 },
+        { field: 'movie', headerName: 'Movie', width: 200,renderCell:(params)=>{
           return(
             <div className='productListitem'>
               <img className='productListImg' src={params.row.img} alt=''/>
-              {params.row.name}
+              {params.row.title}
             </div>
           )
       
         } },
-        { field: 'stock', headerName: 'stock', width: 200 },
-        {
-          field: 'status',
-          headerName: 'status',
-          width: 120,
-        },
-      
-        {
-          field: 'price',
-          headerName: 'price',
-          width: 120,
-        },
+        { field: 'genre', headerName: 'Genre', width: 150 },
+        { field: 'year', headerName: 'year', width: 150 },
+        { field: 'limit', headerName: 'limit', width: 150 },
+        { field: 'isSeries', headerName: 'isSeries', width: 150 },
+        
       {
           field: 'action',
           headerName: 'Action',
@@ -57,7 +58,7 @@ const Productlist = () => {
   return (
     <div className='productlist'>
       <DataGrid
-        rows={data}
+        rows={movies}
         columns={columns}
         initialState={{
           pagination: {
@@ -67,6 +68,7 @@ const Productlist = () => {
         disableRowSelectionOnClick
         pageSizeOptions={[5, 10]}
         checkboxSelection
+        getRowId={r=>r._id}
       />
 
     

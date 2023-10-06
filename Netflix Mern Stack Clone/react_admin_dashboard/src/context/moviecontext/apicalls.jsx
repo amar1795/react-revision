@@ -14,7 +14,7 @@ import {
 export const getMovies = async (dispatch) => {
   dispatch(getMoviesStart());
   try {
-    const res = await axios.get("/movies", {
+    const res = await axios.get("http://localhost:8000/api/movie", {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },

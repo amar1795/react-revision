@@ -74,6 +74,7 @@ const MovieReducer = (state, action) => {
           isFetching: false,
           error: true,
         };
+        
       default:
         return { ...state };
     }
