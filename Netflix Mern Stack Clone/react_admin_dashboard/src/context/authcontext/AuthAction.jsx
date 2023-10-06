@@ -7,9 +7,11 @@ export const login =async (user,dispatch)=>{
     dispatch(loginStart());
       // login start  
       try {
-          const res = await axios.post("auth/login",user);
+          const res = await axios.post("http://localhost:8000/api/auth/login",user);
           // success
-          dispatch(loginSuccess(res.data))
+        //  doubt  this below condition will only allow admin and not basic users ???? // yes i was right thata condition will only allow admins only 
+        // res.data.isAdmin && dispatch(loginSuccess(res.data))
+         dispatch(loginSuccess(res.data))
       } catch (error) {
           // failure
           dispatch(loginFailure())    

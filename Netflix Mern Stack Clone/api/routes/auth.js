@@ -39,18 +39,19 @@ router.post("/login",async (req,res)=>{
     // if the original password and the entered password do not match
     originalPassword!=req.body.password && res.status(401).json("wrong username or password")
         
+    
+    // access token for additional security
+    const accessToken =jwt.sign({
+        id:user._id,isAdmin:user.isAdmin
+    },process.env.SECRET_KEY,{
+        expiresIn:"5d"
+    })
     // using destructuring to destructure passowrd in password and all the other information in info using spread operator
-        const {password ,...info}=user._doc;
-        
-        // access token for additional security
-        const accessToken =jwt.sign({
-            id:user._id,isAdmin:user.isAdmin
-        },process.env.SECRET_KEY,{
-            expiresIn:"5d"
-        })
+    const {password ,...info}=user._doc;
         res.status(200).json({...info,accessToken});
 
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).json(error)
     }
     

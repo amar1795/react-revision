@@ -23,7 +23,9 @@ import { AuthContext } from "./context/authcontext/AuthContext";
 
   function App() {
   
-    const [user,setAuth]=useState(false)
+    const {user}=useContext(AuthContext);
+
+    // const [user,setAuth]=useState(false)
 
 
     return (

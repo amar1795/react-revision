@@ -8,6 +8,11 @@ const movieroute=require("./routes/movie")
 const listroute=require("./routes/lists")
 
 
+var cors = require('cors')
+
+app.use(cors()) // Use this after the variable declaration
+
+
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL,{

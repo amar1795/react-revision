@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import "./login.css"
 import { AuthContext, AuthContextProvider } from '../../context/authcontext/AuthContext';
 import { login } from '../../context/authcontext/AuthAction';
-import { useDispatch } from 'react-redux';
 
 
 const Login = () => {
@@ -19,9 +18,8 @@ const Login = () => {
 
     // error : dispatch is not a function 
     login({email,password}, dispatch)
-    
-   
   }
+  
   
   return (
     <div className='login'>
