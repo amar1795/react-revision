@@ -33,4 +33,10 @@ export const loginFailure=()=>({
 
 });
 
+// LOGOUT
+export const loginOut=()=>({
+    type:"LOGIN_OUT",
+
+});
+
 // this is an example of action creator
