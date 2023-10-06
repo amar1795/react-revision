@@ -5,7 +5,7 @@ import { DataGrid } from '@mui/x-data-grid'
 import { DeleteOutline } from '@material-ui/icons';
 import { Link } from 'react-router-dom'
 import { MovieContext } from '../../context/moviecontext/MovieContext';
-import { getMovies } from '../../context/moviecontext/apicalls';
+import { deleteMovie, getMovies } from '../../context/moviecontext/apicalls';
 
 const Productlist = () => {
 
@@ -18,8 +18,8 @@ const Productlist = () => {
         },[dispatch])
     
     const handleDelete =(id)=>{
-        setData(data.filter((item)=> item.id !== id ))}
-    
+      deleteMovie(id,dispatch)
+    }    
     const columns = [
         { field: '_id', headerName: 'ID', width: 200 },
         { field: 'movie', headerName: 'Movie', width: 200,renderCell:(params)=>{
@@ -42,12 +42,12 @@ const Productlist = () => {
           width: 150,renderCell:(params)=>{
             return(
               <>
-              <Link to={"/product/"+params.row.id}>
+              <Link to={"/movie/"+params.row._id}>
               <button className='productListEdit'>
                 Edit
               </button>
               </Link>
-              <DeleteOutline className='productListdelete' onClick={()=>{handleDelete(params.row.id)}} />
+              <DeleteOutline className='productListdelete' onClick={()=>{handleDelete(params.row._id)}} />
               </>
             )
           }
