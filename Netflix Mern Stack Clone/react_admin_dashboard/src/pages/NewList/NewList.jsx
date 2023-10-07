@@ -29,10 +29,11 @@ export default function NewList() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  // need to understand the handlesect function once again 
 const handleSelect = (e) => {
-    e.preventDefault();
+  let value=Array.from(e.target.selectedOptions,(option)=>option.value)
+  setList({...list,[e.target.name]:value})
   };
-
 
 
   console.log(list)
@@ -41,53 +42,43 @@ const handleSelect = (e) => {
     <div className="newProduct">
       <h1 className="addProductTitle">New Movie</h1>
       <form className="addProductForm">
-        
 
-<div className="addProductItem">
-          <label>Title</label>
-          <input type="text" placeholder="Title"  id="title" name="title" onChange={handleChange}/>
-        </div>
+        <div className="formLeft">
 
-<div className="addProductItem">
-          <label>Genre</label>
-          <input type="text" placeholder="genre"  id="genre" name="genre" onChange={handleChange}/>
-        </div>
-<div className="addProductItem">
-          <label>Limit</label>
-          <input type="text" placeholder="limit"  id="limit" name="limit" onChange={handleChange}/>
-        </div>
-<div className="addProductItem">
-          <label>Age Limit</label>
-          <input type="text" placeholder="Age Limit"  id="ageLimit" name="ageLimit" onChange={handleChange}/>
-        </div>
+          <div className="addProductItem">
+                    <label>Title</label>
+                    <input type="text" placeholder="Title"  id="title" name="title" onChange={handleChange}/>
+                  </div>
 
-<div className="addProductItem">
-          <label>Genre</label>
-          <input type="text" placeholder="Genre"  id="genre" name="genre" onChange={handleChange}/>
-        </div>
+          <div className="addProductItem">
+                    <label>Genre</label>
+                    <input type="text" placeholder="genre"  id="genre" name="genre" onChange={handleChange}/>
+                  </div>
 
-      <div className="addProductItem">
-          <label>Duration</label>
-          <input type="text" placeholder="Duration"  id="duration" name="duration" onChange={handleChange}/>
+
+          <div className="addProductItem">
+            <label>Type</label>
+            <select name="active" id="active" onChange={handleChange}>
+            <option >Type</option>
+              <option value="movie">Movie</option>
+              <option value="series">Series</option>
+            </select>
+          </div>
+
         </div>
 
-        <div className="addProductItem">
-          <label>Is Series ?</label>
-          <select name="active" id="active" onChange={handleChange}>
-            <option value="movie">Movie</option>
-            <option value="series">Series</option>
-          </select>
-        </div>
+        <div className="formRight">
 
-        <div className="addProductItem">
-          <label>Content</label>
-          <select multiple name="content" id="active" onClick={handleSelect}>
-            {movies.map((movie)=>(
-              <option value={movie._id}>{movie.title}</option>
-            ))}
-          </select>
+     
+          <div className="addProductItem">
+            <label>Content</label>
+            <select multiple name="content" id="active" onChange={handleSelect} style={{height:"300px"}}>
+              {movies.map((movie)=>(
+                <option key={movie._id} value={movie._id}>{movie.title}</option>
+              ))}
+            </select>
+          </div>
         </div>
-
         <button className="addProductButton" onClick={handleSubmit}>Create</button>
 
       </form>
