@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import "./newproduct.css";
 import storage from "../../firebase";
-import { createMovie } from "../../context/listcontext/apicalls";
+import { createList } from "../../context/listcontext/apicalls";
 import { MovieContext } from "../../context/moviecontext/MovieContext";
 
 
@@ -81,7 +81,7 @@ export default function NewProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createMovie(movie, dispatch);
+    createList(movie, dispatch);
   };
 
   console.log(movie)

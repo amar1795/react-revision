@@ -8,20 +8,20 @@ export const getListsStart = () => ({
   });
   
   export const getListsFailure = () => ({
-    type: "GET_LISTS_FAILURE",
+    type: "GET_LIST_FAILURE",
   });
   
   export const createListStart = () => ({
-    type: "CREATE_MOVIE_START",
+    type: "CREATE_LIST_START",
   });
   
   export const createListSuccess = (list) => ({
-    type: "CREATE_List_SUCCESS",
+    type: "CREATE_LIST_SUCCESS",
     payload: list,
   });
   
   export const createListFailure = () => ({
-    type: "CREATE_List_FAILURE",
+    type: "CREATE_LIST_FAILURE",
   });
   
   export const updateListStart = () => ({

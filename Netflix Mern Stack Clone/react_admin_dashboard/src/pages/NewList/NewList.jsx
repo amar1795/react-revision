@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./newlist.css";
 import storage from "../../firebase";
-import { createMovie } from "../../context/listcontext/apicalls";
+import { createList, createMovie } from "../../context/listcontext/apicalls";
 import { MovieContext } from "../../context/moviecontext/MovieContext";
 import { ListContext } from "../../context/listcontext/ListContext";
 import { getMovies } from "../../context/moviecontext/apicalls";
@@ -25,9 +25,9 @@ export default function NewList() {
     setList({...list,[e.target.name]:value})
   }
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    createList(list,dispatch)
   };
   // need to understand the handlesect function once again 
 const handleSelect = (e) => {
@@ -40,25 +40,25 @@ const handleSelect = (e) => {
 
   return (
     <div className="newProduct">
-      <h1 className="addProductTitle">New Movie</h1>
+      <h1 className="addProductTitle">New List</h1>
       <form className="addProductForm">
 
         <div className="formLeft">
 
           <div className="addProductItem">
                     <label>Title</label>
-                    <input type="text" placeholder="Title"  id="title" name="title" onChange={handleChange}/>
+                    <input type="text" placeholder="popular Movies"  id="title" name="title" onChange={handleChange}/>
                   </div>
 
           <div className="addProductItem">
                     <label>Genre</label>
-                    <input type="text" placeholder="genre"  id="genre" name="genre" onChange={handleChange}/>
+                    <input type="text" placeholder="action"  id="genre" name="genre" onChange={handleChange}/>
                   </div>
 
 
           <div className="addProductItem">
             <label>Type</label>
-            <select name="active" id="active" onChange={handleChange}>
+            <select name="type" id="type" onChange={handleChange}>
             <option >Type</option>
               <option value="movie">Movie</option>
               <option value="series">Series</option>
@@ -72,7 +72,7 @@ const handleSelect = (e) => {
      
           <div className="addProductItem">
             <label>Content</label>
-            <select multiple name="content" id="active" onChange={handleSelect} style={{height:"300px"}}>
+            <select multiple name="content" id="content" onChange={handleSelect} style={{height:"300px"}}>
               {movies.map((movie)=>(
                 <option key={movie._id} value={movie._id}>{movie.title}</option>
               ))}

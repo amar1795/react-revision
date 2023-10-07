@@ -26,10 +26,10 @@ export const getLists = async (dispatch) => {
 };
 
 //create
-export const createMovie = async (movie, dispatch) => {
+export const createList = async (list, dispatch) => {
   dispatch(createListStart());
   try {
-    const res = await axios.post("http://localhost:8000/api/list/addlists", movie, {
+    const res = await axios.post("http://localhost:8000/api/list/addlists/", list, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
