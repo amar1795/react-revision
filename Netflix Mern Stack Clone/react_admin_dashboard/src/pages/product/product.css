@@ -28,6 +28,9 @@
   .productTopRight {
     flex: 1;
   }
+  .productInfoKey{
+    margin-right: 20px;
+  }
   
   .productTopRight {
     padding: 20px;
