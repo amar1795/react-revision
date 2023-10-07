@@ -15,7 +15,7 @@ import User from "./pages/user/User";
 import Newuser from "./pages/newuser/Newuser";
 import Productlist from "./pages/productList/Productlist";
 import Product from "./pages/product/Product";
-import NewProduct from "./pages/home/newproduct/Newproduct";
+import NewProduct from "./pages/newproduct/Newproduct";
 import { useContext, useState } from "react";
 import Login from "./pages/login/Login";
 import { AuthContext } from "./context/authcontext/AuthContext";
