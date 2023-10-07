@@ -3,25 +3,25 @@ import {
   createMovieFailure,
   createMovieStart,
   createMovieSuccess,
-  deleteMovieFailure,
-  deleteMovieStart,
-  deleteMovieSuccess,
-  getMoviesFailure,
-  getMoviesStart,
-  getMoviesSuccess,
-} from "./MovieActions";
+  deleteListsFailure,
+  deleteListsStart,
+  deleteListsSuccess,
+  getListsStart,
+  getListsSuccess,
+  getListsFailure,
+} from "./ListActions";
 
-export const getMovies = async (dispatch) => {
-  dispatch(getMoviesStart());
+export const getLists = async (dispatch) => {
+  dispatch(getListsStart());
   try {
-    const res = await axios.get("http://localhost:8000/api/movie", {
+    const res = await axios.get("http://localhost:8000/api/list/allmovielist/", {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
-    dispatch(getMoviesSuccess(res.data));
+    dispatch(getListsSuccess(res.data));
   } catch (err) {
-    dispatch(getMoviesFailure());
+    dispatch(getListsFailure());
   }
 };
 
@@ -29,7 +29,7 @@ export const getMovies = async (dispatch) => {
 export const createMovie = async (movie, dispatch) => {
   dispatch(createMovieStart());
   try {
-    const res = await axios.post("/movies", movie, {
+    const res = await axios.post("http://localhost:8000/api/movie", movie, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -41,16 +41,16 @@ export const createMovie = async (movie, dispatch) => {
 };
 
 //delete
-export const deleteMovie = async (id, dispatch) => {
-  dispatch(deleteMovieStart());
+export const deleteLists = async (id, dispatch) => {
+  dispatch(deleteListsStart());
   try {
-    await axios.delete("/movies/" + id, {
+    await axios.delete("http://localhost:8000/api/list/delete/" + id, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
-    dispatch(deleteMovieSuccess(id));
+    dispatch(deleteListsSuccess(id));
   } catch (err) {
-    dispatch(deleteMovieFailure());
+    dispatch(deleteListsFailure());
   }
 };

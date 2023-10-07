@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import "./newproduct.css";
 import storage from "../../firebase";
-import { createMovie } from "../../context/moviecontext/apicalls";
+import { createMovie } from "../../context/listcontext/apicalls";
 import { MovieContext } from "../../context/moviecontext/MovieContext";
 
 
@@ -57,16 +57,26 @@ export default function NewProduct() {
 
   }
 
+  
+
+  
   const handleUpload=(e)=>{
     e.preventDefault();
-    upload([
-      {file:img,label:"img"},
-      {file:imgTitle,label:"imgTitle"},
-      {file:imgSm,label:"imgSm"},
-      {file:trailer,label:"trailer"},
-      {file:video,label:"video"},
-      
-    ])
+    // need to immplement the alert functionality for the error later
+
+    if (movie === null) {
+      <p> Please Enter all the docs first</p>
+    } else {
+      upload([
+        {file:img,label:"img"},
+        {file:imgTitle,label:"imgTitle"},
+        {file:imgSm,label:"imgSm"},
+        {file:trailer,label:"trailer"},
+        {file:video,label:"video"},
+        
+      ])    
+    }
+    
   }
 
   const handleSubmit = (e) => {
@@ -138,7 +148,7 @@ export default function NewProduct() {
           <label>Video</label>
           <input type="file" placeholder="Video"  id="video" name="video" onChange={(e)=>setVideo(e.target.files[0])}/>
         </div>
-        {
+        { 
           uploaded === 5 ? <button className="addProductButton" onClick={handleSubmit}>Create</button>
           :
           <button className="addProductButton" onClick={handleUpload}>Upload</button>
