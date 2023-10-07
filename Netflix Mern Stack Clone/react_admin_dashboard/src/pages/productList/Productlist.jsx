@@ -40,9 +40,14 @@ const Productlist = () => {
           field: 'action',
           headerName: 'Action',
           width: 150,renderCell:(params)=>{
+            console.log("this is params "+params.row._id)
+          
+            
             return(
               <>
-              <Link to={"/movie/"+params.row._id}>
+              {/* *************************this is the syntax for passing state in Link in react 6******************************************************* */}
+            <Link to= {`/movie/ ${params.row._id}`} state= {{movie: params.row}} >
+                
               <button className='productListEdit'>
                 Edit
               </button>

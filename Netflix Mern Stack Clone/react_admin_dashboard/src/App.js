@@ -52,7 +52,7 @@ import { AuthContext } from "./context/authcontext/AuthContext";
           <Route path="/user/:userId"  element={<User/>} />
           <Route path="/newuser"  element={<Newuser/>} />
           <Route path="/movies"  element={<Productlist/>} />
-          <Route path="/product/:productId"  element={<Product/>} />
+          <Route path="/movie/:movieId"  element={<Product/>} />
           <Route path="/newProduct"  element={<NewProduct/>} />
         
             </Routes>
