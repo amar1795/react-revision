@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./newproduct.css";
 import storage from "../../firebase";
-
-
+import { createMovie } from "../../context/moviecontext/apicalls";
+import { MovieContext } from "../../context/moviecontext/MovieContext";
 
 
 
 export default function NewProduct() {
   
+  const { dispatch } = useContext(MovieContext);
   // one usstate hook for all the text and other for respective  file inputs 
   const [movie,setMovie]=useState(null);
   const [img,setImg]=useState(null);
@@ -67,6 +68,11 @@ export default function NewProduct() {
       
     ])
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createMovie(movie, dispatch);
+  };
 
   console.log(movie)
 
@@ -133,7 +139,7 @@ export default function NewProduct() {
           <input type="file" placeholder="Video"  id="video" name="video" onChange={(e)=>setVideo(e.target.files[0])}/>
         </div>
         {
-          uploaded === 5 ? <button className="addProductButton">Create</button>
+          uploaded === 5 ? <button className="addProductButton" onClick={handleSubmit}>Create</button>
           :
           <button className="addProductButton" onClick={handleUpload}>Upload</button>
 
