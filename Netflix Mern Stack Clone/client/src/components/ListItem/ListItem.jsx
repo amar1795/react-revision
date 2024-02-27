@@ -17,12 +17,11 @@ const ListItem = ({index,item}) => {
 
     const res=await axios.get("/movie/find/"+item,{
       headers:{
-        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDQwZTdiYjlkMWE4NWFkN2NlNjU1NiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NjI3ODAwNCwiZXhwIjoxNjk2NzEwMDA0fQ.f_XymCUS9p3CZ6HMWu0vgRXlrGHWMM7XlJy1oEWW_aw"
+        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2IzN2ZjZGE5YzhhMjRlZjVhODM5NiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwMjU3NDIxOCwiZXhwIjoxNzAzMDA2MjE4fQ.YG5_HdWuW9zr7W1mj-pcqysI3hLRkKcc4vNsF_u7zhM"
 
       },
     });
-    
-    
+        
     setMovie(res.data)
     // console.log(res.data)
   } catch (error) {
@@ -52,6 +51,7 @@ const ListItem = ({index,item}) => {
         src={movie.imgSm}
         alt=""
       />
+
       {isHovered &&
       <>
       <video src={movie.trailer} autoPlay={true} loop />

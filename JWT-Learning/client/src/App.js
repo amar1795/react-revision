@@ -4,6 +4,7 @@ import { useState } from "react";
 import jwt_decode from "jwt-decode";
 
 function App() {
+
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +19,9 @@ function App() {
         accessToken: res.data.accessToken,
         refreshToken: res.data.refreshToken,
       });
+
       return res.data;
+
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +34,9 @@ function App() {
       let currentDate = new Date();
       const decodedToken = jwt_decode(user.accessToken);
       if (decodedToken.exp * 1000 < currentDate.getTime()) {
+        
         const data = await refreshToken();
+
         config.headers["authorization"] = "Bearer " + data.accessToken;
       }
       return config;

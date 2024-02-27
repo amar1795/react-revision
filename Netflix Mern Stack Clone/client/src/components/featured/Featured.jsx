@@ -4,7 +4,7 @@ import { PlayArrow,InfoOutlined } from "@mui/icons-material"
 import axios from "axios";
 
 
-const Featured = ({type}) => {
+const Featured = ({type,setGenre}) => {
 
     const[content,setContent]=useState({});
 
@@ -13,7 +13,7 @@ const Featured = ({type}) => {
             try {
                 const res=await axios.get(`/movie/random?type=${type}`,{
                     headers:{
-                        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDQwZTdiYjlkMWE4NWFkN2NlNjU1NiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NjI3ODAwNCwiZXhwIjoxNjk2NzEwMDA0fQ.f_XymCUS9p3CZ6HMWu0vgRXlrGHWMM7XlJy1oEWW_aw"
+                        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2IzN2ZjZGE5YzhhMjRlZjVhODM5NiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwMjU3NDIxOCwiZXhwIjoxNzAzMDA2MjE4fQ.YG5_HdWuW9zr7W1mj-pcqysI3hLRkKcc4vNsF_u7zhM"
             
                       }
                 })
@@ -36,7 +36,7 @@ const Featured = ({type}) => {
                 <span>
                     {type==="movies" ?"movies":"series"}
                 </span>
-            <select name="genre" id="genre">
+            <select name="genre" id="genre" onChange={(e)=>{setGenre(e.target.value)}}>
             <option>Genre</option>
             <option value="adventure">Adventure</option>
             <option value="comedy">Comedy</option>

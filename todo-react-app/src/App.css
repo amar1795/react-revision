@@ -33,7 +33,6 @@ h1,h2{
 
 
 
-
 form input[type="text"] {
   background-color: #17181f;
   width: 100%;
@@ -41,6 +40,7 @@ form input[type="text"] {
   border: 0;
   font-size: 1rem;
   color: white;
+  display: inline-block;
   margin-left: 10px;
   outline: none;
 }
@@ -88,6 +88,11 @@ div.task .name,div.task form{
 
   flex-grow: 1;
 
+}
+
+.example{
+  color: red;
+ background-color: white;
 }
 
 div.task span:before{

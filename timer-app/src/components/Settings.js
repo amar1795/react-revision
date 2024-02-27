@@ -3,6 +3,7 @@ import React from 'react'
 const Settings = (props) => {
   return (
     // since props was not added in this hence the settings was not working as we are passing  onlcick as a props thats why we have to use props
+    // can also use onClick={onClick} instead of sprea operaator it would work fine 
     <button {...props} className='with-text'>
       <div className="settings-container">
       <svg fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

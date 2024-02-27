@@ -33,9 +33,7 @@ function App() {
   }
 
 
-  const [Mode,setMode]=useState(
-    "light"
-  );
+  const [Mode,setMode]=useState("light");
 
   const [Btntxt,setBtntxt]=useState("Dark");
   
@@ -43,6 +41,7 @@ function App() {
   const toggleColor=(cls)=>{
     removeBodyClasses();
     document.body.classList.add("bg-"+cls);
+    showAlert(`background colour is now ${cls}`,"success")
   }  
 
   const toggleStyle=()=>{
@@ -55,7 +54,7 @@ function App() {
       setMode("dark")
       showAlert("Dark mode has been enabled","success")
       document.title="Text-App-Dark Mode "
-  
+
       setMystyle({
         color:"white",
         backgroundColor:"black"
@@ -90,7 +89,6 @@ function App() {
     setTimeout(() => {
       setalertBtn(null)
     }, 1500);
-
   }
  
   return (
@@ -100,7 +98,6 @@ function App() {
     <Navbar title="React News App" Mode={Mode} toggleStyle={toggleStyle} Btntxt={Btntxt} toggleColor={toggleColor}/>
     <Alert alertBtn={alertBtn} />
     <div className="container my-3" > 
-
       <Routes>
         <Route exact path="/" element={<Form  Mystyle={Mystyle} showAlert={showAlert}/>} />
         <Route exact path="/contact" element={<Contact Mode={Mode} Mystyle={Mystyle} />} />

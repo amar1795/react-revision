@@ -18,7 +18,9 @@ const users = [
   },
 ];
 
+
 let refreshTokens = [];
+
 console.log(refreshTokens)
 
 app.post("/api/refresh", (req, res) => {
@@ -27,11 +29,14 @@ app.post("/api/refresh", (req, res) => {
 
   //send error if there is no token or it's invalid
   if (!refreshToken) return res.status(401).json("You are not authenticated!");
+
   if (!refreshTokens.includes(refreshToken)) {
     return res.status(403).json("Refresh token is not valid!");
   }
+
   jwt.verify(refreshToken, "myRefreshSecretKey", (err, user) => {
     err && console.log(err);
+    
     refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
 
     const newAccessToken = generateAccessToken(user);
@@ -59,10 +64,13 @@ const generateRefreshToken = (user) => {
 };
 
 app.post("/api/login", (req, res) => {
+
   const { username, password } = req.body;
+
   const usertest = users.find((u) => {
     return u.username === username && u.password === password;
   });
+
   if (usertest) {
     //Generate an access token
     const accessToken = generateAccessToken(usertest);
@@ -79,12 +87,14 @@ app.post("/api/login", (req, res) => {
   }
 });
 
+// this is the middleware
 const verify = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
     const token = authHeader.split(" ")[1];
 
     jwt.verify(token, "mySecretKey", (err, user) => {
+
       if (err) {
         return res.status(403).json("Token is not valid!");
       }

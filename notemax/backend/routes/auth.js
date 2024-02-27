@@ -2,11 +2,17 @@ const express=require('express');
 //with the help of router we can use this end point in index.js
 const router=express.Router();
 const User=require('../models/User')
+
 const { body, validationResult } = require('express-validator');
+
 var bcrypt = require('bcryptjs');
+
 const jwt = require('jsonwebtoken');
+
 const fetchuser = require('../middleware/fetchuser');
+
 const JWT_SECRET='hello';
+
 //ROUTE1:endopoint for creating user ,no AUTH required /api/auth/createuser
 
 //using express validator below
@@ -14,9 +20,7 @@ router.post('/createuser',[
     body('name').isLength({ min: 3 }).withMessage("enter a valid name"),
     body("email","enter a valid email").isEmail(),
     body('password',"enter a valid password"),
-
-    //.isLength({ min: 5 }) is not working in fronted when  using  in password need to correct this
-    
+    //.isLength({ min: 5 }) is not working in fronted when  using  in password need to correct this    
   ],async (req,res)=>{
     let  success=false;
     const errors = validationResult(req);
@@ -34,6 +38,7 @@ router.post('/createuser',[
         const secpass = bcrypt.hashSync(req.body.password, salt);
     
         //fetchuser middleware is taking id from user created here
+
         user=await User.create({
         name: req.body.name,
         email: req.body.email,
@@ -49,6 +54,7 @@ router.post('/createuser',[
       
       //using auth token for additional security
       //adding id to jwt token
+
       const authtoken = jwt.sign(data, JWT_SECRET);
       success=true;
       res.json({success,authtoken})
@@ -84,7 +90,6 @@ router.post('/login',[
   
   if(!user){
     success=false;
-
     return res.status(400).json({success,error:"please try to login with the correct credentials"})
   }
 
@@ -94,7 +99,6 @@ router.post('/login',[
     success=false;
     return res.status(400).json({success,error:"please try to login with the correct credentials"})
   }
-
 
   //why are we creating authtoken for the second time ?? it works without this well
   const data={
@@ -119,8 +123,7 @@ router.post('/login',[
 
     //ROUTE3:endopoint for getting user ,no AUTH required /api/auth/getuser
 
-    router.post('/getuser',fetchuser,async (req,res)=>{
-
+    router.post('/getuser',fetchuser,async (req,res)=>{      
       try{
         let userId=req.user.id;
         const user=await User.findById(userId).select("-password")

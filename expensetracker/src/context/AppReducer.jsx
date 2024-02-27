@@ -10,10 +10,9 @@ export default (state,action)=>{
                 ...state,
                 // here the new data is added to the begininng of the new stored array
                 transactions:[action.payload,...state.transactions]
-            }
-
-        
+            }        
         default:
             return state;
     }
 }
+

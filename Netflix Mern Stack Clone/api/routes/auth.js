@@ -42,7 +42,8 @@ router.post("/login",async (req,res)=>{
     
     // access token for additional security
     const accessToken =jwt.sign({
-        id:user._id,isAdmin:user.isAdmin
+        id:user._id,
+        isAdmin:user.isAdmin
     },process.env.SECRET_KEY,{
         expiresIn:"5d"
     })

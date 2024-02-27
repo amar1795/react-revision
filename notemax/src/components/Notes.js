@@ -101,8 +101,7 @@ const Note = (props) => {
             {notes.length===0 && "no notes to display"}
           </div>
     <div className='row my-3'>
-      
-        
+            
         {notes.map((note)=>{
           // const {showAlert}=props;
           // without note props the value will not polpulate

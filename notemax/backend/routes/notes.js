@@ -39,6 +39,7 @@ router.post('/addnote',fetchuser,[
 
             //creating note object to add new notes
             const note=new Notes({
+                // various ways of creating notes and can also use notes.create as mentioned in the docs in that case no need to save 
                 //user id is coming from fetch user js to verify if its the same user who is logged in
              title,description,tag,user:req.user.id
             })
@@ -76,14 +77,16 @@ router.put('/updatenote/:id',fetchuser,async(req,res)=>{
         if(!note){return res.status(404).send("not found")}
 
         //if the note is not of the user whose note is then they are note allowed to update it 
+
         if(note.user.toString()!==req.user.id){
             return res.status(401).send("not allowed")
         }
 
-        //if its the user whose notes are then they can update the notes
-        note=await Notes.findByIdAndUpdate(req.params.id,{$set:newnote},{new:true})
+        //if its the user whose notes are then they can update the 
+        
+        note=await Notes.findByIdAndUpdate(req.params.id,{$set:newnote},{new:true,runValidators: true})
         res.json({note});
-            
+
         } catch (error) {
             console.error(error.message)
             res.status(500).json("some error occured")   

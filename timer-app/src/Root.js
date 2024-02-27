@@ -5,9 +5,9 @@ import { SettingsProvider } from './Settingscontext';
 
 const Root = () => {
   return (
-    <SettingsProvider>
+    // <SettingsProvider>
       <App />
-    </SettingsProvider>
+    // </SettingsProvider>
   );
 };
 

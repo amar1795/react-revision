@@ -18,6 +18,7 @@ const Timer = () => {
 
   // Correct the variable name
  // Function to handle the click event
+
  const handleSettingsClick = () => {
   console.log("Settings button clicked!"); // Add this console.log statement
   setshowSettings(true);
@@ -25,7 +26,7 @@ const Timer = () => {
 const [mode,setmode]=useState("work");
 const [secondsLeft,setsecondsLeft]=useState(0);
 
- let secondsLeftRef=useRef(secondsLeft);
+let secondsLeftRef=useRef(secondsLeft);
 let ispausedRef=useRef(ispaused);
 let modeRef=useRef(mode);
 
@@ -35,28 +36,27 @@ let modeRef=useRef(mode);
 
   } 
 
-
   function tick() {
-    secondsLeftRef.current--;
-    
+    secondsLeftRef.current--;    
     setsecondsLeft(secondsLeftRef.current);
   }
 
-
 useEffect(()=>{
+
   initTimer(); 
+
   function switchMode(){
+
     let nextMode=modeRef.current==="work"?"break":"work";
     let nextseconds=(nextMode==="work"?workMinutes:breakMinutes)*60;
     setmode(nextMode);
     modeRef.current=nextMode;
-
     setsecondsLeft(nextseconds);
     secondsLeftRef.current = nextseconds;
   } 
 
+
   const interval=setInterval(() => {
-    
     if(ispausedRef.current)
     {
       return;
@@ -69,16 +69,19 @@ useEffect(()=>{
 
     tick();
   }, 100);
+
   return ()=>clearInterval(interval);
+
 },context)
 
   const totalseconds=mode==="work"?workMinutes*60:breakMinutes*60;
   const percentage=Math.round(secondsLeft/totalseconds *100);
 
   const Minutes=Math.floor(secondsLeft/60);
-  let seconds=secondsLeft%60;
-  if(seconds<10) seconds="0"+seconds;
 
+  let seconds=secondsLeft%60;
+
+  if(seconds<10) seconds="0"+seconds;
 
   return (
 
@@ -88,17 +91,15 @@ useEffect(()=>{
   textcolor:"#fff",
   pathColor: mode==="work"?red:green,
   trailColor:'rgba(255,255,255,.9)'
-
   })} />
-    
+
+
    <div style={{marginLeft:"55px"}}>
    <div style={{marginTop:"20px",marginLeft:"55px"}}>
     {ispaused
     ?<Playbutton onClick={()=>{setispaused(false); ispausedRef.current=false;}}  />
     :<Pausebutton onClick={()=>{setispaused(true); ispausedRef.current=true;}}/>}
-   </div>
-  
-    
+   </div>   
    </div>
 
 <div style={{marginLeft:"45px"}}>

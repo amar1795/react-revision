@@ -9,8 +9,7 @@ const verifyToken=require("../verifyToken")
 router.post("/addlists",verifyToken,async (req,res)=>{
    if(req.user.isAdmin)
    {
-    const newList=new List(req.body);
- 
+    const newList=new List(req.body); 
     try {
     const savedList=await newList.save();
     res.status(200).json(savedList);    
@@ -26,12 +25,12 @@ router.post("/addlists",verifyToken,async (req,res)=>{
 // DELETE
 
 router.delete("/delete/:id",verifyToken,async (req,res)=>{
+
     if(req.user.isAdmin)
-    {
-    
+    {    
    try {
       const deltedList=await List.findByIdAndDelete(req.params.id);
-     res.status(200).json("list hsa been deleted");    
+     res.status(200).json("list has been deleted");    
      } catch (error) {
          res.status(500).json(error)
      }
@@ -43,11 +42,11 @@ router.delete("/delete/:id",verifyToken,async (req,res)=>{
  
 // SHOW LISTS
 
+// this is an example of aggregation pipeline 
 router.get("/",verifyToken,async (req,res)=>{
     const typeQuery =req.query.type;
     const genreQuery=req.query.genre;
     let list=[];
-
    try {
     if(typeQuery){
         if(genreQuery)
@@ -61,14 +60,13 @@ router.get("/",verifyToken,async (req,res)=>{
         }
         else
         {      // will randomly fetch the 10 list
-            list=await List.aggregate([
-                
+            list=await List.aggregate([                
                     {$sample:{size:10}},
-                    {$match:{type:typeQuery}}
-                
+                    {$match:{type:typeQuery}}                
             ])
         }
     }
+
     else
     {
         list=await List.aggregate([{$sample :{size:10}}])

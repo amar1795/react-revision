@@ -14,12 +14,14 @@ const Inputform = ({add}) => {
           alert ("please enter some task first ")
         }
 
+
     }
 
   return (
     <form onSubmit={handlesubmit}>
         <button>+</button>
-        <input type="text" placeholder='Enter your task' value={formvalue} onChange={e=>setformvalue(e.target.value)} />
+        <input type="text"  placeholder='Enter your task' value={formvalue} onChange={e=>setformvalue(e.target.value)} />
+     
         
     </form>
   )

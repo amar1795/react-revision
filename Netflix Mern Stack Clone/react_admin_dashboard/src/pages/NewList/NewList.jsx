@@ -5,13 +5,14 @@ import { createList, createMovie } from "../../context/listcontext/apicalls";
 import { MovieContext } from "../../context/moviecontext/MovieContext";
 import { ListContext } from "../../context/listcontext/ListContext";
 import { getMovies } from "../../context/moviecontext/apicalls";
-
+import { useNavigate } from 'react-router-dom';
 
 
 export default function NewList() {
   
   const { dispatch } = useContext(ListContext);
   const {movies, dispatch:movieDispatch } = useContext(MovieContext);
+  const navigate = useNavigate();
   
     useEffect(()=>{
     getMovies(movieDispatch)
@@ -28,15 +29,19 @@ export default function NewList() {
   const handleSubmit = (e) => {
     e.preventDefault();
     createList(list,dispatch)
+    setTimeout(() => {
+      navigate("/lists")
+    }, 500);
   };
   // need to understand the handlesect function once again 
 const handleSelect = (e) => {
-  let value=Array.from(e.target.selectedOptions,(option)=>option.value)
+  let value=  Array.from(e.target.selectedOptions,(option)=>option.value)
   setList({...list,[e.target.name]:value})
+
+
   };
 
-
-  console.log(list)
+  console.log("list value is"+list)
 
   return (
     <div className="newProduct">

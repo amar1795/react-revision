@@ -112,16 +112,17 @@ router.get("/stats",async (req,res)=>{
                 [
                     {
                         // the below are the mongodb functions
-                $project:{
-                    month:{
-                        $month:"$createdAt"
+                    $project:{
+                            month:{
+                                $month:"$createdAt"
+                            },
+                        }
                     },
-                    }},
                     {
-                    $group:{
-                        _id:"$month",
-                        total:{$sum:1}
-                    },
+                        $group:{
+                            _id:"$month",
+                            total:{$sum:1}
+                        },
                     },
                           
                 ])
@@ -132,8 +133,7 @@ router.get("/stats",async (req,res)=>{
         res.status(500).json(error)
         
     }
-
-    
+   
 })
 
 

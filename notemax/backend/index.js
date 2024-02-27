@@ -2,9 +2,11 @@ const connecttomongo=require('./db');
 const express =require("express");
 const app = express()
 connecttomongo();
+
 app.use(express.json())
 
 //using cors for transfering the data from frontend to backend 
+
 var cors = require('cors')
 app.use(cors())
 

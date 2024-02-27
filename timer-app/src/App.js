@@ -2,7 +2,7 @@ import Timer from './components/Timer';
 import './App.css';
 import Mainsettings from './components/Mainsettings';
 // import { useState } from 'react';
-import Settingscontext from './Settingscontext';
+import Settingscontext, { SettingsProvider } from './Settingscontext';
 import { useContext } from 'react';
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
   // const { showSettings } = useContext(Settingscontext); // Correct the variable name
   return (
     <main> 
+      <SettingsProvider></SettingsProvider>
       {/* to show settings page when settings is clicked */}
       {showSettings ?<Mainsettings/>:<Timer/>}
      

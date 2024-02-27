@@ -27,7 +27,7 @@ router.post("/",verifyToken,async (req,res)=>{
 
 // update
 
-router.put("/update/",verifyToken,async (req,res)=>{
+router.put("/update/:id",verifyToken,async (req,res)=>{
    if(req.user.isAdmin)
    {
  
@@ -51,6 +51,7 @@ router.put("/update/",verifyToken,async (req,res)=>{
 
 // findmovie
 router.get("/find/:id",verifyToken,async (req,res)=>{
+    // why are we checking the req.params.id to req.user.id ???????? 
     if(req.user.id===req.params.id || req.user.isAdmin)
     {
   
@@ -61,7 +62,7 @@ router.get("/find/:id",verifyToken,async (req,res)=>{
      } catch (error) {
          res.status(500).json(error)
      }
-     }
+     }     
      else{
          res.status(401).json("you are not allowed")
      }

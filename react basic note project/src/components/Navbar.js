@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom'
 const Navbar = (props) => {
 
   
-
-  
   return (
     <div>
         <nav className="navbar navbar-expand-lg   bg-body-tertiary" data-bs-theme={props.Mode} >
@@ -33,9 +31,9 @@ const Navbar = (props) => {
         <div className='bg-danger rounded mx-2 my-2' onClick={()=>{props.toggleColor('danger')}} style={{height:"30px",width:"30px",cursor:"pointer"}}></div>
         <div className='bg-success rounded mx-2 my-2' onClick={()=>{props.toggleColor('success')}} style={{height:"30px",width:"30px",cursor:"pointer"}}></div>
         <div className='bg-warning rounded mx-2 my-2' onClick={()=>{props.toggleColor('warning')}} style={{height:"30px",width:"30px",cursor:"pointer"}}></div>
+        
 
-
-        <button type='button' className={`btn btn-${props.Mode==="light"?"dark":"light"} my-1 mx-3 px-3`} onClick={()=>{props.toggleStyle(null)}} >
+        <button type='button' className={`btn btn-${props.Mode==="light"?"dark":"light"} my-1 mx-3 px-3`} onClick={props.toggleStyle} >
           {props.Btntxt}
           </button>
       </form>

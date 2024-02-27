@@ -1,8 +1,7 @@
 import React, { createContext, useState } from 'react';
 
-const SettingsContext = createContext({
-    
-  });
+const SettingsContext = createContext({});
+
 export const SettingsProvider = ({ children }) => {
     const [showSettings,setshowSettings]=useState(false);
     const [workMinutes, setWorkMinutes] = useState(1);

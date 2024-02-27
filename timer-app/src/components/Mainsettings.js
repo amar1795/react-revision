@@ -12,9 +12,8 @@ const Mainsettings = () => {
   
   return (
     <div style={{textAlign:"left"}}>
-     <label htmlFor="">Work Minutes {workMinutes}:00</label>
+  <label htmlFor="">Work Minutes {workMinutes}:00</label>
   <ReactSlider
-
   className={'slider'}
   thumbClassName={'thumb'}
   trackClassName={'track'}
@@ -24,8 +23,9 @@ const Mainsettings = () => {
   min={1}
   max={120}
   />
+  
      <label htmlFor="">Break Minutes {breakMinutes} :00</label>
-     <ReactSlider
+  <ReactSlider
 
   className={'slider green'}
   thumbClassName={'thumb'}
@@ -36,6 +36,7 @@ const Mainsettings = () => {
   min={1}
   max={120}
   />
+  
  <div style={{ marginLeft:"45px",marginTop:"20px"}}>
  <Backbutton onClick={()=>setshowSettings(false)}/>
  </div>
