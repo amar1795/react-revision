@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 export const login =async (user,dispatch)=>{
-    
+        
     console.log("login button has been clicked")
+
     dispatch(loginStart());
       // login start  
       try {
@@ -16,6 +17,7 @@ export const login =async (user,dispatch)=>{
           dispatch(loginFailure())    
       }
   }
+
 
 export const loginStart=()=>({
  type:"LOGIN_START",

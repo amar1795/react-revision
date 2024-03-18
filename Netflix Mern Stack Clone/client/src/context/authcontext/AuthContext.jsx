@@ -9,8 +9,8 @@ const INITIAL_STATE={
 
 // context created
     export const AuthContext=createContext(INITIAL_STATE);
-    export const AuthContextProvider=({children})=>{
-        
+    
+    export const AuthContextProvider=({children})=>{        
 
         // passing initial state to reducer
         const[state,dispatch]=useReducer(AuthReducer,INITIAL_STATE)

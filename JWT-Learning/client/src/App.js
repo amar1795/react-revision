@@ -1,6 +1,9 @@
 import "./App.css";
+
 import axios from "axios";
+
 import { useState } from "react";
+
 import jwt_decode from "jwt-decode";
 
 function App() {
@@ -13,6 +16,7 @@ function App() {
 
   const refreshToken = async () => {
     try {
+
       const res = await axios.post("/refresh", { token: user.refreshToken });
       setUser({
         ...user,
@@ -29,15 +33,18 @@ function App() {
 
   const axiosJWT = axios.create()
 
+  // this checks for the token expiry at the time of making any request using axiosJWT,if the token is expired it would refresh it and it will add it in the token
   axiosJWT.interceptors.request.use(
     async (config) => {
       let currentDate = new Date();
       const decodedToken = jwt_decode(user.accessToken);
+
       if (decodedToken.exp * 1000 < currentDate.getTime()) {
         
         const data = await refreshToken();
 
         config.headers["authorization"] = "Bearer " + data.accessToken;
+
       }
       return config;
     },

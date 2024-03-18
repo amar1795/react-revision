@@ -38,6 +38,8 @@ export const GlobalContext=createContext(initialState);
 
 // provider component
 // children because all the element in the app the js will be wrapped inside it 
+
+
 export const GlobalProvider=({children})=>{
 
     const [state,dispatch]=useReducer(AppReducer,initialState)
@@ -58,7 +60,7 @@ export const GlobalProvider=({children})=>{
 
 
     return(<GlobalContext.Provider  value={{
-
+        
         //typescript syntax is not allowed here as typscript and javascipt/react has different syntax
         // usecartContext(initialState)
         transactions:state.transactions,

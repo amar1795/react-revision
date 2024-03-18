@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const jwt = require("jsonwebtoken");
+
 app.use(express.json());
 
 const users = [
@@ -18,13 +19,14 @@ const users = [
   },
 ];
 
-
 let refreshTokens = [];
 
 console.log(refreshTokens)
 
 app.post("/api/refresh", (req, res) => {
+
   //take the refresh token from the user
+
   const refreshToken = req.body.token;
 
   //send error if there is no token or it's invalid
@@ -35,8 +37,9 @@ app.post("/api/refresh", (req, res) => {
   }
 
   jwt.verify(refreshToken, "myRefreshSecretKey", (err, user) => {
+    // error is being handled here
     err && console.log(err);
-    
+
     refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
 
     const newAccessToken = generateAccessToken(user);
@@ -64,7 +67,6 @@ const generateRefreshToken = (user) => {
 };
 
 app.post("/api/login", (req, res) => {
-
   const { username, password } = req.body;
 
   const usertest = users.find((u) => {
@@ -86,6 +88,7 @@ app.post("/api/login", (req, res) => {
     res.status(400).json("Username or password incorrect!");
   }
 });
+
 
 // this is the middleware
 const verify = (req, res, next) => {
@@ -117,6 +120,7 @@ app.delete("/api/users/:userId", verify, (req, res) => {
 
 app.post("/api/logout", verify, (req, res) => {
   const refreshToken = req.body.token;
+  // we could also directly  empty the refreshtoken and amke req.user=null when loggin out
   refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
   res.status(200).json("You logged out successfully.");
 });
